@@ -15,7 +15,6 @@ app.use(express.static(path.join(__dirname, "public")));
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
 const NOWPAYMENTS_IPN_SECRET = process.env.NOWPAYMENTS_IPN_SECRET;
 const IS_PRODUCTION = process.env.PRODUCTION === "true";
-const MOONPAY_API_KEY = process.env.MOONPAY_API_KEY;
 
 const NOWPAYMENTS_BASE = IS_PRODUCTION
   ? "https://api.nowpayments.io/v1"
@@ -110,48 +109,48 @@ const players = [
     id: 1,
     name: "كريستيانو رونالدو",
     nameEn: "Cristiano Ronaldo",
-    price: 18999,
-    btc: 0.052,
+    price: 189999,
+    btc: 0.75,
     sold: false,
   },
   {
     id: 2,
     name: "ساديو ماني",
     nameEn: "Sadio Mané",
-    price: 12999,
-    btc: 0.036,
+    price: 129999,
+    btc: 0.52,
     sold: false,
   },
   {
     id: 3,
     name: "ايمريك لابورت",
     nameEn: "Aymeric Laporte",
-    price: 9999,
-    btc: 0.027,
+    price: 99999,
+    btc: 0.27,
     sold: true,
   },
   {
     id: 4,
     name: "مارسيلو بروزوفيتش",
     nameEn: "Marcelo Brozović",
-    price: 7499,
-    btc: 0.021,
+    price: 74999,
+    btc: 0.21,
     sold: false,
   },
   {
     id: 5,
     name: "أليكس تيليس",
     nameEn: "Alex Telles",
-    price: 5999,
-    btc: 0.016,
+    price: 59999,
+    btc: 0.16,
     sold: true,
   },
   {
     id: 6,
     name: "سيكو فوفانا",
     nameEn: "Seko Fofana",
-    price: 3999,
-    btc: 0.011,
+    price: 39999,
+    btc: 0.11,
     sold: false,
   },
 ];
@@ -443,30 +442,6 @@ app.get("/api/cards", (req, res) => {
 });
 
 // ============================================
-// MoonPay Widget URL generator
-// ============================================
-app.get("/api/moonpay-url", (req, res) => {
-  const { currency, walletAddress } = req.query;
-
-  // MoonPay buy widget URL
-  const moonpayBase = IS_PRODUCTION
-    ? "https://buy.moonpay.com"
-    : "https://buy-sandbox.moonpay.com";
-
-  const params = new URLSearchParams({
-    apiKey: MOONPAY_API_KEY,
-    currencyCode: currency || "btc",
-    walletAddress: walletAddress || "",
-    colorCode: "%23FFC726",
-    language: "ar",
-  });
-
-  res.json({
-    url: `${moonpayBase}?${params.toString()}`,
-  });
-});
-
-// ============================================
 // Redeem Satoshi from card code
 // ============================================
 app.post("/api/redeem", (req, res) => {
@@ -581,7 +556,6 @@ app.listen(PORT, () => {
   ║   Running on: http://localhost:${PORT}          ║
   ║   Mode: ${IS_PRODUCTION ? "PRODUCTION" : "SANDBOX   "}                      ║
   ║   NOWPayments: ${NOWPAYMENTS_API_KEY ? "Configured ✓" : "NOT SET ✗  "}              ║
-  ║   MoonPay: ${MOONPAY_API_KEY ? "Configured ✓    " : "NOT SET ✗       "}              ║
   ╚══════════════════════════════════════════════╝
   `);
 });

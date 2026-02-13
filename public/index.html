@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>نادي النصر | بطاقات VIP الحصرية - استثمر في الأسطورة</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
     <link
       href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Orbitron:wght@400;700;900&display=swap"
       rel="stylesheet"
@@ -139,6 +139,120 @@
         border-radius: 4px;
         text-decoration: none;
         transition: all 0.3s;
+      }
+
+      /* Hamburger Button */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1100;
+        background: none;
+        border: none;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        background: var(--nassr-yellow);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+
+      /* Mobile Nav Overlay */
+      .mobile-nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1040;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .mobile-nav-overlay.active {
+        opacity: 1;
+      }
+
+      /* Mobile Nav Drawer */
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        z-index: 1050;
+        flex-direction: column;
+        padding: 90px 25px 30px;
+        transition: right 0.35s ease;
+        overflow-y: auto;
+        border-left: 3px solid var(--nassr-yellow);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .mobile-nav.active {
+        right: 0;
+      }
+
+      .mobile-nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 17px;
+        padding: 14px 15px;
+        border-radius: 8px;
+        transition: all 0.3s;
+        display: block;
+        text-align: right;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .mobile-nav a:hover,
+      .mobile-nav a.active {
+        color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.1);
+      }
+
+      .mobile-nav .mobile-nav-cta {
+        margin-top: 20px;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        text-align: center;
+        font-weight: 700;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 16px;
+        border-bottom: none;
+      }
+
+      .mobile-nav .mobile-nav-cta:hover {
+        background: var(--nassr-yellow-bright);
+        color: var(--nassr-blue-dark);
       }
 
       /* Urgency Banner */
@@ -1676,23 +1790,221 @@
         color: rgba(255, 255, 255, 0.5);
       }
 
-      .moonpay-btn {
-        padding: 14px 28px;
-        background: linear-gradient(135deg, #7c3aed, #6d28d9);
-        border: none;
+      .crypto-guide-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 18px 0 14px;
+      }
+
+      .crypto-guide-step {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.07) 0%,
+          rgba(255, 255, 255, 0.03) 100%
+        );
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        padding: 16px 8px 14px;
+        text-align: center;
+        position: relative;
+      }
+
+      .crypto-guide-step .step-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 199, 38, 0.12);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        font-size: 20px;
+      }
+
+      .crypto-guide-step .step-num {
+        font-size: 12px;
+        color: var(--nassr-yellow);
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+
+      .crypto-guide-step .step-text {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.6;
+      }
+
+      .crypto-guide-links {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .trust-wallet-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        background: linear-gradient(135deg, #3375bb, #2b63a0);
         border-radius: 10px;
         color: #fff;
         font-family: "Tajawal", sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
-        cursor: pointer;
+        text-decoration: none;
         transition: all 0.3s;
       }
 
-      .moonpay-btn:hover {
+      .trust-wallet-btn:hover {
+        background: linear-gradient(135deg, #2b63a0, #1e4f85);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(51, 117, 187, 0.4);
+      }
+
+      .moonpay-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        border-radius: 10px;
+        color: #fff;
+        font-family: "Tajawal", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .moonpay-link:hover {
         background: linear-gradient(135deg, #6d28d9, #5b21b6);
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(109, 40, 217, 0.4);
+        box-shadow: 0 8px 20px rgba(109, 40, 217, 0.4);
+      }
+
+      /* Exclusive Popup */
+      .exclusive-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .exclusive-popup {
+        background: linear-gradient(
+          135deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border: 2px solid var(--nassr-yellow);
+        border-radius: 20px;
+        padding: 40px 30px;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        animation: popIn 0.4s cubic-bezier(0.17, 0.67, 0.35, 1.5);
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(255, 199, 38, 0.15);
+      }
+
+      @keyframes popIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .exclusive-popup .popup-badge {
+        display: inline-block;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        padding: 6px 18px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+      }
+
+      .exclusive-popup .popup-icon {
+        font-size: 56px;
+        margin-bottom: 15px;
+      }
+
+      .exclusive-popup h2 {
+        font-size: 24px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        color: var(--nassr-yellow);
+      }
+
+      .exclusive-popup p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+
+      .exclusive-popup .popup-cta {
+        display: inline-block;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        padding: 14px 40px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      .exclusive-popup .popup-cta:hover {
+        background: var(--nassr-yellow-bright);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 199, 38, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .crypto-guide-steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .exclusive-popup {
+          padding: 30px 20px;
+        }
+        .exclusive-popup h2 {
+          font-size: 20px;
+        }
+        .exclusive-popup .popup-icon {
+          font-size: 44px;
+        }
       }
 
       @media (max-width: 768px) {
@@ -1722,6 +2034,31 @@
         }
         .nav {
           display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .mobile-nav,
+        .mobile-nav-overlay {
+          display: block;
+        }
+        .mobile-nav {
+          display: flex;
+        }
+        .header-cta {
+          display: none;
+        }
+        .header-main {
+          padding: 10px 15px;
+        }
+        .logo img {
+          height: 45px;
+        }
+        .logo-text .main {
+          font-size: 18px;
+        }
+        .logo-text .sub {
+          font-size: 10px;
         }
         .hero {
           padding: 120px 20px 60px;
@@ -1773,10 +2110,87 @@
         .redeem-options {
           grid-template-columns: 1fr;
         }
+        .scarcity-section {
+          padding: 40px 15px;
+        }
+        .scarcity-box {
+          padding: 25px 18px;
+        }
+        .scarcity-box h2 {
+          font-size: 22px;
+        }
+        .scarcity-box p {
+          font-size: 14px !important;
+          line-height: 1.8;
+        }
+        .scarcity-icon {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 20px;
+        }
+        .scarcity-icon svg {
+          width: 35px;
+          height: 35px;
+        }
+        .scarcity-stats {
+          flex-direction: column;
+          gap: 20px;
+          align-items: center;
+        }
+        .scarcity-stat .number {
+          font-size: 32px;
+        }
+        .scarcity-stat .label {
+          font-size: 13px;
+        }
+        #lightning-info .lightning-steps-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 12px !important;
+        }
+        #lightning-info .lightning-steps-box {
+          padding: 15px !important;
+          margin-top: 20px !important;
+        }
+        #lightning-info .lightning-steps-box h3 {
+          font-size: 15px !important;
+        }
+        .section-title {
+          font-size: 26px;
+        }
+        .section-subtitle {
+          font-size: 15px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Exclusive Members Popup -->
+    <div class="exclusive-popup-overlay" id="exclusivePopup">
+      <div class="exclusive-popup">
+        <div class="popup-badge">دعوة حصرية VIP</div>
+        <div class="popup-icon">🏆</div>
+        <h2>مرحباً بك في عرض حصري</h2>
+        <p>
+          تم إرسال هذا العرض
+          <strong style="color: var(--nassr-yellow)"
+            >حصرياً لأعضاء النخبة</strong
+          >
+          في نادي النصر عبر
+          <strong style="color: var(--nassr-yellow)">alnassr.sa</strong>.<br />
+          أنت من بين القلائل المختارين للحصول على بطاقات VIP الأسطورية محمّلة
+          برصيد Lightning Satoshi.
+        </p>
+        <button
+          class="popup-cta"
+          onclick="
+            document.getElementById('exclusivePopup').style.display = 'none'
+          "
+        >
+          ⚡ شاهد المجموعة الحصرية
+        </button>
+      </div>
+    </div>
+
     <!-- Urgency Banner -->
     <div class="urgency-banner">
       ⚠️ تنبيه: بقي <span id="remainingCards">٤</span> بطاقات فقط من الإصدار
@@ -1797,7 +2211,7 @@
       </div>
       <div class="header-main">
         <a href="#" class="logo">
-          <img src="assets/main-logo.png" alt="نادي النصر" />
+          <img src="assets/main-logo.webp" alt="نادي النصر" />
           <div class="logo-text">
             <span class="main">نادي النصر</span>
             <span class="sub">AL-NASSR FC</span>
@@ -1813,8 +2227,26 @@
           <a href="#faq">الأسئلة</a>
         </nav>
         <a href="#collection" class="header-cta">احجز بطاقتك الآن</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#" class="active">الرئيسية</a>
+      <a href="#investment">الاستثمار</a>
+      <a href="#lightning-info">⚡ Lightning</a>
+      <a href="#redeem">الاستلام</a>
+      <a href="/redeem">🔐 استرداد الرصيد</a>
+      <a href="#collection">المجموعة</a>
+      <a href="#faq">الأسئلة</a>
+      <a href="#collection" class="mobile-nav-cta">احجز بطاقتك الآن</a>
+    </nav>
 
     <!-- Hero -->
     <section class="hero">
@@ -2011,6 +2443,7 @@
         </div>
 
         <div
+          class="lightning-steps-box"
           style="
             margin-top: 30px;
             padding: 20px;
@@ -2029,6 +2462,7 @@
             📝 خطوات الاسترداد
           </h3>
           <div
+            class="lightning-steps-grid"
             style="
               display: grid;
               grid-template-columns: repeat(4, 1fr);
@@ -2331,7 +2765,7 @@
     <footer class="footer">
       <div class="footer-main">
         <div class="footer-brand">
-          <img src="assets/main-logo.png" alt="نادي النصر" />
+          <img src="assets/main-logo.webp" alt="نادي النصر" />
           <p>
             نادي النصر السعودي، أحد أعرق الأندية في المملكة العربية السعودية.
           </p>
@@ -2360,7 +2794,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© ٢٠٢٤ نادي النصر السعودي. جميع الحقوق محفوظة.</p>
+        <p>© ٢٠٢٦ نادي النصر السعودي. جميع الحقوق محفوظة.</p>
         <div class="social-links">
           <a href="#"
             ><svg viewBox="0 0 24 24">
@@ -2535,11 +2969,29 @@
 
               <!-- Bitcoin Only -->
               <div class="form-section">
-                <div class="crypto-selector" style="grid-template-columns: 1fr; max-width: 320px; margin: 0 auto 20px;">
-                  <div class="crypto-option selected" data-currency="btc" style="padding: 20px; cursor: default;">
-                    <span class="crypto-icon" style="font-size: 36px;">₿</span>
-                    <span class="crypto-name" style="font-size: 16px;">Bitcoin (BTC)</span>
-                    <span class="crypto-estimate" id="est-btc" style="font-size: 14px; color: var(--nassr-yellow);">...</span>
+                <div
+                  class="crypto-selector"
+                  style="
+                    grid-template-columns: 1fr;
+                    max-width: 320px;
+                    margin: 0 auto 20px;
+                  "
+                >
+                  <div
+                    class="crypto-option selected"
+                    data-currency="btc"
+                    style="padding: 20px; cursor: default"
+                  >
+                    <span class="crypto-icon" style="font-size: 36px">₿</span>
+                    <span class="crypto-name" style="font-size: 16px"
+                      >Bitcoin (BTC)</span
+                    >
+                    <span
+                      class="crypto-estimate"
+                      id="est-btc"
+                      style="font-size: 14px; color: var(--nassr-yellow)"
+                      >...</span
+                    >
                   </div>
                 </div>
               </div>
@@ -2667,53 +3119,94 @@
                 </div>
               </div>
 
-              <!-- MoonPay Reference -->
+              <!-- Crypto Guide for New Users -->
               <div
-                class="moonpay-section"
                 style="
                   margin-top: 25px;
-                  padding: 20px;
-                  background: rgba(102, 51, 255, 0.1);
-                  border: 1px solid rgba(102, 51, 255, 0.3);
-                  border-radius: 12px;
+                  padding: 22px;
+                  background: linear-gradient(
+                    135deg,
+                    rgba(51, 117, 187, 0.1),
+                    rgba(13, 20, 66, 0.6)
+                  );
+                  border: 1px solid rgba(255, 199, 38, 0.2);
+                  border-radius: 14px;
                   text-align: center;
                 "
               >
                 <p
                   style="
-                    font-size: 14px;
-                    color: rgba(255, 255, 255, 0.8);
-                    margin-bottom: 8px;
+                    font-size: 16px;
+                    color: var(--nassr-yellow);
+                    font-weight: 800;
+                    margin-bottom: 6px;
                   "
                 >
-                  🏦 ليس لديك عملات رقمية؟
+                  🏦 ليس لديك بيتكوين؟ لا تقلق!
                 </p>
                 <p
                   style="
                     font-size: 13px;
-                    color: rgba(255, 255, 255, 0.6);
-                    margin-bottom: 15px;
+                    color: rgba(255, 255, 255, 0.55);
+                    margin-bottom: 0;
                   "
                 >
-                  اشترِ العملات الرقمية بسهولة عبر بطاقتك الائتمانية من MoonPay،
-                  ثم ارجع هنا لإتمام الدفع
+                  اتبع الخطوات البسيطة التالية لشراء BTC ببطاقتك الائتمانية ثم
+                  ادفع:
                 </p>
-                <button
-                  class="moonpay-btn"
-                  id="moonpayBtn"
-                  onclick="openMoonPay()"
-                >
-                  🌙 شراء عملات رقمية عبر MoonPay
-                </button>
+
+                <div class="crypto-guide-steps">
+                  <div class="crypto-guide-step">
+                    <div class="step-icon">📱</div>
+                    <div class="step-num">الخطوة ١</div>
+                    <div class="step-text">حمّل تطبيق<br />Trust Wallet</div>
+                  </div>
+                  <div class="crypto-guide-step">
+                    <div class="step-icon">💳</div>
+                    <div class="step-num">الخطوة ٢</div>
+                    <div class="step-text">
+                      اشترِ BTC داخل التطبيق عبر MoonPay ببطاقتك
+                    </div>
+                  </div>
+                  <div class="crypto-guide-step">
+                    <div class="step-icon">📋</div>
+                    <div class="step-num">الخطوة ٣</div>
+                    <div class="step-text">انسخ عنوان<br />الدفع أعلاه</div>
+                  </div>
+                  <div class="crypto-guide-step">
+                    <div class="step-icon">✅</div>
+                    <div class="step-num">الخطوة ٤</div>
+                    <div class="step-text">
+                      أرسل المبلغ من Trust Wallet وتأكّد الطلب
+                    </div>
+                  </div>
+                </div>
+
+                <div class="crypto-guide-links">
+                  <a
+                    href="https://trustwallet.com/download"
+                    target="_blank"
+                    class="trust-wallet-btn"
+                  >
+                    📥 تحميل Trust Wallet
+                  </a>
+                  <a
+                    href="https://www.moonpay.com/buy"
+                    target="_blank"
+                    class="moonpay-link"
+                  >
+                    🌙 شراء BTC عبر MoonPay
+                  </a>
+                </div>
                 <p
                   style="
                     font-size: 11px;
-                    color: rgba(255, 255, 255, 0.4);
+                    color: rgba(255, 255, 255, 0.3);
                     margin-top: 10px;
                   "
                 >
-                  سيتم فتح موقع MoonPay في نافذة جديدة • يدعم Visa و Mastercard
-                  و Apple Pay
+                  يمكنك شراء BTC من MoonPay مباشرة أو من داخل Trust Wallet •
+                  يدعم Visa و Mastercard و Apple Pay
                 </p>
               </div>
             </div>
@@ -2739,10 +3232,10 @@
           grade: 10,
           edition: "ICON /10",
           stats: { PAC: 97, SHO: 99, PAS: 92, DRI: 95, DEF: 45, PHY: 85 },
-          btc: 0.052,
-          price: 18999,
+          btc: 0.75,
+          price: 189999,
           sats: 5200000,
-          img: "images/ronaldo.png",
+          img: "images/ronaldo.webp",
           sold: false,
         },
         {
@@ -2754,10 +3247,10 @@
           grade: 10,
           edition: "ELITE /25",
           stats: { PAC: 94, SHO: 88, PAS: 82, DRI: 90, DEF: 42, PHY: 78 },
-          btc: 0.036,
-          price: 12999,
+          btc: 0.52,
+          price: 129999,
           sats: 3600000,
-          img: "images/mane.png",
+          img: "images/mane.webp",
           sold: false,
         },
         {
@@ -2769,10 +3262,10 @@
           grade: 10,
           edition: "ELITE /25",
           stats: { PAC: 65, SHO: 45, PAS: 85, DRI: 72, DEF: 92, PHY: 88 },
-          btc: 0.027,
-          price: 9999,
+          btc: 0.27,
+          price: 99999,
           sats: 2700000,
-          img: "images/laporte.png",
+          img: "images/laporte.webp",
           sold: true,
         },
         {
@@ -2784,10 +3277,10 @@
           grade: 9,
           edition: "GOLD /50",
           stats: { PAC: 72, SHO: 78, PAS: 90, DRI: 85, DEF: 82, PHY: 80 },
-          btc: 0.021,
-          price: 7499,
+          btc: 0.21,
+          price: 74999,
           sats: 2100000,
-          img: "images/brozovic.png",
+          img: "images/brozovic.webp",
           sold: false,
         },
         {
@@ -2799,10 +3292,10 @@
           grade: 9,
           edition: "GOLD /50",
           stats: { PAC: 86, SHO: 72, PAS: 82, DRI: 80, DEF: 84, PHY: 78 },
-          btc: 0.016,
-          price: 5999,
+          btc: 0.16,
+          price: 59999,
           sats: 1600000,
-          img: "images/telles.png",
+          img: "images/telles.webp",
           sold: true,
         },
         {
@@ -2814,10 +3307,10 @@
           grade: 9,
           edition: "GOLD /50",
           stats: { PAC: 82, SHO: 75, PAS: 78, DRI: 80, DEF: 75, PHY: 88 },
-          btc: 0.011,
-          price: 3999,
+          btc: 0.11,
+          price: 39999,
           sats: 1100000,
-          img: "images/fofana.png",
+          img: "images/fofana.webp",
           sold: false,
         },
       ];
@@ -2949,12 +3442,15 @@
         const el = document.getElementById("est-btc");
         if (el) el.textContent = "جاري الحساب...";
         try {
-          const res = await fetch(`/api/estimate?amount=${priceAmount}&currency=btc`);
+          const res = await fetch(
+            `/api/estimate?amount=${priceAmount}&currency=btc`,
+          );
           const data = await res.json();
           if (el && data.estimated_amount) {
             const btcAmount = parseFloat(data.estimated_amount).toFixed(8);
             el.textContent = `≈ ${btcAmount} BTC`;
-            document.getElementById("cryptoEquiv").textContent = `≈ ${btcAmount} BTC`;
+            document.getElementById("cryptoEquiv").textContent =
+              `≈ ${btcAmount} BTC`;
           }
         } catch (e) {
           if (el) el.textContent = "--";
@@ -3192,24 +3688,6 @@
       }
 
       // ============================================
-      // MoonPay - Open buy widget for users without crypto
-      // ============================================
-      async function openMoonPay() {
-        try {
-          const res = await fetch("/api/moonpay-url?currency=btc");
-          const data = await res.json();
-          window.open(data.url, "_blank", "width=500,height=700");
-        } catch (e) {
-          // Fallback to direct MoonPay URL
-          window.open(
-            "https://buy.moonpay.com?currencyCode=btc",
-            "_blank",
-            "width=500,height=700",
-          );
-        }
-      }
-
-      // ============================================
       // Event Listeners
       // ============================================
 
@@ -3362,6 +3840,36 @@
         });
 
       window.addEventListener("load", init);
+
+      // Mobile Nav Toggle
+      (function () {
+        const hamburger = document.getElementById("hamburgerBtn");
+        const mobileNav = document.getElementById("mobileNav");
+        const overlay = document.getElementById("mobileNavOverlay");
+
+        function toggleMobileNav() {
+          hamburger.classList.toggle("active");
+          mobileNav.classList.toggle("active");
+          overlay.classList.toggle("active");
+          document.body.style.overflow = mobileNav.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        function closeMobileNav() {
+          hamburger.classList.remove("active");
+          mobileNav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        hamburger.addEventListener("click", toggleMobileNav);
+        overlay.addEventListener("click", closeMobileNav);
+
+        mobileNav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMobileNav);
+        });
+      })();
     </script>
   </body>
 </html>
