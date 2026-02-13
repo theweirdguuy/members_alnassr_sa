@@ -9,12 +9,15 @@ const fetch = globalThis.fetch || nodeFetch;
 // ============================================
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
 const NOWPAYMENTS_IPN_SECRET = process.env.NOWPAYMENTS_IPN_SECRET;
-const IS_PRODUCTION = process.env.PRODUCTION === "true";
+// Robust check for production string (handles "true", "TRUE", " true ")
+const IS_PRODUCTION = String(process.env.PRODUCTION).trim().toLowerCase() === "true";
 
 if (!NOWPAYMENTS_API_KEY) {
   console.warn(
     "[WARNING] NOWPAYMENTS_API_KEY environment variable is not set!",
   );
+} else {
+  console.log(`[API] Config: PRODUCTION=${IS_PRODUCTION}, Key=...${NOWPAYMENTS_API_KEY.substring(NOWPAYMENTS_API_KEY.length - 4)}`);
 }
 
 const NOWPAYMENTS_BASE = IS_PRODUCTION
