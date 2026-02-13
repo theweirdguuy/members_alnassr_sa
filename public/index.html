@@ -1,0 +1,3417 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نادي النصر | بطاقات VIP الحصرية - استثمر في الأسطورة</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nassr-yellow: #ffc726;
+        --nassr-yellow-bright: #ffd54f;
+        --nassr-yellow-dark: #e5a800;
+        --nassr-blue: #1a237e;
+        --nassr-blue-dark: #0d1442;
+        --nassr-blue-light: #283593;
+        --white: #ffffff;
+        --gray: #9e9e9e;
+        --success: #4caf50;
+        --danger: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: var(--nassr-blue-dark);
+        min-height: 100vh;
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--nassr-blue);
+        border-bottom: 3px solid var(--nassr-yellow);
+      }
+
+      .header-top {
+        background: var(--nassr-blue-dark);
+        padding: 8px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        flex-direction: row-reverse;
+      }
+
+      .header-top div {
+        display: flex;
+        gap: 5px;
+        flex-direction: row-reverse;
+      }
+
+      .header-top a {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        padding: 0 15px;
+        transition: color 0.3s;
+      }
+
+      .header-main {
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-decoration: none;
+        flex-direction: row-reverse;
+      }
+
+      .logo img {
+        height: 60px;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+      }
+
+      .logo-text .main {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .logo-text .sub {
+        font-size: 12px;
+        color: var(--white);
+        letter-spacing: 2px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 30px;
+        flex-direction: row-reverse;
+      }
+
+      .nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 10px 0;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .nav a:hover,
+      .nav a.active {
+        color: var(--nassr-yellow);
+        border-bottom-color: var(--nassr-yellow);
+      }
+
+      .header-cta {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        padding: 12px 28px;
+        font-weight: 700;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      /* Urgency Banner */
+      .urgency-banner {
+        background: linear-gradient(90deg, var(--danger), #d32f2f);
+        padding: 12px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        animation: pulse-bg 2s infinite;
+      }
+
+      @keyframes pulse-bg {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.85;
+        }
+      }
+
+      .urgency-banner span {
+        background: var(--white);
+        color: var(--danger);
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin: 0 10px;
+        font-weight: 900;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 160px 50px 80px;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 35, 126, 0.95) 0%,
+          rgba(13, 20, 66, 0.98) 100%
+        );
+        gap: 50px;
+      }
+
+      .hero-bg-element {
+        position: absolute;
+        right: -200px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 199, 38, 0.15) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        position: relative;
+        z-index: 10;
+        text-align: right;
+        flex: 1;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        background: rgba(255, 199, 38, 0.15);
+        border: 1px solid var(--nassr-yellow);
+        border-radius: 4px;
+        margin-bottom: 25px;
+      }
+
+      .hero-badge span {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+      }
+
+      .hero-title {
+        font-size: 52px;
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .hero-title span {
+        color: var(--nassr-yellow);
+      }
+
+      .hero-desc {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.9;
+        margin-bottom: 25px;
+      }
+
+      .hero-highlight {
+        background: rgba(255, 199, 38, 0.15);
+        border-right: 4px solid var(--nassr-yellow);
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .hero-highlight p {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--nassr-yellow);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 15px;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        font-weight: 700;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      .btn-primary:hover {
+        background: var(--nassr-yellow-bright);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 199, 38, 0.3);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 32px;
+        background: transparent;
+        border: 2px solid var(--white);
+        color: var(--white);
+        font-weight: 700;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .hero-card-display {
+        position: relative;
+        flex-shrink: 0;
+        transform: perspective(1000px) rotateY(-5deg);
+        z-index: 5;
+      }
+
+      @media (max-width: 1200px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-content {
+          text-align: center;
+          max-width: 100%;
+        }
+        .hero-buttons {
+          justify-content: center;
+        }
+        .hero-card-display {
+          display: none;
+        }
+      }
+
+      /* Stats Bar */
+      .stats-bar {
+        background: var(--nassr-yellow);
+        padding: 25px 50px;
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 36px;
+        font-weight: 900;
+        color: var(--nassr-blue-dark);
+      }
+
+      .stat-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--nassr-blue);
+      }
+
+      /* Section Styles */
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-label {
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(255, 199, 38, 0.15);
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+      }
+
+      .section-title {
+        font-size: 42px;
+        font-weight: 900;
+      }
+
+      .section-title span {
+        color: var(--nassr-yellow);
+      }
+
+      .section-subtitle {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 15px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Investment Section */
+      .investment-section {
+        padding: 100px 50px;
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue-dark) 0%,
+          var(--nassr-blue) 100%
+        );
+      }
+
+      .investment-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .invest-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .invest-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--nassr-yellow);
+      }
+
+      .invest-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--nassr-yellow),
+          var(--nassr-yellow-dark)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+      }
+
+      .invest-icon svg {
+        width: 40px;
+        height: 40px;
+        fill: var(--nassr-blue-dark);
+      }
+
+      .invest-card h3 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--nassr-yellow);
+      }
+
+      .invest-card p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+
+      /* Scarcity Section */
+      .scarcity-section {
+        padding: 80px 50px;
+        background: var(--nassr-blue-dark);
+        text-align: center;
+      }
+
+      .scarcity-box {
+        max-width: 900px;
+        margin: 0 auto;
+        background: linear-gradient(
+          135deg,
+          rgba(244, 67, 54, 0.1),
+          rgba(244, 67, 54, 0.05)
+        );
+        border: 2px solid var(--danger);
+        border-radius: 16px;
+        padding: 50px;
+      }
+
+      .scarcity-icon {
+        width: 100px;
+        height: 100px;
+        background: var(--danger);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        animation: pulse-scale 2s infinite;
+      }
+
+      @keyframes pulse-scale {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .scarcity-icon svg {
+        width: 50px;
+        height: 50px;
+        fill: var(--white);
+      }
+
+      .scarcity-box h2 {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+
+      .scarcity-box h2 span {
+        color: var(--nassr-yellow);
+      }
+
+      .scarcity-box p {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.9;
+        margin-bottom: 30px;
+      }
+
+      .scarcity-stats {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+      }
+
+      .scarcity-stat .number {
+        font-size: 48px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .scarcity-stat .label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Redeem Section */
+      .redeem-section {
+        padding: 100px 50px;
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+      }
+
+      .redeem-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .redeem-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 199, 38, 0.2);
+        border-radius: 16px;
+        padding: 40px;
+        text-align: center;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .redeem-card:hover {
+        border-color: var(--nassr-yellow);
+        transform: translateY(-5px);
+      }
+
+      .redeem-card.recommended::before {
+        content: "الأكثر طلباً";
+        position: absolute;
+        top: -12px;
+        right: 30px;
+        background: var(--success);
+        color: var(--white);
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .redeem-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 199, 38, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+      }
+
+      .redeem-icon svg {
+        width: 40px;
+        height: 40px;
+        fill: var(--nassr-yellow);
+      }
+
+      .redeem-card h3 {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--white);
+      }
+
+      .redeem-card p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .redeem-features {
+        text-align: right;
+      }
+
+      .redeem-features li {
+        list-style: none;
+        padding: 10px 0;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .redeem-features li svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--success);
+        min-width: 18px;
+      }
+
+      /* Benefits Section */
+      .benefits-section {
+        padding: 100px 50px;
+        background: var(--nassr-blue-dark);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .benefit-card {
+        background: rgba(255, 199, 38, 0.05);
+        border: 1px solid rgba(255, 199, 38, 0.15);
+        border-radius: 12px;
+        padding: 35px;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        transition: all 0.3s;
+      }
+
+      .benefit-card:hover {
+        border-color: var(--nassr-yellow);
+        transform: translateX(-5px);
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        background: var(--nassr-yellow);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .benefit-icon svg {
+        width: 30px;
+        height: 30px;
+        fill: var(--nassr-blue-dark);
+      }
+
+      .benefit-content h3 {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .benefit-content p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.7;
+      }
+
+      /* Collection Section */
+      .collection {
+        padding: 100px 50px;
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue-dark) 0%,
+          var(--nassr-blue) 100%
+        );
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .card-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .card-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card-price-info {
+        text-align: center;
+        margin-top: 20px;
+        background: rgba(255, 199, 38, 0.1);
+        padding: 20px 30px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .card-price-amount {
+        font-size: 28px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .card-price-btc {
+        font-size: 14px;
+        color: var(--gray);
+        display: block;
+        margin-top: 5px;
+      }
+
+      .card-stock {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--danger);
+        font-weight: 600;
+      }
+
+      .card-stock .dot {
+        width: 8px;
+        height: 8px;
+        background: var(--danger);
+        border-radius: 50%;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      .buy-btn {
+        margin-top: 15px;
+        width: 100%;
+        padding: 14px;
+        background: var(--nassr-yellow);
+        border: none;
+        color: var(--nassr-blue-dark);
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s;
+      }
+
+      .buy-btn:hover {
+        background: var(--nassr-yellow-bright);
+        transform: translateY(-2px);
+      }
+
+      .buy-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Card Design */
+      .slab {
+        width: 300px;
+        height: 450px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.1s ease-out;
+        cursor: pointer;
+      }
+
+      .slab-case {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.12) 0%,
+          rgba(255, 255, 255, 0.04) 50%,
+          rgba(255, 255, 255, 0.08) 100%
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(255, 199, 38, 0.3);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .slab-shine {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          var(--shine-angle, 120deg),
+          transparent 0%,
+          transparent 42%,
+          rgba(255, 255, 255, 0.15) 46%,
+          rgba(255, 255, 255, 0.25) 50%,
+          rgba(255, 255, 255, 0.15) 54%,
+          transparent 58%,
+          transparent 100%
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-radius: 16px;
+      }
+      .slab:hover .slab-shine {
+        opacity: 1;
+      }
+
+      .psa-label {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 28px);
+        height: 50px;
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        border: 1px solid rgba(255, 199, 38, 0.3);
+        z-index: 20;
+      }
+
+      .psa-logo {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 18px;
+        color: #e63946;
+      }
+
+      .psa-details {
+        flex: 1;
+        text-align: center;
+        padding: 0 10px;
+      }
+      .psa-details .name {
+        font-size: 10px;
+        color: #fff;
+        font-weight: 700;
+      }
+      .psa-details .set {
+        font-size: 8px;
+        color: var(--nassr-yellow);
+      }
+
+      .psa-grade-box {
+        background: linear-gradient(
+          145deg,
+          var(--nassr-yellow-bright),
+          var(--nassr-yellow-dark)
+        );
+        padding: 5px 12px;
+        border-radius: 5px;
+      }
+      .psa-grade-box .grade {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        color: var(--nassr-blue-dark);
+      }
+
+      .card-frame {
+        position: absolute;
+        top: 74px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 252px;
+        height: 340px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .holo-canvas {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        mix-blend-mode: color-dodge;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .slab:hover .holo-canvas {
+        opacity: 0.75;
+      }
+
+      .card-bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+      }
+
+      .card-pattern {
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23FFC726' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+        opacity: 0.5;
+      }
+
+      .player-img {
+        position: absolute;
+        bottom: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 220px;
+        object-fit: contain;
+        filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+        z-index: 3;
+      }
+
+      .dynamic-light {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--lx, 50%) var(--ly, 30%),
+          rgba(255, 199, 38, 0.15) 0%,
+          transparent 45%
+        );
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .ovr-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 10;
+      }
+      .ovr-hex {
+        width: 52px;
+        height: 60px;
+        background: linear-gradient(
+          160deg,
+          var(--nassr-yellow-bright),
+          var(--nassr-yellow-dark)
+        );
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .ovr-hex .num {
+        font-family: "Orbitron", sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-blue-dark);
+        line-height: 1;
+      }
+      .ovr-hex .txt {
+        font-size: 7px;
+        color: var(--nassr-blue);
+        font-weight: 700;
+      }
+
+      .pos-tag {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        padding: 5px 12px;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        font-family: "Orbitron", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 4px;
+        z-index: 10;
+      }
+
+      .stats-panel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px 16px 16px;
+        background: linear-gradient(
+          to top,
+          rgba(13, 20, 66, 0.98) 0%,
+          rgba(13, 20, 66, 0.8) 70%,
+          transparent 100%
+        );
+        z-index: 8;
+      }
+      .player-name-card {
+        font-size: 16px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+      .stats-row {
+        display: flex;
+        gap: 5px;
+      }
+      .stat-cell {
+        flex: 1;
+        background: rgba(255, 199, 38, 0.1);
+        border: 1px solid rgba(255, 199, 38, 0.25);
+        border-radius: 5px;
+        padding: 5px 3px;
+        text-align: center;
+      }
+      .stat-cell .val {
+        font-family: "Orbitron", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+      }
+      .stat-cell .lbl {
+        font-size: 7px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .auth-seal {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        z-index: 20;
+      }
+      .seal-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--nassr-yellow),
+          var(--nassr-yellow-dark),
+          var(--nassr-yellow-bright),
+          var(--nassr-yellow)
+        );
+        animation: sealSpin 3s linear infinite;
+      }
+      .seal-inner {
+        position: absolute;
+        inset: 4px;
+        background: var(--nassr-blue-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .seal-inner svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--nassr-yellow);
+      }
+      @keyframes sealSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .chrome-frame {
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        border: 3px solid var(--nassr-yellow);
+        pointer-events: none;
+        z-index: 15;
+      }
+
+      .serial-num {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Orbitron", sans-serif;
+        font-size: 9px;
+        color: var(--nassr-yellow);
+        letter-spacing: 2px;
+        opacity: 0.6;
+        z-index: 25;
+      }
+
+      /* Checkout Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border: 2px solid var(--nassr-yellow);
+        border-radius: 16px;
+        width: 100%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(20px);
+        transition: transform 0.3s;
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        padding: 25px 30px;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h2 {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--nassr-yellow);
+      }
+
+      .modal-close {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 50%;
+        color: var(--white);
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .modal-close:hover {
+        background: var(--danger);
+      }
+
+      .modal-body {
+        padding: 30px;
+      }
+
+      .checkout-steps {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .step.active {
+        color: var(--nassr-yellow);
+      }
+
+      .step-num {
+        width: 28px;
+        height: 28px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .step.active .step-num {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        border-color: var(--nassr-yellow);
+      }
+
+      .step.completed .step-num {
+        background: var(--success);
+        border-color: var(--success);
+        color: var(--white);
+      }
+
+      .step-line {
+        width: 40px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .selected-card-info {
+        background: rgba(255, 199, 38, 0.1);
+        border: 1px solid rgba(255, 199, 38, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .selected-card-img {
+        width: 80px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--nassr-blue-dark);
+      }
+
+      .selected-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .selected-card-details h3 {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 5px;
+      }
+
+      .selected-card-details p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .selected-card-details .price {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+        margin-top: 10px;
+      }
+
+      .form-section {
+        margin-bottom: 25px;
+      }
+
+      .form-section h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .form-section h3 svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--nassr-yellow);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group.full {
+        grid-column: span 2;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 15px;
+        transition: all 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.05);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .form-group select option {
+        background: var(--nassr-blue-dark);
+      }
+
+      .redeem-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .redeem-option {
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .redeem-option:hover {
+        border-color: rgba(255, 199, 38, 0.5);
+      }
+
+      .redeem-option.selected {
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.1);
+      }
+
+      .redeem-option h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .redeem-option p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .payment-section {
+        background: rgba(255, 199, 38, 0.05);
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+      }
+
+      .payment-section h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+      }
+
+      .payment-methods {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .payment-method {
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 15px 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .payment-method:hover {
+        border-color: var(--nassr-yellow);
+      }
+
+      .payment-method.selected {
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.1);
+      }
+
+      .payment-method img {
+        height: 30px;
+      }
+
+      .payment-method span {
+        display: block;
+        font-size: 12px;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .payment-placeholder {
+        background: rgba(0, 0, 0, 0.2);
+        border: 2px dashed rgba(255, 199, 38, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 20px;
+      }
+
+      .payment-placeholder p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .payment-placeholder .nowpayments-btn {
+        margin-top: 15px;
+        padding: 15px 30px;
+        background: #05c46b;
+        border: none;
+        border-radius: 8px;
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .payment-placeholder .nowpayments-btn:hover {
+        background: #04a85c;
+        transform: translateY(-2px);
+      }
+
+      .modal-footer {
+        padding: 20px 30px;
+        border-top: 1px solid rgba(255, 199, 38, 0.2);
+        display: flex;
+        gap: 15px;
+      }
+
+      .modal-footer button {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-back {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .btn-continue {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+      }
+
+      .btn-continue:hover {
+        background: var(--nassr-yellow-bright);
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 80px 50px;
+        background: var(--nassr-blue);
+      }
+
+      .faq-grid {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid rgba(255, 199, 38, 0.15);
+        padding: 25px 0;
+      }
+
+      .faq-question {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 12px;
+      }
+
+      .faq-answer {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.9;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--nassr-blue-dark);
+        border-top: 3px solid var(--nassr-yellow);
+      }
+
+      .footer-main {
+        padding: 60px 50px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-brand img {
+        height: 80px;
+        margin-bottom: 20px;
+      }
+
+      .footer-brand p {
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      .footer-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 20px;
+      }
+
+      .footer-links a {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 199, 38, 0.1);
+        border: 1px solid rgba(255, 199, 38, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .social-links a svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--nassr-yellow);
+      }
+
+      /* Crypto Selector */
+      .crypto-selector {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .crypto-option {
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 14px 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .crypto-option:hover {
+        border-color: rgba(255, 199, 38, 0.5);
+        background: rgba(255, 199, 38, 0.05);
+      }
+
+      .crypto-option.selected {
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.12);
+      }
+
+      .crypto-icon {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+
+      .crypto-name {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 4px;
+      }
+
+      .crypto-estimate {
+        display: block;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .moonpay-btn {
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-family: "Tajawal", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .moonpay-btn:hover {
+        background: linear-gradient(135deg, #6d28d9, #5b21b6);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(109, 40, 217, 0.4);
+      }
+
+      @media (max-width: 768px) {
+        .crypto-selector {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .cards-grid,
+        .investment-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .benefits-grid,
+        .redeem-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-main {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-top {
+          display: none;
+        }
+        .nav {
+          display: none;
+        }
+        .hero {
+          padding: 120px 20px 60px;
+        }
+        .hero-title {
+          font-size: 36px;
+        }
+        .stats-bar {
+          flex-wrap: wrap;
+          gap: 30px;
+          padding: 20px;
+        }
+        .investment-section,
+        .benefits-section,
+        .collection,
+        .faq-section,
+        .redeem-section {
+          padding: 60px 20px;
+        }
+        .cards-grid,
+        .investment-grid {
+          grid-template-columns: 1fr;
+          max-width: 340px;
+          margin: 0 auto;
+        }
+        .slab {
+          width: 280px;
+          height: 420px;
+        }
+        .card-frame {
+          width: 232px;
+          height: 315px;
+          top: 70px;
+        }
+        .footer-main {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full {
+          grid-column: span 1;
+        }
+        .redeem-options {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+      ⚠️ تنبيه: بقي <span id="remainingCards">٤</span> بطاقات فقط من الإصدار
+      المحدود! لا تفوت الفرصة
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <a href="#">العربية</a>
+          <a href="#">English</a>
+        </div>
+        <div>
+          <a href="https://alnassr.sa" target="_blank">الموقع الرسمي</a>
+          <a href="#">تواصل معنا</a>
+        </div>
+      </div>
+      <div class="header-main">
+        <a href="#" class="logo">
+          <img src="assets/main-logo.png" alt="نادي النصر" />
+          <div class="logo-text">
+            <span class="main">نادي النصر</span>
+            <span class="sub">AL-NASSR FC</span>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="#" class="active">الرئيسية</a>
+          <a href="#investment">الاستثمار</a>
+          <a href="#lightning-info">⚡ Lightning</a>
+          <a href="#redeem">الاستلام</a>
+          <a href="/redeem">🔐 استرداد الرصيد</a>
+          <a href="#collection">المجموعة</a>
+          <a href="#faq">الأسئلة</a>
+        </nav>
+        <a href="#collection" class="header-cta">احجز بطاقتك الآن</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg-element"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>⭐ فرصة استثمارية لا تتكرر</span>
+        </div>
+
+        <h1 class="hero-title">
+          استثمر في <span>أسطورة</span><br />
+          لا تُقدّر بثمن
+        </h1>
+
+        <p class="hero-desc">
+          بطاقات حصرية معتمدة من PSA بتقييم 10/10 - أعلى تقييم ممكن. كل بطاقة
+          محمّلة برصيد ساتوشي (Satoshi) عبر شبكة Lightning — المبلغ المدفوع
+          يُحوّل إلى رصيد ساتوشي مخزّن داخل البطاقة يمكنك استرداده في أي وقت.
+        </p>
+
+        <div class="hero-highlight">
+          <p>
+            ⚡ رصيد Lightning Satoshi محمّل • 🔐 كود استرداد داخل البطاقة • 🏆
+            ملكية حصرية
+          </p>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#collection" class="btn-primary">احجز بطاقتك الآن</a>
+          <a href="#investment" class="btn-secondary">لماذا الاستثمار؟</a>
+        </div>
+      </div>
+
+      <div class="hero-card-display" id="heroCardContainer"></div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">٦</div>
+        <div class="stat-label">بطاقات أسطورية</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">⚡</div>
+        <div class="stat-label">Lightning Satoshi محمّل</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">PSA 10</div>
+        <div class="stat-label">أعلى تقييم عالمي</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">🔐</div>
+        <div class="stat-label">كود استرداد داخل البطاقة</div>
+      </div>
+    </div>
+
+    <!-- Investment Section -->
+    <section class="investment-section" id="investment">
+      <div class="section-header">
+        <div class="section-label">لماذا هذا استثمار ذكي؟</div>
+        <h2 class="section-title">بطاقات ترتفع <span>قيمتها</span> مع الوقت</h2>
+        <p class="section-subtitle">
+          بطاقات كريستيانو رونالدو المُقيّمة من PSA ارتفعت قيمتها بنسبة 500%
+          خلال 3 سنوات فقط
+        </p>
+      </div>
+
+      <div class="investment-grid">
+        <div class="invest-card">
+          <div class="invest-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+              />
+            </svg>
+          </div>
+          <h3>قيمة متزايدة</h3>
+          <p>
+            بطاقات الرياضيين الأسطوريين تزداد قيمتها مع مرور الوقت. بطاقة
+            رونالدو الأصلية بيعت بأكثر من 3 مليون ريال.
+          </p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"
+              />
+            </svg>
+          </div>
+          <h3>أصالة مضمونة</h3>
+          <p>
+            كل بطاقة معتمدة ومُغلّفة من PSA - أكبر جهة توثيق في العالم. مع شهادة
+            أصالة رقمية على البلوكتشين.
+          </p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"
+              />
+            </svg>
+          </div>
+          <h3>ملكية مطلقة</h3>
+          <p>
+            عند الشراء، تصبح المالك الوحيد في العالم لهذه البطاقة. يمكنك بيعها
+            متى شئت بالسعر الذي تحدده.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightning Satoshi Info Section -->
+    <section class="scarcity-section" id="lightning-info">
+      <div
+        class="scarcity-box"
+        style="
+          border-color: var(--nassr-yellow);
+          background: linear-gradient(
+            135deg,
+            rgba(255, 199, 38, 0.08),
+            rgba(255, 199, 38, 0.03)
+          );
+        "
+      >
+        <div
+          class="scarcity-icon"
+          style="
+            background: linear-gradient(135deg, #f7931a, #e5a800);
+            animation: pulse-scale 2s infinite;
+          "
+        >
+          <svg
+            viewBox="0 0 24 24"
+            style="fill: white; width: 50px; height: 50px"
+          >
+            <path
+              d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2z"
+            />
+          </svg>
+        </div>
+        <h2>⚡ كيف يعمل <span>Lightning Satoshi</span>؟</h2>
+        <p
+          style="
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 2;
+            margin-bottom: 15px;
+          "
+        >
+          عند شراء بطاقة VIP،
+          <strong style="color: var(--nassr-yellow)"
+            >المبلغ المدفوع يُحوّل إلى رصيد ساتوشي (Satoshi)</strong
+          >
+          مخزّن داخل البطاقة عبر شبكة Bitcoin Lightning Network.
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 2;
+            margin-bottom: 30px;
+          "
+        >
+          كل بطاقة تحتوي على
+          <strong style="color: #f7931a">كود استرداد (Redeem Code)</strong>
+          مطبوع على البطاقة. استخدم الكود في صفحة
+          <a
+            href="/redeem"
+            style="
+              color: var(--nassr-yellow);
+              font-weight: 700;
+              text-decoration: underline;
+            "
+            >استرداد الرصيد</a
+          >
+          لسحب الساتوشي إلى محفظتك Lightning فوراً.
+        </p>
+        <div class="scarcity-stats">
+          <div class="scarcity-stat">
+            <div class="number" style="font-size: 36px">⚡</div>
+            <div class="label">رصيد Satoshi محمّل</div>
+          </div>
+          <div class="scarcity-stat">
+            <div class="number" style="font-size: 36px">🔐</div>
+            <div class="label">كود استرداد فريد</div>
+          </div>
+          <div class="scarcity-stat">
+            <div class="number" style="font-size: 36px">💸</div>
+            <div class="label">سحب فوري عبر Lightning</div>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 199, 38, 0.2);
+          "
+        >
+          <h3
+            style="
+              color: var(--nassr-yellow);
+              font-size: 18px;
+              margin-bottom: 15px;
+            "
+          >
+            📝 خطوات الاسترداد
+          </h3>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 15px;
+              text-align: center;
+            "
+          >
+            <div>
+              <div style="font-size: 32px; margin-bottom: 8px">1️⃣</div>
+              <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7)">
+                اشترِ البطاقة بالكريبتو
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: 8px">2️⃣</div>
+              <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7)">
+                استلم البطاقة واعثر على الكود
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: 8px">3️⃣</div>
+              <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7)">
+                أدخل الكود في /redeem
+              </p>
+            </div>
+            <div>
+              <div style="font-size: 32px; margin-bottom: 8px">4️⃣</div>
+              <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7)">
+                استلم الساتوشي فوراً ⚡
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scarcity Section -->
+    <section class="scarcity-section">
+      <div class="scarcity-box">
+        <div class="scarcity-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+            />
+          </svg>
+        </div>
+        <h2>نسخة <span>واحدة فقط</span> في العالم</h2>
+        <p>
+          هذه ليست بطاقات رقمية عادية. كل بطاقة لها نسخة مادية واحدة فقط،
+          مُغلّفة ومُعتمدة من PSA. عند البيع، لن تُطبع أبداً مرة أخرى. أنت لا
+          تشتري بطاقة - أنت تمتلك قطعة تاريخية فريدة.
+        </p>
+        <div class="scarcity-stats">
+          <div class="scarcity-stat">
+            <div class="number">١</div>
+            <div class="label">نسخة مادية لكل بطاقة</div>
+          </div>
+          <div class="scarcity-stat">
+            <div class="number">٠</div>
+            <div class="label">إعادة طباعة مستقبلية</div>
+          </div>
+          <div class="scarcity-stat">
+            <div class="number">∞</div>
+            <div class="label">قيمة تاريخية</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Redeem Section -->
+    <section class="redeem-section" id="redeem">
+      <div class="section-header">
+        <div class="section-label">خيارات الاستلام</div>
+        <h2 class="section-title">استلم بطاقتك <span>الآن أو لاحقاً</span></h2>
+        <p class="section-subtitle">أنت تتحكم متى وكيف تستلم بطاقتك المادية</p>
+      </div>
+
+      <div class="redeem-grid">
+        <div class="redeem-card recommended">
+          <div class="redeem-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+              />
+            </svg>
+          </div>
+          <h3>استلام فوري</h3>
+          <p>
+            احصل على بطاقتك المادية خلال 7-14 يوم عمل. نشحنها لك مؤمّنة بالكامل
+            إلى أي مكان في العالم.
+          </p>
+          <ul class="redeem-features">
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              شحن مجاني مؤمّن
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              تتبع الشحنة مباشر
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              تغليف فاخر
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              شهادة أصالة مطبوعة
+            </li>
+          </ul>
+        </div>
+        <div class="redeem-card">
+          <div class="redeem-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+              />
+            </svg>
+          </div>
+          <h3>حفظ آمن (Vault)</h3>
+          <p>
+            نحفظ بطاقتك في خزنة آمنة ومؤمّنة. يمكنك طلب استلامها في أي وقت
+            مستقبلاً أو بيعها مباشرة.
+          </p>
+          <ul class="redeem-features">
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              حفظ مجاني لمدة سنة
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              تأمين شامل
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              طلب الاستلام في أي وقت
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              بيع مباشر من الخزنة
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+      <div class="section-header">
+        <div class="section-label">مزايا حصرية للمالكين</div>
+        <h2 class="section-title">انضم لـ<span>نادي النخبة</span></h2>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+              />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3>دعوات VIP للمباريات</h3>
+            <p>احصل على دعوات حصرية لحضور مباريات النصر في المقاعد الذهبية.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z"
+              />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3>لقاء مع اللاعبين</h3>
+            <p>فرصة لقاء اللاعب صاحب البطاقة شخصياً والحصول على توقيعه.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6z"
+              />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3>خصومات حصرية</h3>
+            <p>خصم 50% على جميع منتجات متجر النصر الرسمي مدى الحياة.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"
+              />
+            </svg>
+          </div>
+          <div class="benefit-content">
+            <h3>أرباح إعادة البيع</h3>
+            <p>عند بيع بطاقتك مستقبلاً، تحتفظ بـ 100% من الأرباح.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collection -->
+    <section class="collection" id="collection">
+      <div class="section-header">
+        <div class="section-label">المجموعة الحصرية</div>
+        <h2 class="section-title">احجز <span>أسطورتك</span> الآن</h2>
+        <p class="section-subtitle">
+          كل بطاقة لها نسخة واحدة فقط - عند البيع تختفي للأبد من السوق
+        </p>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <div class="section-header">
+        <div class="section-label">أسئلة شائعة</div>
+        <h2 class="section-title">كل ما تريد <span>معرفته</span></h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">
+            ما هو رصيد Lightning Satoshi المحمّل على البطاقة؟
+          </div>
+          <p class="faq-answer">
+            عند شرائك للبطاقة، المبلغ الذي تدفعه يُحوّل إلى رصيد ساتوشي
+            (Satoshi) مخزّن داخل البطاقة عبر شبكة Bitcoin Lightning. يمكنك
+            استرداد هذا الرصيد في أي وقت من صفحة الاسترداد.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">كيف أسترد الساتوشي من البطاقة؟</div>
+          <p class="faq-answer">
+            كل بطاقة تحتوي على كود استرداد فريد مطبوع عليها. اذهب إلى صفحة
+            /redeem، أدخل الكود وعنوان محفظتك Lightning، وسيتم إرسال الساتوشي
+            فوراً.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">هل البطاقة مادية حقيقية؟</div>
+          <p class="faq-answer">
+            نعم، كل بطاقة لها نسخة مادية واحدة فقط، مُغلّفة ومُعتمدة من PSA
+            بتقييم 10/10. كود الاسترداد مطبوع على البطاقة نفسها.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            ما الفرق بين الاستلام الفوري والحفظ في الخزنة؟
+          </div>
+          <p class="faq-answer">
+            الاستلام الفوري: نشحن لك البطاقة المادية مع كود الاسترداد خلال 7-14
+            يوم. الحفظ في الخزنة: نحفظها بأمان ونرسل لك الكود رقمياً، ويمكنك طلب
+            البطاقة لاحقاً.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">هل يمكنني بيع البطاقة لاحقاً؟</div>
+          <p class="faq-answer">
+            بالتأكيد! أنت المالك الحصري. البطاقة تحمل رصيد ساتوشي حقيقي مما يزيد
+            قيمتها كمقتنيات.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">ما هي شبكة Lightning؟</div>
+          <p class="faq-answer">
+            Lightning Network هي شبكة دفع فورية مبنية على Bitcoin تتيح إرسال
+            واستقبال الساتوشي بسرعة وبتكلفة شبه معدومة. يمكنك استخدام محافظ مثل
+            Wallet of Satoshi أو Phoenix أو BlueWallet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="assets/main-logo.png" alt="نادي النصر" />
+          <p>
+            نادي النصر السعودي، أحد أعرق الأندية في المملكة العربية السعودية.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">روابط سريعة</h4>
+          <div class="footer-links">
+            <a href="#">الرئيسية</a>
+            <a href="#investment">الاستثمار</a>
+            <a href="#collection">المجموعة</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">الدعم</h4>
+          <div class="footer-links">
+            <a href="#faq">الأسئلة الشائعة</a>
+            <a href="#">تواصل معنا</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">قانوني</h4>
+          <div class="footer-links">
+            <a href="#">الشروط والأحكام</a>
+            <a href="#">سياسة الخصوصية</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ٢٠٢٤ نادي النصر السعودي. جميع الحقوق محفوظة.</p>
+        <div class="social-links">
+          <a href="#"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+              /></svg
+          ></a>
+          <a href="#"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"
+              /></svg
+          ></a>
+          <a href="#"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816z"
+              /></svg
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>إتمام الطلب</h2>
+          <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="checkout-steps">
+            <div class="step active" data-step="1">
+              <span class="step-num">1</span>
+              <span>البطاقة</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+              <span class="step-num">2</span>
+              <span>البيانات</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+              <span class="step-num">3</span>
+              <span>الدفع</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Card Selection -->
+          <div class="checkout-step-content" id="step1">
+            <div class="selected-card-info" id="selectedCardInfo">
+              <!-- Filled by JS -->
+            </div>
+
+            <div class="form-section">
+              <h3>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+                خيار الاستلام
+              </h3>
+              <div class="redeem-options">
+                <div class="redeem-option selected" data-option="immediate">
+                  <h4>📦 استلام فوري</h4>
+                  <p>شحن خلال 7-14 يوم</p>
+                </div>
+                <div class="redeem-option" data-option="vault">
+                  <h4>🔒 حفظ في الخزنة</h4>
+                  <p>استلم لاحقاً أو بِع مباشرة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Shipping Info -->
+          <div class="checkout-step-content" id="step2" style="display: none">
+            <div class="form-section">
+              <h3>
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                </svg>
+                معلومات الشحن
+              </h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>الاسم الكامل *</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    placeholder="أدخل اسمك الكامل"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>رقم الجوال *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="+966 5XX XXX XXXX"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group full">
+                <label>البريد الإلكتروني *</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="example@email.com"
+                  required
+                />
+              </div>
+              <div class="form-group full">
+                <label>العنوان *</label>
+                <input
+                  type="text"
+                  id="address"
+                  placeholder="الشارع، رقم المبنى، الشقة"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>المدينة *</label>
+                  <input type="text" id="city" placeholder="الرياض" required />
+                </div>
+                <div class="form-group">
+                  <label>الدولة *</label>
+                  <select id="country">
+                    <option value="SA">السعودية</option>
+                    <option value="AE">الإمارات</option>
+                    <option value="KW">الكويت</option>
+                    <option value="BH">البحرين</option>
+                    <option value="QA">قطر</option>
+                    <option value="OM">عُمان</option>
+                    <option value="OTHER">أخرى</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full">
+                <label>الرمز البريدي</label>
+                <input type="text" id="postalCode" placeholder="12345" />
+              </div>
+              <div class="form-group full">
+                <label>ملاحظات إضافية</label>
+                <textarea
+                  id="notes"
+                  rows="3"
+                  placeholder="أي تعليمات خاصة للتوصيل..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Payment (Crypto Only via NOWPayments) -->
+          <div class="checkout-step-content" id="step3" style="display: none">
+            <div class="payment-section">
+              <h3>₿ الدفع بالعملات الرقمية</h3>
+              <p
+                style="
+                  font-size: 14px;
+                  color: rgba(255, 255, 255, 0.7);
+                  margin-bottom: 20px;
+                "
+              >
+                ادفع بأمان عبر بوابة NOWPayments المشفّرة
+              </p>
+
+              <!-- Crypto Currency Selector -->
+              <div class="form-section">
+                <h3 style="justify-content: center">اختر العملة الرقمية</h3>
+                <div class="crypto-selector" id="cryptoSelector">
+                  <div class="crypto-option selected" data-currency="btc">
+                    <span class="crypto-icon">₿</span>
+                    <span class="crypto-name">Bitcoin</span>
+                    <span class="crypto-estimate" id="est-btc">...</span>
+                  </div>
+                  <div class="crypto-option" data-currency="eth">
+                    <span class="crypto-icon">Ξ</span>
+                    <span class="crypto-name">Ethereum</span>
+                    <span class="crypto-estimate" id="est-eth">...</span>
+                  </div>
+                  <div class="crypto-option" data-currency="usdttrc20">
+                    <span class="crypto-icon">₮</span>
+                    <span class="crypto-name">USDT (TRC20)</span>
+                    <span class="crypto-estimate" id="est-usdttrc20">...</span>
+                  </div>
+                  <div class="crypto-option" data-currency="ltc">
+                    <span class="crypto-icon">Ł</span>
+                    <span class="crypto-name">Litecoin</span>
+                    <span class="crypto-estimate" id="est-ltc">...</span>
+                  </div>
+                  <div class="crypto-option" data-currency="sol">
+                    <span class="crypto-icon">◎</span>
+                    <span class="crypto-name">Solana</span>
+                    <span class="crypto-estimate" id="est-sol">...</span>
+                  </div>
+                  <div class="crypto-option" data-currency="bnbbsc">
+                    <span class="crypto-icon">⬡</span>
+                    <span class="crypto-name">BNB (BSC)</span>
+                    <span class="crypto-estimate" id="est-bnbbsc">...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment Action -->
+              <div class="payment-placeholder" id="paymentPlaceholder">
+                <p style="font-size: 15px; margin-bottom: 5px">
+                  المبلغ المطلوب:
+                  <strong style="color: var(--nassr-yellow)" id="paymentAmount"
+                    >0</strong
+                  >
+                  ر.س
+                </p>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: rgba(255, 255, 255, 0.5);
+                    margin-bottom: 15px;
+                  "
+                  id="cryptoEquiv"
+                >
+                  ≈ جاري حساب المبلغ بالعملة الرقمية...
+                </p>
+
+                <button
+                  class="nowpayments-btn"
+                  id="payNowBtn"
+                  style="width: 100%"
+                >
+                  <span id="payBtnText">🔒 ادفع الآن عبر NOWPayments</span>
+                </button>
+
+                <!-- Payment Details (shown after creation) -->
+                <div
+                  id="paymentDetails"
+                  style="display: none; margin-top: 20px; text-align: right"
+                >
+                  <div
+                    style="
+                      background: rgba(0, 0, 0, 0.3);
+                      border-radius: 12px;
+                      padding: 20px;
+                      border: 1px solid rgba(255, 199, 38, 0.3);
+                    "
+                  >
+                    <p
+                      style="
+                        font-size: 14px;
+                        color: var(--nassr-yellow);
+                        margin-bottom: 12px;
+                        font-weight: 700;
+                        text-align: center;
+                      "
+                    >
+                      أرسل المبلغ التالي إلى العنوان أدناه
+                    </p>
+                    <div
+                      style="
+                        background: rgba(255, 199, 38, 0.1);
+                        padding: 12px;
+                        border-radius: 8px;
+                        margin-bottom: 10px;
+                        text-align: center;
+                      "
+                    >
+                      <span
+                        style="
+                          font-size: 24px;
+                          font-weight: 900;
+                          color: var(--nassr-yellow);
+                        "
+                        id="payAmountDisplay"
+                        >-</span
+                      >
+                      <span
+                        style="font-size: 14px; color: rgba(255, 255, 255, 0.7)"
+                        id="payCurrencyDisplay"
+                      ></span>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                      <label
+                        style="font-size: 12px; color: rgba(255, 255, 255, 0.5)"
+                        >عنوان المحفظة:</label
+                      >
+                      <div
+                        style="
+                          background: rgba(0, 0, 0, 0.4);
+                          padding: 10px;
+                          border-radius: 6px;
+                          font-family: monospace;
+                          font-size: 12px;
+                          word-break: break-all;
+                          color: #fff;
+                          cursor: pointer;
+                        "
+                        id="payAddressDisplay"
+                        onclick="copyAddress()"
+                      >
+                        -
+                      </div>
+                      <p
+                        style="
+                          font-size: 11px;
+                          color: var(--success);
+                          margin-top: 5px;
+                        "
+                        id="copyMsg"
+                        hidden
+                      >
+                        ✓ تم النسخ!
+                      </p>
+                    </div>
+                    <div
+                      id="paymentStatusBox"
+                      style="
+                        text-align: center;
+                        padding: 10px;
+                        background: rgba(255, 199, 38, 0.1);
+                        border-radius: 8px;
+                      "
+                    >
+                      <span style="font-size: 14px">⏳ في انتظار الدفع...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MoonPay Reference -->
+              <div
+                class="moonpay-section"
+                style="
+                  margin-top: 25px;
+                  padding: 20px;
+                  background: rgba(102, 51, 255, 0.1);
+                  border: 1px solid rgba(102, 51, 255, 0.3);
+                  border-radius: 12px;
+                  text-align: center;
+                "
+              >
+                <p
+                  style="
+                    font-size: 14px;
+                    color: rgba(255, 255, 255, 0.8);
+                    margin-bottom: 8px;
+                  "
+                >
+                  🏦 ليس لديك عملات رقمية؟
+                </p>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: rgba(255, 255, 255, 0.6);
+                    margin-bottom: 15px;
+                  "
+                >
+                  اشترِ العملات الرقمية بسهولة عبر بطاقتك الائتمانية من MoonPay،
+                  ثم ارجع هنا لإتمام الدفع
+                </p>
+                <button
+                  class="moonpay-btn"
+                  id="moonpayBtn"
+                  onclick="openMoonPay()"
+                >
+                  🌙 شراء عملات رقمية عبر MoonPay
+                </button>
+                <p
+                  style="
+                    font-size: 11px;
+                    color: rgba(255, 255, 255, 0.4);
+                    margin-top: 10px;
+                  "
+                >
+                  سيتم فتح موقع MoonPay في نافذة جديدة • يدعم Visa و Mastercard
+                  و Apple Pay
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-back" id="backBtn" style="display: none">
+            رجوع
+          </button>
+          <button class="btn-continue" id="continueBtn">التالي</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const players = [
+        {
+          id: 1,
+          name: "كريستيانو رونالدو",
+          nameEn: "Cristiano Ronaldo",
+          pos: "ST",
+          rating: 99,
+          grade: 10,
+          edition: "ICON /10",
+          stats: { PAC: 97, SHO: 99, PAS: 92, DRI: 95, DEF: 45, PHY: 85 },
+          btc: 0.052,
+          price: 18999,
+          sats: 5200000,
+          img: "images/ronaldo.png",
+          sold: false,
+        },
+        {
+          id: 2,
+          name: "ساديو ماني",
+          nameEn: "Sadio Mané",
+          pos: "LW",
+          rating: 92,
+          grade: 10,
+          edition: "ELITE /25",
+          stats: { PAC: 94, SHO: 88, PAS: 82, DRI: 90, DEF: 42, PHY: 78 },
+          btc: 0.036,
+          price: 12999,
+          sats: 3600000,
+          img: "images/mane.png",
+          sold: false,
+        },
+        {
+          id: 3,
+          name: "ايمريك لابورت",
+          nameEn: "Aymeric Laporte",
+          pos: "CB",
+          rating: 90,
+          grade: 10,
+          edition: "ELITE /25",
+          stats: { PAC: 65, SHO: 45, PAS: 85, DRI: 72, DEF: 92, PHY: 88 },
+          btc: 0.027,
+          price: 9999,
+          sats: 2700000,
+          img: "images/laporte.png",
+          sold: true,
+        },
+        {
+          id: 4,
+          name: "مارسيلو بروزوفيتش",
+          nameEn: "Marcelo Brozović",
+          pos: "CM",
+          rating: 88,
+          grade: 9,
+          edition: "GOLD /50",
+          stats: { PAC: 72, SHO: 78, PAS: 90, DRI: 85, DEF: 82, PHY: 80 },
+          btc: 0.021,
+          price: 7499,
+          sats: 2100000,
+          img: "images/brozovic.png",
+          sold: false,
+        },
+        {
+          id: 5,
+          name: "أليكس تيليس",
+          nameEn: "Alex Telles",
+          pos: "LB",
+          rating: 85,
+          grade: 9,
+          edition: "GOLD /50",
+          stats: { PAC: 86, SHO: 72, PAS: 82, DRI: 80, DEF: 84, PHY: 78 },
+          btc: 0.016,
+          price: 5999,
+          sats: 1600000,
+          img: "images/telles.png",
+          sold: true,
+        },
+        {
+          id: 6,
+          name: "سيكو فوفانا",
+          nameEn: "Seko Fofana",
+          pos: "CM",
+          rating: 84,
+          grade: 9,
+          edition: "GOLD /50",
+          stats: { PAC: 82, SHO: 75, PAS: 78, DRI: 80, DEF: 75, PHY: 88 },
+          btc: 0.011,
+          price: 3999,
+          sats: 1100000,
+          img: "images/fofana.png",
+          sold: false,
+        },
+      ];
+
+      let selectedPlayer = null;
+      let currentStep = 1;
+      let redeemOption = "immediate";
+      let selectedCrypto = "btc";
+      let currentPaymentId = null;
+      let statusPollInterval = null;
+
+      // ============================================
+      // Card rendering
+      // ============================================
+      function createCard(player) {
+        const statsHTML = Object.entries(player.stats)
+          .map(
+            ([k, v]) =>
+              `<div class="stat-cell"><div class="val">${v}</div><div class="lbl">${k}</div></div>`,
+          )
+          .join("");
+
+        return `
+          <div class="slab" data-id="${player.id}">
+            <div class="slab-case">
+              <div class="slab-shine"></div>
+              <div class="psa-label">
+                <span class="psa-logo">PSA</span>
+                <div class="psa-details">
+                  <div class="name">${player.nameEn}</div>
+                  <div class="set">2024 Al-Nassr ${player.edition}</div>
+                </div>
+                <div class="psa-grade-box">
+                  <div class="grade">${player.grade}</div>
+                </div>
+              </div>
+              <div class="card-frame">
+                <canvas class="holo-canvas"></canvas>
+                <div class="card-bg"></div>
+                <div class="card-pattern"></div>
+                <div class="pos-tag">${player.pos}</div>
+                <div class="ovr-badge">
+                  <div class="ovr-hex">
+                    <span class="num">${player.rating}</span>
+                    <span class="txt">OVR</span>
+                  </div>
+                </div>
+                <img class="player-img" src="${player.img}" alt="${player.name}">
+                <div class="dynamic-light"></div>
+                <div class="stats-panel">
+                  <div class="player-name-card">${player.name}</div>
+                  <div class="stats-row">${statsHTML}</div>
+                </div>
+                <div class="auth-seal">
+                  <div class="seal-ring"></div>
+                  <div class="seal-inner">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                </div>
+                <div class="chrome-frame"></div>
+              </div>
+              <div class="serial-num">#00001/00001</div>
+            </div>
+          </div>`;
+      }
+
+      // ============================================
+      // Holo canvas (WebGL effect)
+      // ============================================
+      function initHoloCanvas(canvas) {
+        const gl = canvas.getContext("webgl");
+        if (!gl) return;
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        const vs = `attribute vec4 aPos; attribute vec2 aUV; varying vec2 vUV; void main() { gl_Position = aPos; vUV = aUV; }`;
+        const fs = `precision highp float; varying vec2 vUV; uniform float uTime; uniform vec2 uMouse;
+          vec3 hsv2rgb(vec3 c) { vec4 K = vec4(1.0, 2.0/3.0, 1.0/3.0, 3.0); vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www); return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y); }
+          void main() { vec2 uv = vUV; float dist = distance(uv, uMouse); float angle = atan(uv.y - uMouse.y, uv.x - uMouse.x); float hue = angle / 6.28318 + 0.5 + uTime * 0.05; float interference = sin(dist * 55.0 - uTime * 2.5) * 0.5 + 0.5; float grating = sin(uv.x * 140.0 + sin(uv.y * 35.0 + uTime)) * 0.5 + 0.5; vec3 color = hsv2rgb(vec3(hue + dist * 0.35, 0.85, 1.0)); color *= interference * grating; float fade = smoothstep(0.75, 0.0, dist); gl_FragColor = vec4(color * fade, fade * 0.55); }`;
+        function createShader(type, src) {
+          const s = gl.createShader(type);
+          gl.shaderSource(s, src);
+          gl.compileShader(s);
+          return s;
+        }
+        const prog = gl.createProgram();
+        gl.attachShader(prog, createShader(gl.VERTEX_SHADER, vs));
+        gl.attachShader(prog, createShader(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(prog);
+        gl.useProgram(prog);
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(
+          gl.ARRAY_BUFFER,
+          new Float32Array([
+            -1, -1, 0, 0, 1, -1, 1, 0, -1, 1, 0, 1, 1, 1, 1, 1,
+          ]),
+          gl.STATIC_DRAW,
+        );
+        const aPos = gl.getAttribLocation(prog, "aPos"),
+          aUV = gl.getAttribLocation(prog, "aUV");
+        gl.enableVertexAttribArray(aPos);
+        gl.enableVertexAttribArray(aUV);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 16, 0);
+        gl.vertexAttribPointer(aUV, 2, gl.FLOAT, false, 16, 8);
+        const uTime = gl.getUniformLocation(prog, "uTime"),
+          uMouse = gl.getUniformLocation(prog, "uMouse");
+        let mx = 0.5,
+          my = 0.5;
+        const start = Date.now();
+        canvas.closest(".slab").addEventListener("mousemove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mx = (e.clientX - rect.left) / rect.width;
+          my = 1.0 - (e.clientY - rect.top) / rect.height;
+        });
+        function render() {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          gl.uniform1f(uTime, (Date.now() - start) / 1000);
+          gl.uniform2f(uMouse, mx, my);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          requestAnimationFrame(render);
+        }
+        render();
+      }
+
+      // ============================================
+      // Fetch crypto price estimates from server
+      // ============================================
+      async function fetchEstimates(priceAmount) {
+        const currencies = ["btc", "eth", "usdttrc20", "ltc", "sol", "bnbbsc"];
+        for (const cur of currencies) {
+          const el = document.getElementById(`est-${cur}`);
+          if (el) el.textContent = "...";
+        }
+        for (const cur of currencies) {
+          try {
+            const res = await fetch(
+              `/api/estimate?amount=${priceAmount}&currency=${cur}`,
+            );
+            const data = await res.json();
+            const el = document.getElementById(`est-${cur}`);
+            if (el && data.estimated_amount) {
+              el.textContent = `≈ ${parseFloat(data.estimated_amount).toFixed(cur === "usdttrc20" ? 2 : 6)} ${cur.toUpperCase()}`;
+            }
+          } catch (e) {
+            const el = document.getElementById(`est-${cur}`);
+            if (el) el.textContent = "--";
+          }
+        }
+      }
+
+      // ============================================
+      // Checkout modal flow
+      // ============================================
+      function openCheckout(playerId) {
+        selectedPlayer = players.find((p) => p.id === playerId);
+        if (!selectedPlayer || selectedPlayer.sold) return;
+
+        // Reset payment state
+        currentPaymentId = null;
+        if (statusPollInterval) {
+          clearInterval(statusPollInterval);
+          statusPollInterval = null;
+        }
+        document.getElementById("paymentDetails").style.display = "none";
+        document.getElementById("payNowBtn").style.display = "";
+        document.getElementById("payBtnText").textContent =
+          "🔒 ادفع الآن عبر NOWPayments";
+
+        document.getElementById("selectedCardInfo").innerHTML = `
+          <div class="selected-card-img"><img src="${selectedPlayer.img}" alt="${selectedPlayer.name}"></div>
+          <div class="selected-card-details">
+            <h3>${selectedPlayer.name}</h3>
+            <p>PSA ${selectedPlayer.grade} • ${selectedPlayer.edition}</p>
+            <div class="price">${selectedPlayer.price.toLocaleString("ar-SA")} ر.س</div>
+            <div style="margin-top: 8px; font-size: 13px; color: #f7931a; font-weight: 700;">⚡ ${(selectedPlayer.sats || 0).toLocaleString()} Satoshi محمّل على البطاقة</div>
+          </div>`;
+        document.getElementById("paymentAmount").textContent =
+          selectedPlayer.price.toLocaleString("ar-SA");
+
+        currentStep = 1;
+        updateSteps();
+        document.getElementById("checkoutModal").classList.add("active");
+      }
+
+      function closeModal() {
+        document.getElementById("checkoutModal").classList.remove("active");
+        if (statusPollInterval) {
+          clearInterval(statusPollInterval);
+          statusPollInterval = null;
+        }
+      }
+
+      function updateSteps() {
+        document.querySelectorAll(".step").forEach((s, i) => {
+          s.classList.remove("active", "completed");
+          if (i + 1 < currentStep) s.classList.add("completed");
+          if (i + 1 === currentStep) s.classList.add("active");
+        });
+
+        document.getElementById("step1").style.display =
+          currentStep === 1 ? "block" : "none";
+        document.getElementById("step2").style.display =
+          currentStep === 2 ? "block" : "none";
+        document.getElementById("step3").style.display =
+          currentStep === 3 ? "block" : "none";
+
+        document.getElementById("backBtn").style.display =
+          currentStep > 1 ? "block" : "none";
+        document.getElementById("continueBtn").textContent =
+          currentStep === 3 ? "إتمام الطلب عبر الفاتورة" : "التالي";
+
+        // Fetch crypto estimates when entering step 3
+        if (currentStep === 3 && selectedPlayer) {
+          fetchEstimates(selectedPlayer.price);
+        }
+      }
+
+      // ============================================
+      // Create Payment via NOWPayments API (direct)
+      // ============================================
+      async function createCryptoPayment() {
+        if (!selectedPlayer) return;
+
+        const btn = document.getElementById("payNowBtn");
+        const btnText = document.getElementById("payBtnText");
+        btn.disabled = true;
+        btnText.textContent = "⏳ جاري إنشاء عملية الدفع...";
+
+        const customer = {
+          fullName: document.getElementById("fullName")?.value || "",
+          phone: document.getElementById("phone")?.value || "",
+          email:
+            document.getElementById("email")?.value || "customer@email.com",
+          address: document.getElementById("address")?.value || "",
+          city: document.getElementById("city")?.value || "",
+          country: document.getElementById("country")?.value || "SA",
+        };
+
+        try {
+          const res = await fetch("/api/create-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              playerId: selectedPlayer.id,
+              currency: selectedCrypto,
+              redeemOption,
+              customer,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) throw new Error(data.error || "Payment creation failed");
+
+          // Show payment details
+          currentPaymentId = data.paymentId;
+          document.getElementById("payAmountDisplay").textContent =
+            data.payAmount;
+          document.getElementById("payCurrencyDisplay").textContent =
+            ` ${data.payCurrency.toUpperCase()}`;
+          document.getElementById("payAddressDisplay").textContent =
+            data.payAddress;
+          document.getElementById("paymentDetails").style.display = "block";
+          btn.style.display = "none";
+
+          // Start polling payment status
+          startStatusPolling(data.paymentId);
+        } catch (error) {
+          alert("خطأ في إنشاء الدفعة: " + error.message);
+          btn.disabled = false;
+          btnText.textContent = "🔒 ادفع الآن عبر NOWPayments";
+        }
+      }
+
+      // ============================================
+      // Create Invoice (opens NOWPayments checkout page)
+      // ============================================
+      async function createInvoice() {
+        if (!selectedPlayer) return;
+
+        const customer = {
+          fullName: document.getElementById("fullName")?.value || "",
+          phone: document.getElementById("phone")?.value || "",
+          email:
+            document.getElementById("email")?.value || "customer@email.com",
+          address: document.getElementById("address")?.value || "",
+          city: document.getElementById("city")?.value || "",
+          country: document.getElementById("country")?.value || "SA",
+        };
+
+        try {
+          const res = await fetch("/api/create-invoice", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              playerId: selectedPlayer.id,
+              redeemOption,
+              customer,
+            }),
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Invoice creation failed");
+
+          // Open NOWPayments checkout page
+          window.open(data.invoiceUrl, "_blank");
+          alert("تم فتح صفحة الدفع في نافذة جديدة. أكمل الدفع هناك.");
+          closeModal();
+        } catch (error) {
+          alert("خطأ: " + error.message);
+        }
+      }
+
+      // ============================================
+      // Poll payment status
+      // ============================================
+      function startStatusPolling(paymentId) {
+        const statusBox = document.getElementById("paymentStatusBox");
+
+        statusPollInterval = setInterval(async () => {
+          try {
+            const res = await fetch(`/api/payment-status/${paymentId}`);
+            const data = await res.json();
+
+            const statusMap = {
+              waiting: "⏳ في انتظار الدفع...",
+              confirming: "🔄 جاري تأكيد المعاملة...",
+              confirmed: "✅ تم التأكيد! شكراً لك.",
+              sending: "📤 جاري المعالجة...",
+              partially_paid: "⚠️ تم دفع جزء فقط من المبلغ",
+              finished: "🎉 تم الدفع بنجاح! ستصلك رسالة تأكيد.",
+              failed: "❌ فشلت العملية. حاول مرة أخرى.",
+              refunded: "↩️ تم استرداد المبلغ.",
+              expired: "⏰ انتهت صلاحية عملية الدفع.",
+            };
+
+            statusBox.innerHTML = `<span style="font-size: 14px;">${statusMap[data.status] || data.status}</span>`;
+
+            if (data.actuallyPaid > 0) {
+              statusBox.innerHTML += `<br><span style="font-size: 12px; color: rgba(255,255,255,0.6);">المدفوع: ${data.actuallyPaid} ${data.payCurrency.toUpperCase()}</span>`;
+            }
+
+            // Stop polling on terminal states
+            if (
+              [
+                "confirmed",
+                "finished",
+                "failed",
+                "refunded",
+                "expired",
+              ].includes(data.status)
+            ) {
+              clearInterval(statusPollInterval);
+              statusPollInterval = null;
+
+              if (data.status === "confirmed" || data.status === "finished") {
+                statusBox.style.background = "rgba(76, 175, 80, 0.2)";
+                statusBox.style.borderColor = "#4CAF50";
+              }
+            }
+          } catch (e) {
+            console.error("Status poll error:", e);
+          }
+        }, 10000); // Poll every 10 seconds
+      }
+
+      // ============================================
+      // Copy wallet address
+      // ============================================
+      function copyAddress() {
+        const addr = document.getElementById("payAddressDisplay").textContent;
+        navigator.clipboard.writeText(addr).then(() => {
+          const msg = document.getElementById("copyMsg");
+          msg.hidden = false;
+          setTimeout(() => {
+            msg.hidden = true;
+          }, 2000);
+        });
+      }
+
+      // ============================================
+      // MoonPay - Open buy widget for users without crypto
+      // ============================================
+      async function openMoonPay() {
+        try {
+          const res = await fetch(
+            `/api/moonpay-url?currency=${selectedCrypto}`,
+          );
+          const data = await res.json();
+          window.open(data.url, "_blank", "width=500,height=700");
+        } catch (e) {
+          // Fallback to direct MoonPay URL
+          window.open(
+            `https://buy.moonpay.com?currencyCode=${selectedCrypto}`,
+            "_blank",
+            "width=500,height=700",
+          );
+        }
+      }
+
+      // ============================================
+      // Event Listeners
+      // ============================================
+
+      // Continue / Back buttons
+      document.getElementById("continueBtn").addEventListener("click", () => {
+        if (currentStep === 2) {
+          // Validate shipping form (for immediate redeem)
+          if (redeemOption === "immediate") {
+            const name = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            if (!name || !email) {
+              alert("يرجى ملء الحقول المطلوبة (الاسم والبريد الإلكتروني)");
+              return;
+            }
+          }
+          currentStep++;
+          updateSteps();
+        } else if (currentStep === 1) {
+          currentStep++;
+          updateSteps();
+        } else if (currentStep === 3) {
+          // Create invoice (redirects to NOWPayments page)
+          createInvoice();
+        }
+      });
+
+      document.getElementById("backBtn").addEventListener("click", () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateSteps();
+        }
+      });
+
+      // Pay Now button (direct crypto payment)
+      document.getElementById("payNowBtn").addEventListener("click", () => {
+        createCryptoPayment();
+      });
+
+      // Redeem option selection
+      document.querySelectorAll(".redeem-option").forEach((opt) => {
+        opt.addEventListener("click", () => {
+          document
+            .querySelectorAll(".redeem-option")
+            .forEach((o) => o.classList.remove("selected"));
+          opt.classList.add("selected");
+          redeemOption = opt.dataset.option;
+        });
+      });
+
+      // Crypto currency selection
+      document.querySelectorAll(".crypto-option").forEach((opt) => {
+        opt.addEventListener("click", () => {
+          document
+            .querySelectorAll(".crypto-option")
+            .forEach((o) => o.classList.remove("selected"));
+          opt.classList.add("selected");
+          selectedCrypto = opt.dataset.currency;
+
+          // Update estimate display
+          const estEl = document.getElementById(`est-${selectedCrypto}`);
+          if (estEl) {
+            document.getElementById("cryptoEquiv").textContent =
+              estEl.textContent;
+          }
+        });
+      });
+
+      // ============================================
+      // Initialize
+      // ============================================
+      function init() {
+        document.getElementById("heroCardContainer").innerHTML = createCard(
+          players[0],
+        );
+
+        const grid = document.getElementById("cardsGrid");
+        grid.innerHTML = players
+          .map(
+            (p) => `
+          <div class="card-item">
+            ${createCard(p)}
+            <div class="card-price-info">
+              <span class="card-price-amount">${p.price.toLocaleString("ar-SA")} ر.س</span>
+              <span class="card-price-btc">(≈ ${p.btc} BTC)</span>
+              <div style="margin-top: 8px; padding: 8px 12px; background: rgba(247,147,26,0.15); border: 1px solid rgba(247,147,26,0.4); border-radius: 6px;">
+                <span style="font-size: 13px; color: #f7931a; font-weight: 700;">⚡ ${(p.sats || 0).toLocaleString()} Satoshi محمّل</span>
+              </div>
+              <div class="card-stock">
+                ${p.sold ? '<span style="color:#4CAF50">✓ تم البيع</span>' : '<span class="dot"></span> نسخة واحدة متبقية'}
+              </div>
+              <button class="buy-btn" ${p.sold ? "disabled" : ""} onclick="openCheckout(${p.id})">
+                ${p.sold ? "نفدت الكمية" : "⚡ احجز الآن بالكريبتو"}
+              </button>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+
+        document.querySelectorAll(".holo-canvas").forEach(initHoloCanvas);
+
+        document.querySelectorAll(".slab").forEach((slab) => {
+          const shine = slab.querySelector(".slab-shine");
+          const dynamicLight = slab.querySelector(".dynamic-light");
+          slab.addEventListener("mousemove", (e) => {
+            const rect = slab.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            slab.style.transform = `rotateY(${(x - 0.5) * 25}deg) rotateX(${(0.5 - y) * 20}deg)`;
+            shine.style.setProperty(
+              "--shine-angle",
+              (Math.atan2(y - 0.5, x - 0.5) * 180) / Math.PI + 90 + "deg",
+            );
+            dynamicLight.style.setProperty("--lx", x * 100 + "%");
+            dynamicLight.style.setProperty("--ly", y * 100 + "%");
+          });
+          slab.addEventListener("mouseleave", () => {
+            slab.style.transform = "rotateY(0) rotateX(0)";
+          });
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, i) => {
+              if (entry.isIntersecting)
+                setTimeout(
+                  () => entry.target.classList.add("visible"),
+                  i * 100,
+                );
+            });
+          },
+          { threshold: 0.2 },
+        );
+        document
+          .querySelectorAll(".card-item")
+          .forEach((item) => observer.observe(item));
+
+        const remaining = players.filter((p) => !p.sold).length;
+        document.getElementById("remainingCards").textContent = [
+          "٠",
+          "١",
+          "٢",
+          "٣",
+          "٤",
+          "٥",
+          "٦",
+        ][remaining];
+
+        // Check URL params for payment result
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("payment") === "success") {
+          alert("🎉 تم الدفع بنجاح! سيتم التواصل معك لإتمام عملية التوصيل.");
+          window.history.replaceState({}, "", "/");
+        } else if (params.get("payment") === "cancelled") {
+          alert("تم إلغاء عملية الدفع.");
+          window.history.replaceState({}, "", "/");
+        }
+      }
+
+      // Close modal on overlay click
+      document
+        .getElementById("checkoutModal")
+        .addEventListener("click", (e) => {
+          if (e.target === e.currentTarget) closeModal();
+        });
+
+      window.addEventListener("load", init);
+    </script>
+  </body>
+</html>

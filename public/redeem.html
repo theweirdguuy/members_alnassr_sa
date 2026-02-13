@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نادي النصر | استرداد رصيد الساتوشي ⚡</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nassr-yellow: #ffc726;
+        --nassr-yellow-bright: #ffd54f;
+        --nassr-yellow-dark: #e5a800;
+        --nassr-blue: #1a237e;
+        --nassr-blue-dark: #0d1442;
+        --nassr-blue-light: #283593;
+        --white: #ffffff;
+        --gray: #9e9e9e;
+        --success: #4caf50;
+        --danger: #f44336;
+        --lightning-orange: #f7931a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: var(--nassr-blue-dark);
+        min-height: 100vh;
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      .header {
+        background: var(--nassr-blue);
+        border-bottom: 3px solid var(--nassr-yellow);
+        padding: 0;
+      }
+
+      .header-top {
+        background: var(--nassr-blue-dark);
+        padding: 8px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        flex-direction: row-reverse;
+      }
+
+      .header-top a {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .header-top a:hover {
+        text-decoration: underline;
+      }
+
+      .nav-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 40px;
+        gap: 30px;
+      }
+
+      .nav-bar .logo {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 900;
+        font-size: 22px;
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        letter-spacing: 2px;
+      }
+
+      .nav-bar a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .nav-bar a:hover {
+        color: var(--nassr-yellow);
+      }
+
+      .nav-bar a.active {
+        color: var(--nassr-yellow);
+        border-bottom: 2px solid var(--nassr-yellow);
+        padding-bottom: 4px;
+      }
+
+      /* Main Container */
+      .redeem-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 140px 20px 60px;
+      }
+
+      /* Hero Section */
+      .redeem-hero {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .redeem-hero .lightning-icon {
+        font-size: 72px;
+        margin-bottom: 16px;
+        display: block;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .redeem-hero h1 {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        background: linear-gradient(
+          135deg,
+          var(--nassr-yellow),
+          var(--lightning-orange)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .redeem-hero p {
+        font-size: 16px;
+        color: var(--gray);
+        line-height: 1.8;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Steps Guide */
+      .steps-guide {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+      }
+
+      .step-item {
+        text-align: center;
+        flex: 1;
+        min-width: 140px;
+        max-width: 200px;
+      }
+
+      .step-number {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--nassr-yellow),
+          var(--lightning-orange)
+        );
+        color: var(--nassr-blue-dark);
+        font-weight: 900;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+      }
+
+      .step-item h4 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        color: var(--white);
+      }
+
+      .step-item p {
+        font-size: 12px;
+        color: var(--gray);
+      }
+
+      /* Redeem Form Card */
+      .redeem-card {
+        background: linear-gradient(
+          145deg,
+          rgba(26, 35, 126, 0.9),
+          rgba(13, 20, 66, 0.95)
+        );
+        border: 2px solid rgba(255, 199, 38, 0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .redeem-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--nassr-yellow),
+          var(--lightning-orange),
+          var(--nassr-yellow)
+        );
+      }
+
+      .redeem-card h2 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 30px;
+        color: var(--nassr-yellow);
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--white);
+      }
+
+      .form-group label .hint {
+        font-weight: 400;
+        font-size: 12px;
+        color: var(--gray);
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 16px 20px;
+        border: 2px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        background: rgba(13, 20, 66, 0.6);
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+        outline: none;
+        direction: ltr;
+        text-align: left;
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .form-group input:focus {
+        border-color: var(--nassr-yellow);
+        box-shadow: 0 0 20px rgba(255, 199, 38, 0.15);
+      }
+
+      .form-group input.error {
+        border-color: var(--danger);
+        box-shadow: 0 0 20px rgba(244, 67, 54, 0.15);
+      }
+
+      .form-group input.success {
+        border-color: var(--success);
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.15);
+      }
+
+      .form-group .input-icon {
+        position: relative;
+      }
+
+      .form-group .input-icon span {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+      }
+
+      .form-group .input-icon input {
+        padding-left: 50px;
+      }
+
+      .form-group .field-error {
+        font-size: 12px;
+        color: var(--danger);
+        margin-top: 6px;
+        display: none;
+      }
+
+      .form-group .field-error.visible {
+        display: block;
+      }
+
+      /* Code format hint */
+      .code-format {
+        font-size: 12px;
+        color: var(--gray);
+        margin-top: 6px;
+      }
+
+      .code-format code {
+        background: rgba(255, 199, 38, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "Orbitron", monospace;
+        color: var(--nassr-yellow);
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+
+      /* Redeem Button */
+      .redeem-btn {
+        width: 100%;
+        padding: 18px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--lightning-orange), #e8850f);
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .redeem-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(247, 147, 26, 0.4);
+      }
+
+      .redeem-btn:active {
+        transform: translateY(0);
+      }
+
+      .redeem-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .redeem-btn .spinner {
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: var(--white);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        display: none;
+      }
+
+      .redeem-btn.loading .spinner {
+        display: block;
+      }
+
+      .redeem-btn.loading .btn-text {
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Result Card */
+      .result-card {
+        margin-top: 30px;
+        border-radius: 16px;
+        padding: 30px;
+        display: none;
+        animation: slideUp 0.5s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .result-card.success {
+        display: block;
+        background: linear-gradient(
+          145deg,
+          rgba(76, 175, 80, 0.15),
+          rgba(76, 175, 80, 0.05)
+        );
+        border: 2px solid rgba(76, 175, 80, 0.4);
+      }
+
+      .result-card.error {
+        display: block;
+        background: linear-gradient(
+          145deg,
+          rgba(244, 67, 54, 0.15),
+          rgba(244, 67, 54, 0.05)
+        );
+        border: 2px solid rgba(244, 67, 54, 0.4);
+      }
+
+      .result-card.pending {
+        display: block;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 199, 38, 0.15),
+          rgba(255, 199, 38, 0.05)
+        );
+        border: 2px solid rgba(255, 199, 38, 0.4);
+      }
+
+      .result-icon {
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      .result-card h3 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .result-card.success h3 {
+        color: var(--success);
+      }
+      .result-card.error h3 {
+        color: var(--danger);
+      }
+      .result-card.pending h3 {
+        color: var(--nassr-yellow);
+      }
+
+      .result-card p {
+        text-align: center;
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 1.8;
+      }
+
+      .result-details {
+        margin-top: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .result-row:last-child {
+        border-bottom: none;
+      }
+
+      .result-row .label {
+        font-size: 13px;
+        color: var(--gray);
+      }
+
+      .result-row .value {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--white);
+        direction: ltr;
+      }
+
+      .result-row .value.sats {
+        color: var(--lightning-orange);
+        font-size: 18px;
+      }
+
+      /* Info Section */
+      .info-section {
+        margin-top: 60px;
+        text-align: center;
+      }
+
+      .info-section h3 {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--nassr-yellow);
+        margin-bottom: 20px;
+      }
+
+      .info-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .info-card {
+        background: rgba(26, 35, 126, 0.5);
+        border: 1px solid rgba(255, 199, 38, 0.15);
+        border-radius: 12px;
+        padding: 24px 16px;
+        text-align: center;
+      }
+
+      .info-card .icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .info-card h4 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--white);
+      }
+
+      .info-card p {
+        font-size: 12px;
+        color: var(--gray);
+        line-height: 1.6;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 80px;
+        text-align: center;
+        padding: 30px 20px;
+        border-top: 1px solid rgba(255, 199, 38, 0.15);
+        font-size: 13px;
+        color: var(--gray);
+      }
+
+      .footer a {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .redeem-container {
+          padding: 120px 16px 40px;
+        }
+
+        .redeem-hero h1 {
+          font-size: 28px;
+        }
+
+        .redeem-card {
+          padding: 24px 20px;
+        }
+
+        .nav-bar {
+          padding: 12px 16px;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .steps-guide {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <span>⚡ شبكة Lightning مدعومة بالكامل</span>
+        <span>نادي النصر السعودي — بطاقات VIP حصرية</span>
+      </div>
+      <nav class="nav-bar">
+        <a href="/" class="logo">AL NASSR</a>
+        <a href="/">🏠 الرئيسية</a>
+        <a href="/#cards">🃏 البطاقات</a>
+        <a href="/redeem" class="active">🔑 استرداد الرصيد</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="redeem-container">
+      <!-- Hero -->
+      <div class="redeem-hero">
+        <span class="lightning-icon">⚡</span>
+        <h1>استرداد رصيد الساتوشي</h1>
+        <p>
+          أدخل رمز الاسترداد المطبوع على بطاقتك الحصرية وعنوان محفظة Lightning
+          الخاصة بك لاستلام رصيدك من الساتوشي فوراً
+        </p>
+      </div>
+
+      <!-- Steps Guide -->
+      <div class="steps-guide">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4>ابحث عن الرمز</h4>
+          <p>الرمز مطبوع على ظهر بطاقتك الحصرية</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4>أدخل الرمز</h4>
+          <p>اكتب رمز الاسترداد المكوّن من 16 حرف</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4>عنوان المحفظة</h4>
+          <p>أدخل عنوان محفظة Lightning الخاصة بك</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <h4>استلم الساتوشي</h4>
+          <p>يتم إرسال رصيدك فوراً عبر Lightning ⚡</p>
+        </div>
+      </div>
+
+      <!-- Redeem Form -->
+      <div class="redeem-card">
+        <h2>⚡ استرداد رصيدك الآن</h2>
+
+        <form id="redeemForm" onsubmit="return false;">
+          <!-- Redeem Code -->
+          <div class="form-group">
+            <label>
+              رمز الاسترداد
+              <span class="hint">(مطبوع على ظهر البطاقة)</span>
+            </label>
+            <div class="input-icon">
+              <span>🔑</span>
+              <input
+                type="text"
+                id="redeemCode"
+                placeholder="NASSR-XXXX-XXXX-XXXX"
+                maxlength="19"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <div class="code-format">
+              الصيغة: <code>NASSR-XXXX-XXXX-XXXX</code>
+            </div>
+            <div class="field-error" id="codeError">رمز الاسترداد غير صحيح</div>
+          </div>
+
+          <!-- Lightning Address -->
+          <div class="form-group">
+            <label>
+              عنوان محفظة Lightning
+              <span class="hint">(Lightning Address أو LNURL أو Invoice)</span>
+            </label>
+            <div class="input-icon">
+              <span>⚡</span>
+              <input
+                type="text"
+                id="lightningAddress"
+                placeholder="user@walletofsatoshi.com أو lnbc1..."
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <div class="field-error" id="addressError">عنوان المحفظة مطلوب</div>
+          </div>
+
+          <!-- Email (optional) -->
+          <div class="form-group">
+            <label>
+              البريد الإلكتروني
+              <span class="hint">(اختياري — لإرسال إيصال الاسترداد)</span>
+            </label>
+            <div class="input-icon">
+              <span>📧</span>
+              <input
+                type="email"
+                id="redeemEmail"
+                placeholder="your@email.com"
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="redeem-btn"
+            id="redeemBtn"
+            onclick="submitRedeem()"
+          >
+            <span class="btn-text">⚡ استرداد الساتوشي الآن</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+
+        <!-- Result -->
+        <div class="result-card" id="resultCard">
+          <div class="result-icon" id="resultIcon"></div>
+          <h3 id="resultTitle"></h3>
+          <p id="resultMessage"></p>
+          <div class="result-details" id="resultDetails"></div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="info-section">
+        <h3>ℹ️ معلومات مهمة</h3>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="icon">🔒</div>
+            <h4>آمن 100%</h4>
+            <p>
+              كل رمز استرداد صالح للاستخدام مرة واحدة فقط ومحمي بتشفير متقدم
+            </p>
+          </div>
+          <div class="info-card">
+            <div class="icon">⚡</div>
+            <h4>فوري</h4>
+            <p>
+              يتم إرسال الساتوشي إلى محفظتك عبر شبكة Lightning فوراً خلال ثوانٍ
+            </p>
+          </div>
+          <div class="info-card">
+            <div class="icon">💰</div>
+            <h4>بدون رسوم</h4>
+            <p>لا رسوم إضافية على عملية الاسترداد — تحصل على كامل الرصيد</p>
+          </div>
+          <div class="info-card">
+            <div class="icon">🛟</div>
+            <h4>دعم فني</h4>
+            <p>تواجه مشكلة؟ تواصل معنا عبر support@alnassr-vip.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          © 2025 نادي النصر — بطاقات VIP حصرية |
+          <a href="/">العودة للرئيسية</a>
+        </p>
+      </div>
+    </main>
+
+    <script>
+      // ============================================
+      // Redeem Code Formatter
+      // ============================================
+      const codeInput = document.getElementById("redeemCode");
+      codeInput.addEventListener("input", function (e) {
+        let value = this.value.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+
+        // Auto-format: NASSR-XXXX-XXXX-XXXX
+        if (value.length > 5) {
+          value = value.slice(0, 5) + "-" + value.slice(5);
+        }
+        if (value.length > 10) {
+          value = value.slice(0, 10) + "-" + value.slice(10);
+        }
+        if (value.length > 15) {
+          value = value.slice(0, 15) + "-" + value.slice(15);
+        }
+
+        this.value = value.slice(0, 19);
+      });
+
+      // ============================================
+      // Form Validation
+      // ============================================
+      function validateForm() {
+        let valid = true;
+        const code = document.getElementById("redeemCode").value.trim();
+        const address = document
+          .getElementById("lightningAddress")
+          .value.trim();
+
+        // Validate code format
+        const codePattern = /^NASSR-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+        if (!codePattern.test(code)) {
+          document.getElementById("redeemCode").classList.add("error");
+          document.getElementById("codeError").classList.add("visible");
+          valid = false;
+        } else {
+          document.getElementById("redeemCode").classList.remove("error");
+          document.getElementById("codeError").classList.remove("visible");
+        }
+
+        // Validate lightning address
+        if (!address || address.length < 5) {
+          document.getElementById("lightningAddress").classList.add("error");
+          document.getElementById("addressError").classList.add("visible");
+          valid = false;
+        } else {
+          document.getElementById("lightningAddress").classList.remove("error");
+          document.getElementById("addressError").classList.remove("visible");
+        }
+
+        return valid;
+      }
+
+      // ============================================
+      // Submit Redeem
+      // ============================================
+      async function submitRedeem() {
+        // Clear previous result
+        document.getElementById("resultCard").className = "result-card";
+
+        if (!validateForm()) return;
+
+        const btn = document.getElementById("redeemBtn");
+        btn.classList.add("loading");
+        btn.disabled = true;
+
+        const code = document.getElementById("redeemCode").value.trim();
+        const lightningAddress = document
+          .getElementById("lightningAddress")
+          .value.trim();
+        const email = document.getElementById("redeemEmail").value.trim();
+
+        try {
+          const response = await fetch("/api/redeem", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code, lightningAddress, email }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showResult("success", data);
+            // Mark code input as used
+            document.getElementById("redeemCode").classList.add("success");
+          } else {
+            showResult("error", data);
+          }
+        } catch (error) {
+          showResult("error", {
+            message: "حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.",
+          });
+        } finally {
+          btn.classList.remove("loading");
+          btn.disabled = false;
+        }
+      }
+
+      // ============================================
+      // Show Result
+      // ============================================
+      function showResult(type, data) {
+        const card = document.getElementById("resultCard");
+        const icon = document.getElementById("resultIcon");
+        const title = document.getElementById("resultTitle");
+        const message = document.getElementById("resultMessage");
+        const details = document.getElementById("resultDetails");
+
+        card.className = `result-card ${type}`;
+
+        if (type === "success") {
+          icon.textContent = "✅";
+          title.textContent = "تم الاسترداد بنجاح!";
+          message.textContent =
+            data.message ||
+            "تم إرسال الساتوشي إلى محفظتك عبر Lightning Network";
+          details.innerHTML = `
+            <div class="result-row">
+              <span class="label">البطاقة</span>
+              <span class="value">${data.playerName || "—"}</span>
+            </div>
+            <div class="result-row">
+              <span class="label">رصيد الساتوشي</span>
+              <span class="value sats">⚡ ${(data.sats || 0).toLocaleString()} sats</span>
+            </div>
+            <div class="result-row">
+              <span class="label">العنوان</span>
+              <span class="value" style="font-size: 11px; word-break: break-all;">${data.lightningAddress || "—"}</span>
+            </div>
+            <div class="result-row">
+              <span class="label">معرّف العملية</span>
+              <span class="value" style="font-size: 11px;">${data.txId || "—"}</span>
+            </div>
+            <div class="result-row">
+              <span class="label">الحالة</span>
+              <span class="value" style="color: var(--success);">✓ تم الإرسال</span>
+            </div>
+          `;
+          details.style.display = "block";
+        } else {
+          icon.textContent = "❌";
+          title.textContent = "فشل الاسترداد";
+          message.textContent =
+            data.message ||
+            data.error ||
+            "رمز الاسترداد غير صالح أو تم استخدامه مسبقاً";
+          details.style.display = "none";
+        }
+
+        // Scroll to result
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      // ============================================
+      // Clear errors on input
+      // ============================================
+      document
+        .getElementById("redeemCode")
+        .addEventListener("focus", function () {
+          this.classList.remove("error", "success");
+          document.getElementById("codeError").classList.remove("visible");
+        });
+
+      document
+        .getElementById("lightningAddress")
+        .addEventListener("focus", function () {
+          this.classList.remove("error");
+          document.getElementById("addressError").classList.remove("visible");
+        });
+    </script>
+  </body>
+</html>
