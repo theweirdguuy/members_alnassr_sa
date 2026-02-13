@@ -222,10 +222,15 @@ function respond(statusCode, body) {
 // Main handler — routes all /api/* requests
 // ============================================
 exports.handler = async (event, context) => {
-  const path = event.path
+  // Strip both possible prefixes: the rewritten path and the original path
+  const rawPath = event.path || event.rawUrl || "";
+  const path = rawPath
     .replace("/.netlify/functions/api", "")
+    .replace(/^\/api\//, "/")
     .replace(/^\/+/, "");
   const method = event.httpMethod;
+
+  console.log("[API] Incoming:", method, rawPath, "→ resolved path:", path);
 
   // Handle CORS preflight
   if (method === "OPTIONS") {
