@@ -9,15 +9,22 @@ const fetch = globalThis.fetch || nodeFetch;
 // ============================================
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
 const NOWPAYMENTS_IPN_SECRET = process.env.NOWPAYMENTS_IPN_SECRET;
-// Robust check for production string (handles "true", "TRUE", " true ")
-const IS_PRODUCTION = String(process.env.PRODUCTION).trim().toLowerCase() === "true";
+
+// Default to TRUE (Production) unless explicitly set to "false"
+// This prevents "Invalid api key" errors if the env var is missing in Netlify
+const envProdRaw = String(process.env.PRODUCTION || "true")
+  .trim()
+  .toLowerCase();
+const IS_PRODUCTION = envProdRaw !== "false";
 
 if (!NOWPAYMENTS_API_KEY) {
   console.warn(
     "[WARNING] NOWPAYMENTS_API_KEY environment variable is not set!",
   );
 } else {
-  console.log(`[API] Config: PRODUCTION=${IS_PRODUCTION}, Key=...${NOWPAYMENTS_API_KEY.substring(NOWPAYMENTS_API_KEY.length - 4)}`);
+  console.log(
+    `[API] Config: PRODUCTION=${IS_PRODUCTION} (raw="${envProdRaw}"), Key=...${NOWPAYMENTS_API_KEY.substring(NOWPAYMENTS_API_KEY.length - 4)}`,
+  );
 }
 
 const NOWPAYMENTS_BASE = IS_PRODUCTION
@@ -198,8 +205,10 @@ async function nowpaymentsRequest(endpoint, method = "GET", body = null) {
 
   if (!response.ok) {
     console.error("[NOWPayments] API error:", JSON.stringify(data));
+    const mode = IS_PRODUCTION ? "PRODUCTION" : "SANDBOX";
     throw new Error(
-      data.message || `NOWPayments API error: ${response.status}`,
+      (data.message || `NOWPayments API error: ${response.status}`) +
+        ` (Mode: ${mode})`,
     );
   }
   return data;
@@ -300,8 +309,8 @@ exports.handler = async (event, context) => {
       const proto = event.headers["x-forwarded-proto"] || "https";
 
       const paymentData = await nowpaymentsRequest("/payment", "POST", {
-        price_amount: player.price,
-        price_currency: "sar",
+        price_amount: player.btc,
+        price_currency: "btc",
         pay_currency: currency,
         order_id: orderId,
         order_description: `Al-Nassr VIP Card: ${player.nameEn} (PSA 10)`,
@@ -353,8 +362,8 @@ exports.handler = async (event, context) => {
       const proto = event.headers["x-forwarded-proto"] || "https";
 
       const invoiceData = await nowpaymentsRequest("/invoice", "POST", {
-        price_amount: player.price,
-        price_currency: "sar",
+        price_amount: player.btc,
+        price_currency: "btc",
         order_id: orderId,
         order_description: `Al-Nassr VIP Card: ${player.nameEn} (PSA 10)`,
         ipn_callback_url: `${proto}://${host}/api/ipn`,

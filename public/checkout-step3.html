@@ -374,12 +374,67 @@
         text-align: center;
       }
 
+      /* QR Code */
+      .qr-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .qr-container canvas,
+      .qr-container img {
+        border-radius: 12px;
+        border: 3px solid var(--nassr-yellow);
+        padding: 8px;
+        background: #fff;
+      }
+
+      .qr-address-below {
+        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 11px;
+        word-break: break-all;
+        color: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
+        text-align: center;
+        max-width: 260px;
+        transition: background 0.2s;
+        position: relative;
+      }
+
+      .qr-address-below:hover {
+        background: rgba(255, 199, 38, 0.15);
+      }
+
+      .qr-address-below .tap-hint {
+        display: block;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 4px;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      /* Amount row with copy */
       .pay-amount-box {
         background: rgba(255, 199, 38, 0.1);
         padding: 12px;
         border-radius: 8px;
         margin-bottom: 10px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .pay-amount-text {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
       }
 
       .pay-amount-value {
@@ -393,27 +448,48 @@
         color: rgba(255, 255, 255, 0.7);
       }
 
+      .copy-btn {
+        background: var(--nassr-yellow);
+        color: #0a1128;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Tajawal", sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .copy-btn:hover {
+        background: #fff;
+        transform: scale(1.05);
+      }
+
+      .copy-btn.copied {
+        background: #4caf50;
+        color: #fff;
+      }
+
       .wallet-address-label {
         font-size: 12px;
         color: rgba(255, 255, 255, 0.5);
+        display: none;
       }
 
       .wallet-address {
-        background: rgba(0, 0, 0, 0.4);
-        padding: 10px;
-        border-radius: 6px;
-        font-family: monospace;
-        font-size: 12px;
-        word-break: break-all;
-        color: #fff;
-        cursor: pointer;
-        margin-top: 5px;
+        display: none;
       }
 
       .copy-msg {
         font-size: 11px;
         color: var(--success);
         margin-top: 5px;
+        text-align: center;
       }
 
       .status-box {
@@ -726,26 +802,42 @@
                   <p class="payment-details-title">
                     أرسل المبلغ التالي إلى العنوان أدناه
                   </p>
+
+                  <!-- Amount with copy button -->
                   <div class="pay-amount-box">
-                    <span class="pay-amount-value" id="payAmountDisplay"
-                      >-</span
+                    <button
+                      class="copy-btn"
+                      onclick="copyAmount()"
+                      id="copyAmountBtn"
                     >
-                    <span
-                      class="pay-amount-currency"
-                      id="payCurrencyDisplay"
-                    ></span>
+                      📋 نسخ
+                    </button>
+                    <div class="pay-amount-text">
+                      <span
+                        class="pay-amount-currency"
+                        id="payCurrencyDisplay"
+                      ></span>
+                      <span class="pay-amount-value" id="payAmountDisplay"
+                        >-</span
+                      >
+                    </div>
                   </div>
-                  <div style="margin-bottom: 10px">
-                    <label class="wallet-address-label">عنوان المحفظة:</label>
+
+                  <!-- QR Code + Address -->
+                  <div class="qr-container">
+                    <div id="qrCode"></div>
                     <div
-                      class="wallet-address"
-                      id="payAddressDisplay"
+                      class="qr-address-below"
+                      id="payAddressClickable"
                       onclick="copyAddress()"
                     >
-                      -
+                      <span id="payAddressDisplay">-</span>
+                      <span class="tap-hint">اضغط لنسخ العنوان</span>
                     </div>
-                    <p class="copy-msg" id="copyMsg" hidden>✓ تم النسخ!</p>
                   </div>
+
+                  <p class="copy-msg" id="copyMsg" hidden>✅ تم النسخ!</p>
+
                   <div class="status-box" id="paymentStatusBox">
                     <span style="font-size: 14px">⏳ في انتظار الدفع...</span>
                   </div>
@@ -821,6 +913,7 @@
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
       const players = [
         {
@@ -936,6 +1029,31 @@
           document.getElementById("payAddressDisplay").textContent =
             data.payAddress;
           document.getElementById("paymentDetails").style.display = "block";
+
+          // Generate QR code
+          const qrContainer = document.getElementById("qrCode");
+          qrContainer.innerHTML = "";
+          const btcUri = `bitcoin:${data.payAddress}?amount=${data.payAmount}`;
+          new QRCode(qrContainer, {
+            text: btcUri,
+            width: 220,
+            height: 220,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H,
+          });
+          // Style the generated elements
+          const qrImg = qrContainer.querySelector("img");
+          const qrCanvas = qrContainer.querySelector("canvas");
+          [qrImg, qrCanvas].forEach((el) => {
+            if (el) {
+              el.style.borderRadius = "12px";
+              el.style.border = "3px solid #ffc726";
+              el.style.padding = "8px";
+              el.style.background = "#fff";
+            }
+          });
+
           btn.style.display = "none";
           document.getElementById("invoiceBtn").style.display = "none";
           document.querySelector(".or-divider").style.display = "none";
@@ -1036,8 +1154,22 @@
         navigator.clipboard.writeText(addr).then(() => {
           const msg = document.getElementById("copyMsg");
           msg.hidden = false;
+          msg.textContent = "✅ تم نسخ العنوان!";
           setTimeout(() => {
             msg.hidden = true;
+          }, 2000);
+        });
+      }
+
+      function copyAmount() {
+        const amount = document.getElementById("payAmountDisplay").textContent;
+        navigator.clipboard.writeText(amount).then(() => {
+          const btn = document.getElementById("copyAmountBtn");
+          btn.textContent = "✅ تم!";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = "📋 نسخ";
+            btn.classList.remove("copied");
           }, 2000);
         });
       }

@@ -251,10 +251,10 @@ app.post("/api/create-payment", async (req, res) => {
     // Generate a unique order ID
     const orderId = `NASSR-${Date.now()}-${player.id}`;
 
-    // Create payment via NOWPayments
+    // Create payment via NOWPayments (price in BTC)
     const paymentData = await nowpaymentsRequest("/payment", "POST", {
-      price_amount: player.price,
-      price_currency: "sar",
+      price_amount: player.btc,
+      price_currency: "btc",
       pay_currency: currency,
       order_id: orderId,
       order_description: `Al-Nassr VIP Card: ${player.nameEn} (PSA 10)`,
@@ -311,10 +311,10 @@ app.post("/api/create-invoice", async (req, res) => {
 
     const orderId = `NASSR-${Date.now()}-${player.id}`;
 
-    // Create invoice - user chooses currency on NOWPayments page
+    // Create invoice - price in BTC
     const invoiceData = await nowpaymentsRequest("/invoice", "POST", {
-      price_amount: player.price,
-      price_currency: "sar",
+      price_amount: player.btc,
+      price_currency: "btc",
       order_id: orderId,
       order_description: `Al-Nassr VIP Card: ${player.nameEn} (PSA 10)`,
       ipn_callback_url: `${req.protocol}://${req.get("host")}/api/ipn`,
