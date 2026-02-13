@@ -1,0 +1,706 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دعوة حصرية - بطاقات النصر VIP</title>
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", Arial, sans-serif;
+        background: #0a0e1a;
+        color: #ffffff;
+        direction: rtl;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .email-wrapper {
+        max-width: 650px;
+        margin: 0 auto;
+        background: #0d1329;
+      }
+
+      /* Header */
+      .email-header {
+        background: linear-gradient(
+          135deg,
+          #0a1128 0%,
+          #1a2744 50%,
+          #0a1128 100%
+        );
+        padding: 40px 30px 30px;
+        text-align: center;
+        border-bottom: 3px solid #ffc726;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .email-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          ellipse at center top,
+          rgba(255, 199, 38, 0.08) 0%,
+          transparent 70%
+        );
+      }
+
+      .header-logo {
+        position: relative;
+        z-index: 1;
+      }
+
+      .header-logo img {
+        height: 80px;
+        margin-bottom: 15px;
+      }
+
+      .header-title {
+        font-size: 28px;
+        font-weight: 900;
+        color: #ffc726;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 2px 10px rgba(255, 199, 38, 0.3);
+      }
+
+      .header-subtitle {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 8px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Exclusive Badge */
+      .exclusive-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #ffc726, #e8a800);
+        color: #0a1128;
+        padding: 6px 20px;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Body Content */
+      .email-body {
+        padding: 35px 30px;
+      }
+
+      .greeting {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+        line-height: 1.8;
+      }
+
+      .greeting span {
+        color: #ffc726;
+      }
+
+      .body-text {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 2;
+        margin-bottom: 20px;
+      }
+
+      .highlight-box {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 199, 38, 0.1),
+          rgba(255, 199, 38, 0.05)
+        );
+        border: 1px solid rgba(255, 199, 38, 0.25);
+        border-right: 4px solid #ffc726;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 25px 0;
+      }
+
+      .highlight-box p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.9;
+      }
+
+      .highlight-box strong {
+        color: #ffc726;
+      }
+
+      /* Cards Preview */
+      .cards-section {
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .cards-section-title {
+        font-size: 22px;
+        font-weight: 900;
+        color: #ffc726;
+        margin-bottom: 8px;
+      }
+
+      .cards-section-sub {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 25px;
+      }
+
+      .cards-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+
+      .card-row {
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+      }
+
+      .card-row td {
+        padding: 14px 16px;
+        vertical-align: middle;
+      }
+
+      .card-row td:first-child {
+        border-radius: 0 10px 10px 0;
+      }
+
+      .card-row td:last-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      .player-name {
+        font-size: 15px;
+        font-weight: 800;
+        color: #fff;
+      }
+
+      .player-edition {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 2px;
+      }
+
+      .card-price {
+        font-size: 16px;
+        font-weight: 900;
+        color: #ffc726;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .card-price small {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 500;
+      }
+
+      .card-sats {
+        font-size: 12px;
+        color: rgba(255, 199, 38, 0.7);
+        text-align: left;
+      }
+
+      .sold-badge {
+        display: inline-block;
+        background: rgba(244, 67, 54, 0.2);
+        color: #f44336;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .available-badge {
+        display: inline-block;
+        background: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+        padding: 3px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      /* Features */
+      .features {
+        margin: 30px 0;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+      }
+
+      .feature-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 199, 38, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .feature-text {
+        flex: 1;
+      }
+
+      .feature-text h4 {
+        font-size: 14px;
+        font-weight: 800;
+        color: #ffc726;
+        margin-bottom: 4px;
+      }
+
+      .feature-text p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+      }
+
+      /* CTA Button */
+      .cta-container {
+        text-align: center;
+        margin: 35px 0;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #ffc726, #e8a800);
+        color: #0a1128;
+        padding: 16px 50px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 900;
+        text-decoration: none;
+        font-family: "Tajawal", Arial, sans-serif;
+        box-shadow: 0 4px 25px rgba(255, 199, 38, 0.4);
+        transition: all 0.3s;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 35px rgba(255, 199, 38, 0.5);
+      }
+
+      .cta-subtext {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 12px;
+      }
+
+      /* Urgency */
+      .urgency-bar {
+        background: linear-gradient(90deg, #f44336, #d32f2f);
+        text-align: center;
+        padding: 12px 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .urgency-bar p {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .urgency-bar span {
+        color: #ffc726;
+      }
+
+      /* Divider */
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 199, 38, 0.3),
+          transparent
+        );
+        margin: 30px 0;
+      }
+
+      /* Signature */
+      .signature {
+        padding: 20px 0;
+      }
+
+      .signature p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+
+      .signature .sig-name {
+        color: #ffc726;
+        font-weight: 800;
+        font-size: 16px;
+      }
+
+      /* Footer */
+      .email-footer {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 25px 30px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 199, 38, 0.15);
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        font-size: 12px;
+        margin: 0 10px;
+      }
+
+      .footer-links a:hover {
+        color: #ffc726;
+      }
+
+      .footer-text {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 15px;
+        line-height: 1.8;
+      }
+
+      .social-icons {
+        margin-top: 15px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        margin: 0 5px;
+        line-height: 36px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      .social-icons a:hover {
+        background: rgba(255, 199, 38, 0.2);
+      }
+
+      /* Lightning Satoshi Section */
+      .lightning-section {
+        background: linear-gradient(
+          135deg,
+          rgba(247, 147, 26, 0.1),
+          rgba(255, 199, 38, 0.05)
+        );
+        border: 1px solid rgba(247, 147, 26, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 25px 0;
+        text-align: center;
+      }
+
+      .lightning-section h3 {
+        font-size: 18px;
+        color: #f7931a;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .lightning-section p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+
+      .lightning-section .btc-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .email-body {
+          padding: 25px 20px;
+        }
+        .email-header {
+          padding: 30px 20px 25px;
+        }
+        .header-title {
+          font-size: 22px;
+        }
+        .greeting {
+          font-size: 18px;
+        }
+        .cta-button {
+          padding: 14px 35px;
+          font-size: 16px;
+        }
+        .card-row td {
+          padding: 10px 12px;
+        }
+        .player-name {
+          font-size: 13px;
+        }
+        .card-price {
+          font-size: 14px;
+        }
+        .feature-item {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <!-- Header -->
+      <div class="email-header">
+        <div class="header-logo">
+          <img
+            src="https://cards-alnassr.com/assets/main-logo.webp"
+            alt="نادي النصر"
+            style="height: 80px"
+          />
+        </div>
+        <div class="header-title">بطاقات النصر VIP الحصرية</div>
+        <div class="header-subtitle">
+          مُصنّفة PSA 10 • مُحمّلة بالبيتكوين ⚡
+        </div>
+        <div class="exclusive-badge">🔒 دعوة خاصة لأعضاء alnassr.sa</div>
+      </div>
+
+      <!-- Body -->
+      <div class="email-body">
+        <!-- Greeting -->
+        <p class="greeting">
+          السلام عليكم ورحمة الله وبركاته 👋<br />
+          عزيزنا <span>عضو نادي النصر</span> الكريم،
+        </p>
+
+        <p class="body-text">
+          يسرّنا دعوتك لاقتناء واحدة من أندر وأفخم بطاقات كرة القدم في العالم —
+          بطاقات نجوم نادي النصر بتصنيف
+          <strong style="color: #ffc726">PSA 10 (Gem Mint)</strong>، وهو أعلى
+          تصنيف ممكن عالمياً.
+        </p>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+          <p>
+            ⭐ هذه ليست مجرد بطاقات — إنها
+            <strong>أصول رقمية حقيقية</strong> مُحمّلة بـ
+            <strong>Lightning Satoshi (بيتكوين)</strong>. كل بطاقة تحتوي على كود
+            استرداد خاص يمكنك من الحصول على قيمتها من البيتكوين فوراً أو حفظها
+            كاستثمار طويل الأمد.
+          </p>
+        </div>
+
+        <!-- Urgency -->
+        <div class="urgency-bar">
+          <p>⚡ تبقّى <span>4 بطاقات فقط</span> من أصل 6 — لا تفوّت الفرصة!</p>
+        </div>
+
+        <!-- Cards Table -->
+        <div class="cards-section">
+          <div class="cards-section-title">📦 المجموعة الحصرية</div>
+          <div class="cards-section-sub">
+            6 بطاقات فقط في العالم — مُصنّفة ومُغلّفة ومُوثّقة
+          </div>
+
+          <table class="cards-table" role="presentation">
+            <!-- Ronaldo -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">كريستيانو رونالدو ⭐</div>
+                <div class="player-edition">ICON /10 • PSA 10</div>
+              </td>
+              <td>
+                <div class="card-price">189,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.75 BTC • ⚡ 5,200,000 Sats</div>
+              </td>
+              <td><span class="available-badge">متوفرة</span></td>
+            </tr>
+            <!-- Mané -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">ساديو ماني</div>
+                <div class="player-edition">ELITE /25 • PSA 10</div>
+              </td>
+              <td>
+                <div class="card-price">129,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.52 BTC • ⚡ 3,600,000 Sats</div>
+              </td>
+              <td><span class="available-badge">متوفرة</span></td>
+            </tr>
+            <!-- Laporte -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">ايمريك لابورت</div>
+                <div class="player-edition">ELITE /25 • PSA 10</div>
+              </td>
+              <td>
+                <div class="card-price">99,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.27 BTC • ⚡ 2,700,000 Sats</div>
+              </td>
+              <td><span class="sold-badge">تم البيع ❌</span></td>
+            </tr>
+            <!-- Brozović -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">مارسيلو بروزوفيتش</div>
+                <div class="player-edition">GOLD /50 • PSA 9</div>
+              </td>
+              <td>
+                <div class="card-price">74,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.21 BTC • ⚡ 2,100,000 Sats</div>
+              </td>
+              <td><span class="available-badge">متوفرة</span></td>
+            </tr>
+            <!-- Telles -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">أليكس تيليس</div>
+                <div class="player-edition">GOLD /50 • PSA 9</div>
+              </td>
+              <td>
+                <div class="card-price">59,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.16 BTC • ⚡ 1,600,000 Sats</div>
+              </td>
+              <td><span class="sold-badge">تم البيع ❌</span></td>
+            </tr>
+            <!-- Fofana -->
+            <tr class="card-row">
+              <td>
+                <div class="player-name">سيكو فوفانا</div>
+                <div class="player-edition">GOLD /50 • PSA 9</div>
+              </td>
+              <td>
+                <div class="card-price">39,999 <small>ر.س</small></div>
+                <div class="card-sats">₿ 0.11 BTC • ⚡ 1,100,000 Sats</div>
+              </td>
+              <td><span class="available-badge">متوفرة</span></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Lightning Section -->
+        <div class="lightning-section">
+          <div class="btc-icon">⚡₿</div>
+          <h3>كل بطاقة مُحمّلة بـ Lightning Satoshi</h3>
+          <p>
+            عند الشراء، تحصل على كود استرداد فريد. يمكنك استبداله فوراً
+            بالبيتكوين عبر محفظة Lightning الخاصة بك، أو حفظه في خزنتك كاستثمار
+            يزداد قيمة مع مرور الوقت.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Features -->
+        <div class="features">
+          <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-text">
+              <h4>تصنيف PSA 10 — الأعلى عالمياً</h4>
+              <p>
+                كل بطاقة مُصنّفة ومُغلّفة من PSA بأعلى درجة ممكنة (Gem Mint 10)،
+                مما يضمن أصالتها وقيمتها الاستثمارية.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <div class="feature-text">
+              <h4>إصدار محدود — كمية نادرة</h4>
+              <p>
+                إصدارات ICON /10 و ELITE /25 و GOLD /50 فقط. لا يوجد أكثر من هذا
+                العدد في العالم كله.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">₿</div>
+            <div class="feature-text">
+              <h4>مُحمّلة بالبيتكوين</h4>
+              <p>
+                كل بطاقة تحتوي على قيمة حقيقية من Lightning Satoshi يمكن
+                استردادها في أي وقت.
+              </p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-text">
+              <h4>توصيل مجاني وآمن</h4>
+              <p>
+                شحن مؤمّن بالكامل لجميع أنحاء المملكة العربية السعودية والعالم.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- CTA -->
+        <div class="cta-container">
+          <a href="https://cards-alnassr.com" class="cta-button">
+            🛒 احجز بطاقتك الآن
+          </a>
+          <p class="cta-subtext">
+            الدفع عبر البيتكوين فقط — آمن وسريع عبر NOWPayments
+          </p>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="email-footer">
+        <div class="footer-links">
+          <a href="https://cards-alnassr.com">الموقع الرسمي</a>
+          <a href="https://cards-alnassr.com/redeem.html">استرداد البطاقة</a>
+        </div>
+        <div class="social-icons">
+          <a href="#" title="Twitter/X">𝕏</a>
+        </div>
+        <p class="footer-text">
+          هذه الرسالة مُرسلة إليك لأنك عضو مسجّل في نادي النصر السعودي.<br />
+          © 2025 بطاقات النصر VIP — جميع الحقوق محفوظة.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
