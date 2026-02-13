@@ -2522,7 +2522,7 @@
           <!-- Step 3: Payment (Crypto Only via NOWPayments) -->
           <div class="checkout-step-content" id="step3" style="display: none">
             <div class="payment-section">
-              <h3>₿ الدفع بالعملات الرقمية</h3>
+              <h3>₿ الدفع بالبيتكوين</h3>
               <p
                 style="
                   font-size: 14px;
@@ -2530,42 +2530,16 @@
                   margin-bottom: 20px;
                 "
               >
-                ادفع بأمان عبر بوابة NOWPayments المشفّرة
+                ادفع بأمان عبر بوابة NOWPayments المشفّرة — بيتكوين فقط
               </p>
 
-              <!-- Crypto Currency Selector -->
+              <!-- Bitcoin Only -->
               <div class="form-section">
-                <h3 style="justify-content: center">اختر العملة الرقمية</h3>
-                <div class="crypto-selector" id="cryptoSelector">
-                  <div class="crypto-option selected" data-currency="btc">
-                    <span class="crypto-icon">₿</span>
-                    <span class="crypto-name">Bitcoin</span>
-                    <span class="crypto-estimate" id="est-btc">...</span>
-                  </div>
-                  <div class="crypto-option" data-currency="eth">
-                    <span class="crypto-icon">Ξ</span>
-                    <span class="crypto-name">Ethereum</span>
-                    <span class="crypto-estimate" id="est-eth">...</span>
-                  </div>
-                  <div class="crypto-option" data-currency="usdttrc20">
-                    <span class="crypto-icon">₮</span>
-                    <span class="crypto-name">USDT (TRC20)</span>
-                    <span class="crypto-estimate" id="est-usdttrc20">...</span>
-                  </div>
-                  <div class="crypto-option" data-currency="ltc">
-                    <span class="crypto-icon">Ł</span>
-                    <span class="crypto-name">Litecoin</span>
-                    <span class="crypto-estimate" id="est-ltc">...</span>
-                  </div>
-                  <div class="crypto-option" data-currency="sol">
-                    <span class="crypto-icon">◎</span>
-                    <span class="crypto-name">Solana</span>
-                    <span class="crypto-estimate" id="est-sol">...</span>
-                  </div>
-                  <div class="crypto-option" data-currency="bnbbsc">
-                    <span class="crypto-icon">⬡</span>
-                    <span class="crypto-name">BNB (BSC)</span>
-                    <span class="crypto-estimate" id="est-bnbbsc">...</span>
+                <div class="crypto-selector" style="grid-template-columns: 1fr; max-width: 320px; margin: 0 auto 20px;">
+                  <div class="crypto-option selected" data-currency="btc" style="padding: 20px; cursor: default;">
+                    <span class="crypto-icon" style="font-size: 36px;">₿</span>
+                    <span class="crypto-name" style="font-size: 16px;">Bitcoin (BTC)</span>
+                    <span class="crypto-estimate" id="est-btc" style="font-size: 14px; color: var(--nassr-yellow);">...</span>
                   </div>
                 </div>
               </div>
@@ -2972,25 +2946,18 @@
       // Fetch crypto price estimates from server
       // ============================================
       async function fetchEstimates(priceAmount) {
-        const currencies = ["btc", "eth", "usdttrc20", "ltc", "sol", "bnbbsc"];
-        for (const cur of currencies) {
-          const el = document.getElementById(`est-${cur}`);
-          if (el) el.textContent = "...";
-        }
-        for (const cur of currencies) {
-          try {
-            const res = await fetch(
-              `/api/estimate?amount=${priceAmount}&currency=${cur}`,
-            );
-            const data = await res.json();
-            const el = document.getElementById(`est-${cur}`);
-            if (el && data.estimated_amount) {
-              el.textContent = `≈ ${parseFloat(data.estimated_amount).toFixed(cur === "usdttrc20" ? 2 : 6)} ${cur.toUpperCase()}`;
-            }
-          } catch (e) {
-            const el = document.getElementById(`est-${cur}`);
-            if (el) el.textContent = "--";
+        const el = document.getElementById("est-btc");
+        if (el) el.textContent = "جاري الحساب...";
+        try {
+          const res = await fetch(`/api/estimate?amount=${priceAmount}&currency=btc`);
+          const data = await res.json();
+          if (el && data.estimated_amount) {
+            const btcAmount = parseFloat(data.estimated_amount).toFixed(8);
+            el.textContent = `≈ ${btcAmount} BTC`;
+            document.getElementById("cryptoEquiv").textContent = `≈ ${btcAmount} BTC`;
           }
+        } catch (e) {
+          if (el) el.textContent = "--";
         }
       }
 
@@ -3229,15 +3196,13 @@
       // ============================================
       async function openMoonPay() {
         try {
-          const res = await fetch(
-            `/api/moonpay-url?currency=${selectedCrypto}`,
-          );
+          const res = await fetch("/api/moonpay-url?currency=btc");
           const data = await res.json();
           window.open(data.url, "_blank", "width=500,height=700");
         } catch (e) {
           // Fallback to direct MoonPay URL
           window.open(
-            `https://buy.moonpay.com?currencyCode=${selectedCrypto}`,
+            "https://buy.moonpay.com?currencyCode=btc",
             "_blank",
             "width=500,height=700",
           );
@@ -3294,23 +3259,8 @@
         });
       });
 
-      // Crypto currency selection
-      document.querySelectorAll(".crypto-option").forEach((opt) => {
-        opt.addEventListener("click", () => {
-          document
-            .querySelectorAll(".crypto-option")
-            .forEach((o) => o.classList.remove("selected"));
-          opt.classList.add("selected");
-          selectedCrypto = opt.dataset.currency;
-
-          // Update estimate display
-          const estEl = document.getElementById(`est-${selectedCrypto}`);
-          if (estEl) {
-            document.getElementById("cryptoEquiv").textContent =
-              estEl.textContent;
-          }
-        });
-      });
+      // Bitcoin is the only payment method — no selection needed
+      // selectedCrypto is always "btc"
 
       // ============================================
       // Initialize
@@ -3336,7 +3286,7 @@
                 ${p.sold ? '<span style="color:#4CAF50">✓ تم البيع</span>' : '<span class="dot"></span> نسخة واحدة متبقية'}
               </div>
               <button class="buy-btn" ${p.sold ? "disabled" : ""} onclick="openCheckout(${p.id})">
-                ${p.sold ? "نفدت الكمية" : "⚡ احجز الآن بالكريبتو"}
+                ${p.sold ? "نفدت الكمية" : "₿ احجز الآن بالبيتكوين"}
               </button>
             </div>
           </div>
