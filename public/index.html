@@ -40,7 +40,7 @@
       /* Header */
       .header {
         position: fixed;
-        top: 42px;
+        top: var(--banner-h, 42px);
         left: 0;
         right: 0;
         z-index: 1000;
@@ -199,10 +199,10 @@
       .mobile-nav {
         display: none;
         position: fixed;
-        top: 42px;
+        top: var(--banner-h, 42px);
         right: -300px;
         width: 280px;
-        height: calc(100vh - 42px);
+        height: calc(100vh - var(--banner-h, 42px));
         background: linear-gradient(
           180deg,
           var(--nassr-blue) 0%,
@@ -289,6 +289,19 @@
         border-radius: 4px;
         margin: 0 10px;
         font-weight: 900;
+      }
+
+      @media (max-width: 768px) {
+        .urgency-banner {
+          font-size: 11px;
+          padding: 8px 10px;
+          line-height: 1.4;
+        }
+        .urgency-banner span {
+          padding: 2px 8px;
+          margin: 0 4px;
+          font-size: 12px;
+        }
       }
 
       /* Hero */
@@ -3135,6 +3148,19 @@
       }
 
       window.addEventListener("load", init);
+
+      // Dynamically set banner height for proper layout offset
+      (function () {
+        function setBannerHeight() {
+          const banner = document.querySelector('.urgency-banner');
+          if (banner) {
+            const h = banner.offsetHeight;
+            document.documentElement.style.setProperty('--banner-h', h + 'px');
+          }
+        }
+        setBannerHeight();
+        window.addEventListener('resize', setBannerHeight);
+      })();
 
       // Mobile Nav Toggle
       (function () {

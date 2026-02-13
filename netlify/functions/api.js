@@ -1,4 +1,8 @@
 const crypto = require("crypto");
+const nodeFetch = require("node-fetch");
+
+// Use node-fetch if global fetch is not available (Node.js < 18)
+const fetch = globalThis.fetch || nodeFetch;
 
 // ============================================
 // Configuration
@@ -6,6 +10,12 @@ const crypto = require("crypto");
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
 const NOWPAYMENTS_IPN_SECRET = process.env.NOWPAYMENTS_IPN_SECRET;
 const IS_PRODUCTION = process.env.PRODUCTION === "true";
+
+if (!NOWPAYMENTS_API_KEY) {
+  console.warn(
+    "[WARNING] NOWPAYMENTS_API_KEY environment variable is not set!",
+  );
+}
 
 const NOWPAYMENTS_BASE = IS_PRODUCTION
   ? "https://api.nowpayments.io/v1"
@@ -146,6 +156,15 @@ const players = [
 // Helper: NOWPayments API fetch wrapper
 // ============================================
 async function nowpaymentsRequest(endpoint, method = "GET", body = null) {
+  if (!NOWPAYMENTS_API_KEY) {
+    throw new Error(
+      "NOWPAYMENTS_API_KEY is not configured on the server. Set it in Netlify dashboard → Site settings → Environment variables.",
+    );
+  }
+
+  const url = `${NOWPAYMENTS_BASE}${endpoint}`;
+  console.log(`[NOWPayments] ${method} ${url}`);
+
   const options = {
     method,
     headers: {
@@ -155,10 +174,27 @@ async function nowpaymentsRequest(endpoint, method = "GET", body = null) {
   };
   if (body) options.body = JSON.stringify(body);
 
-  const response = await fetch(`${NOWPAYMENTS_BASE}${endpoint}`, options);
-  const data = await response.json();
+  let response;
+  try {
+    response = await fetch(url, options);
+  } catch (fetchError) {
+    console.error("[NOWPayments] fetch failed:", fetchError.message);
+    throw new Error(`Network error calling NOWPayments: ${fetchError.message}`);
+  }
+
+  let data;
+  try {
+    data = await response.json();
+  } catch (jsonError) {
+    const text = await response.text().catch(() => "");
+    console.error("[NOWPayments] Invalid JSON response:", text);
+    throw new Error(
+      `NOWPayments returned invalid JSON (status ${response.status})`,
+    );
+  }
 
   if (!response.ok) {
+    console.error("[NOWPayments] API error:", JSON.stringify(data));
     throw new Error(
       data.message || `NOWPayments API error: ${response.status}`,
     );
@@ -464,7 +500,7 @@ exports.handler = async (event, context) => {
     // ---- 404 fallback ----
     return respond(404, { error: "Route not found", path, method });
   } catch (error) {
-    console.error("[API ERROR]", error.message);
-    return respond(500, { error: error.message });
+    console.error("[API ERROR]", error.message, error.stack);
+    return respond(500, { error: error.message || "Internal server error" });
   }
 };
