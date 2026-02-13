@@ -1,0 +1,29 @@
+[build]
+  # Publish directory (static files served directly)
+  publish = "public"
+  # Build command (install deps for functions)
+  command = "npm install"
+  # Functions directory
+  functions = "netlify/functions"
+
+[functions]
+  # Use Node.js 18 runtime
+  node_bundler = "esbuild"
+
+# Redirect all /api/* calls to the serverless function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# Redirect /redeem to the redeem.html page
+[[redirects]]
+  from = "/redeem"
+  to = "/redeem.html"
+  status = 200
+
+# Environment variables (set these in Netlify dashboard, not here)
+# NOWPAYMENTS_API_KEY
+# NOWPAYMENTS_IPN_SECRET
+# MOONPAY_API_KEY
+# PRODUCTION
