@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إتمام الطلب - اختيار البطاقة | نادي النصر VIP</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nassr-yellow: #ffc726;
+        --nassr-yellow-bright: #ffd54f;
+        --nassr-yellow-dark: #e5a800;
+        --nassr-blue: #1a237e;
+        --nassr-blue-dark: #0d1442;
+        --nassr-blue-light: #283593;
+        --white: #ffffff;
+        --gray: #9e9e9e;
+        --success: #4caf50;
+        --danger: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: var(--nassr-blue-dark);
+        min-height: 100vh;
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Top Bar */
+      .checkout-topbar {
+        background: var(--nassr-blue);
+        border-bottom: 3px solid var(--nassr-yellow);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo img {
+        height: 50px;
+      }
+
+      .checkout-topbar .logo-text {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+      }
+
+      .checkout-topbar .logo-text .main {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-topbar .logo-text .sub {
+        font-size: 11px;
+        color: var(--white);
+        letter-spacing: 2px;
+      }
+
+      .checkout-topbar .back-link {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s;
+      }
+
+      .checkout-topbar .back-link:hover {
+        opacity: 0.8;
+      }
+
+      /* Progress Steps */
+      .checkout-progress {
+        background: var(--nassr-blue);
+        padding: 25px 40px;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.15);
+      }
+
+      .progress-step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+      }
+
+      .progress-step.active {
+        color: var(--nassr-yellow);
+      }
+
+      .progress-step.completed {
+        color: var(--success);
+      }
+
+      .progress-num {
+        width: 36px;
+        height: 36px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 15px;
+      }
+
+      .progress-step.active .progress-num {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        border-color: var(--nassr-yellow);
+      }
+
+      .progress-step.completed .progress-num {
+        background: var(--success);
+        border-color: var(--success);
+        color: var(--white);
+      }
+
+      .progress-line {
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 0 15px;
+      }
+
+      .progress-line.done {
+        background: var(--success);
+      }
+
+      /* Main Content */
+      .checkout-container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+      }
+
+      .checkout-card {
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border: 2px solid var(--nassr-yellow);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .checkout-card-header {
+        padding: 25px 30px;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.2);
+      }
+
+      .checkout-card-header h1 {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-card-header p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 5px;
+      }
+
+      .checkout-card-body {
+        padding: 30px;
+      }
+
+      /* Selected Card Display */
+      .selected-card-info {
+        background: rgba(255, 199, 38, 0.1);
+        border: 1px solid rgba(255, 199, 38, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .selected-card-img {
+        width: 90px;
+        height: 110px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--nassr-blue-dark);
+        flex-shrink: 0;
+      }
+
+      .selected-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .selected-card-details h3 {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 5px;
+      }
+
+      .selected-card-details p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .selected-card-details .price {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+        margin-top: 10px;
+      }
+
+      .sats-badge {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #f7931a;
+        font-weight: 700;
+      }
+
+      /* Redeem Options */
+      .form-section {
+        margin-bottom: 25px;
+      }
+
+      .form-section h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .redeem-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .redeem-option {
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 22px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .redeem-option:hover {
+        border-color: rgba(255, 199, 38, 0.5);
+      }
+
+      .redeem-option.selected {
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.1);
+      }
+
+      .redeem-option h4 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .redeem-option p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Footer Nav */
+      .checkout-footer {
+        padding: 20px 30px;
+        border-top: 1px solid rgba(255, 199, 38, 0.2);
+        display: flex;
+        gap: 15px;
+      }
+
+      .checkout-footer button,
+      .checkout-footer a {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-back {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .btn-back:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-continue {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+      }
+
+      .btn-continue:hover {
+        background: var(--nassr-yellow-bright);
+      }
+
+      /* No Card Error */
+      .no-card-msg {
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .no-card-msg h2 {
+        font-size: 22px;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+      }
+
+      .no-card-msg p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 25px;
+      }
+
+      .no-card-msg a {
+        display: inline-block;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        padding: 14px 30px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .checkout-topbar {
+          padding: 12px 15px;
+        }
+        .checkout-topbar .logo img {
+          height: 40px;
+        }
+        .checkout-topbar .logo-text .main {
+          font-size: 16px;
+        }
+        .checkout-progress {
+          padding: 18px 15px;
+        }
+        .progress-step span:not(.progress-num) {
+          display: none;
+        }
+        .progress-line {
+          width: 30px;
+        }
+        .checkout-container {
+          margin: 20px auto;
+        }
+        .checkout-card-header {
+          padding: 20px;
+        }
+        .checkout-card-body {
+          padding: 20px;
+        }
+        .checkout-footer {
+          padding: 15px 20px;
+        }
+        .selected-card-info {
+          flex-direction: column;
+          text-align: center;
+        }
+        .redeem-options {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="checkout-topbar">
+      <a href="/" class="logo">
+        <img src="assets/main-logo.webp" alt="نادي النصر" />
+        <div class="logo-text">
+          <span class="main">نادي النصر</span>
+          <span class="sub">AL-NASSR FC</span>
+        </div>
+      </a>
+      <a href="/" class="back-link">→ العودة للمتجر</a>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="checkout-progress">
+      <div class="progress-step active">
+        <span class="progress-num">1</span>
+        <span>البطاقة</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <span class="progress-num">2</span>
+        <span>البيانات</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <span class="progress-num">3</span>
+        <span>الدفع</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="checkout-container">
+      <div class="checkout-card">
+        <div class="checkout-card-header">
+          <h1>١. اختيار البطاقة</h1>
+          <p>تأكد من تفاصيل البطاقة واختر طريقة الاستلام</p>
+        </div>
+
+        <div class="checkout-card-body" id="cardBody">
+          <!-- Filled by JS -->
+        </div>
+
+        <div class="checkout-footer">
+          <a href="/" class="btn-back">← العودة</a>
+          <button class="btn-continue" id="continueBtn">التالي →</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const players = [
+        {
+          id: 1,
+          name: "كريستيانو رونالدو",
+          nameEn: "Cristiano Ronaldo",
+          pos: "ST",
+          rating: 99,
+          grade: 10,
+          edition: "ICON /10",
+          price: 189999,
+          sats: 5200000,
+          btc: 0.75,
+          img: "images/ronaldo.webp",
+          sold: false,
+        },
+        {
+          id: 2,
+          name: "ساديو ماني",
+          nameEn: "Sadio Mané",
+          pos: "LW",
+          rating: 92,
+          grade: 10,
+          edition: "ELITE /25",
+          price: 129999,
+          sats: 3600000,
+          btc: 0.52,
+          img: "images/mane.webp",
+          sold: false,
+        },
+        {
+          id: 3,
+          name: "ايمريك لابورت",
+          nameEn: "Aymeric Laporte",
+          pos: "CB",
+          rating: 90,
+          grade: 10,
+          edition: "ELITE /25",
+          price: 99999,
+          sats: 2700000,
+          btc: 0.27,
+          img: "images/laporte.webp",
+          sold: true,
+        },
+        {
+          id: 4,
+          name: "مارسيلو بروزوفيتش",
+          nameEn: "Marcelo Brozović",
+          pos: "CM",
+          rating: 88,
+          grade: 9,
+          edition: "GOLD /50",
+          price: 74999,
+          sats: 2100000,
+          btc: 0.21,
+          img: "images/brozovic.webp",
+          sold: false,
+        },
+        {
+          id: 5,
+          name: "أليكس تيليس",
+          nameEn: "Alex Telles",
+          pos: "LB",
+          rating: 85,
+          grade: 9,
+          edition: "GOLD /50",
+          price: 59999,
+          sats: 1600000,
+          btc: 0.16,
+          img: "images/telles.webp",
+          sold: true,
+        },
+        {
+          id: 6,
+          name: "سيكو فوفانا",
+          nameEn: "Seko Fofana",
+          pos: "CM",
+          rating: 84,
+          grade: 9,
+          edition: "GOLD /50",
+          price: 39999,
+          sats: 1100000,
+          btc: 0.11,
+          img: "images/fofana.webp",
+          sold: false,
+        },
+      ];
+
+      let redeemOption = "immediate";
+
+      function init() {
+        const params = new URLSearchParams(window.location.search);
+        const playerId = parseInt(params.get("id"));
+        const player = players.find((p) => p.id === playerId);
+
+        if (!player) {
+          document.getElementById("cardBody").innerHTML = `
+            <div class="no-card-msg">
+              <h2>⚠️ لم يتم اختيار بطاقة</h2>
+              <p>يرجى العودة لاختيار بطاقة من المجموعة</p>
+              <a href="/#collection">اختر بطاقة</a>
+            </div>`;
+          document.getElementById("continueBtn").style.display = "none";
+          return;
+        }
+
+        if (player.sold) {
+          document.getElementById("cardBody").innerHTML = `
+            <div class="no-card-msg">
+              <h2>❌ نفدت الكمية</h2>
+              <p>هذه البطاقة تم بيعها بالفعل. اختر بطاقة أخرى.</p>
+              <a href="/#collection">اختر بطاقة أخرى</a>
+            </div>`;
+          document.getElementById("continueBtn").style.display = "none";
+          return;
+        }
+
+        document.getElementById("cardBody").innerHTML = `
+          <div class="selected-card-info">
+            <div class="selected-card-img"><img src="${player.img}" alt="${player.name}"></div>
+            <div class="selected-card-details">
+              <h3>${player.name}</h3>
+              <p>PSA ${player.grade} • ${player.edition}</p>
+              <div class="price">${player.price.toLocaleString("ar-SA")} ر.س</div>
+              <div class="sats-badge">⚡ ${player.sats.toLocaleString()} Satoshi محمّل على البطاقة</div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>📦 خيار الاستلام</h3>
+            <div class="redeem-options">
+              <div class="redeem-option selected" data-option="immediate">
+                <h4>📦 استلام فوري</h4>
+                <p>شحن خلال 7-14 يوم</p>
+              </div>
+              <div class="redeem-option" data-option="vault">
+                <h4>🔒 حفظ في الخزنة</h4>
+                <p>استلم لاحقاً أو بِع مباشرة</p>
+              </div>
+            </div>
+          </div>`;
+
+        // Redeem option click
+        document.querySelectorAll(".redeem-option").forEach((opt) => {
+          opt.addEventListener("click", () => {
+            document
+              .querySelectorAll(".redeem-option")
+              .forEach((o) => o.classList.remove("selected"));
+            opt.classList.add("selected");
+            redeemOption = opt.dataset.option;
+          });
+        });
+
+        // Continue button
+        document.getElementById("continueBtn").addEventListener("click", () => {
+          // Save to sessionStorage
+          sessionStorage.setItem("checkout_playerId", player.id);
+          sessionStorage.setItem("checkout_redeemOption", redeemOption);
+          window.location.href = `/checkout-step2.html?id=${player.id}`;
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>

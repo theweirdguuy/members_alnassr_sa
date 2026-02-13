@@ -40,7 +40,7 @@
       /* Header */
       .header {
         position: fixed;
-        top: 0;
+        top: 42px;
         left: 0;
         right: 0;
         z-index: 1000;
@@ -186,21 +186,23 @@
         background: rgba(0, 0, 0, 0.6);
         z-index: 1040;
         opacity: 0;
+        pointer-events: none;
         transition: opacity 0.3s ease;
       }
 
       .mobile-nav-overlay.active {
         opacity: 1;
+        pointer-events: auto;
       }
 
       /* Mobile Nav Drawer */
       .mobile-nav {
         display: none;
         position: fixed;
-        top: 0;
+        top: 42px;
         right: -300px;
         width: 280px;
-        height: 100vh;
+        height: calc(100vh - 42px);
         background: linear-gradient(
           180deg,
           var(--nassr-blue) 0%,
@@ -257,6 +259,11 @@
 
       /* Urgency Banner */
       .urgency-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
         background: linear-gradient(90deg, var(--danger), #d32f2f);
         padding: 12px;
         text-align: center;
@@ -290,7 +297,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 160px 50px 80px;
+        padding: 200px 50px 80px;
         position: relative;
         background: linear-gradient(
           135deg,
@@ -2061,7 +2068,7 @@
           font-size: 10px;
         }
         .hero {
-          padding: 120px 20px 60px;
+          padding: 160px 20px 60px;
         }
         .hero-title {
           font-size: 36px;
@@ -3250,33 +3257,9 @@
       // Checkout modal flow
       // ============================================
       function openCheckout(playerId) {
-        selectedPlayer = players.find((p) => p.id === playerId);
-        if (!selectedPlayer || selectedPlayer.sold) return;
-
-        // Reset payment state
-        currentPaymentId = null;
-        if (statusPollInterval) {
-          clearInterval(statusPollInterval);
-          statusPollInterval = null;
-        }
-        document.getElementById("paymentDetails").style.display = "none";
-        document.getElementById("payNowBtn").style.display = "";
-        document.getElementById("payBtnText").textContent =
-          "🔒 ادفع الآن عبر NOWPayments";
-
-        document.getElementById("selectedCardInfo").innerHTML = `
-          <div class="selected-card-img"><img src="${selectedPlayer.img}" alt="${selectedPlayer.name}"></div>
-          <div class="selected-card-details">
-            <h3>${selectedPlayer.name}</h3>
-            <p>PSA ${selectedPlayer.grade} • ${selectedPlayer.edition}</p>
-            <div class="price">${selectedPlayer.price.toLocaleString("ar-SA")} ر.س</div>
-          </div>`;
-        document.getElementById("paymentAmount").textContent =
-          selectedPlayer.price.toLocaleString("ar-SA");
-
-        currentStep = 1;
-        updateSteps();
-        document.getElementById("checkoutModal").classList.add("active");
+        const player = players.find((p) => p.id === playerId);
+        if (!player || player.sold) return;
+        window.location.href = `/checkout-step1.html?id=${playerId}`;
       }
 
       function closeModal() {

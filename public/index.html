@@ -40,7 +40,7 @@
       /* Header */
       .header {
         position: fixed;
-        top: 0;
+        top: 42px;
         left: 0;
         right: 0;
         z-index: 1000;
@@ -186,21 +186,23 @@
         background: rgba(0, 0, 0, 0.6);
         z-index: 1040;
         opacity: 0;
+        pointer-events: none;
         transition: opacity 0.3s ease;
       }
 
       .mobile-nav-overlay.active {
         opacity: 1;
+        pointer-events: auto;
       }
 
       /* Mobile Nav Drawer */
       .mobile-nav {
         display: none;
         position: fixed;
-        top: 0;
+        top: 42px;
         right: -300px;
         width: 280px;
-        height: 100vh;
+        height: calc(100vh - 42px);
         background: linear-gradient(
           180deg,
           var(--nassr-blue) 0%,
@@ -257,6 +259,11 @@
 
       /* Urgency Banner */
       .urgency-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
         background: linear-gradient(90deg, var(--danger), #d32f2f);
         padding: 12px;
         text-align: center;
@@ -290,7 +297,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 160px 50px 80px;
+        padding: 200px 50px 80px;
         position: relative;
         background: linear-gradient(
           135deg,
@@ -2061,7 +2068,7 @@
           font-size: 10px;
         }
         .hero {
-          padding: 120px 20px 60px;
+          padding: 160px 20px 60px;
         }
         .hero-title {
           font-size: 36px;
@@ -2815,411 +2822,7 @@
               /></svg
           ></a>
         </div>
-      </div>
     </footer>
-
-    <!-- Checkout Modal -->
-    <div class="modal-overlay" id="checkoutModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>إتمام الطلب</h2>
-          <button class="modal-close" onclick="closeModal()">×</button>
-        </div>
-        <div class="modal-body">
-          <div class="checkout-steps">
-            <div class="step active" data-step="1">
-              <span class="step-num">1</span>
-              <span>البطاقة</span>
-            </div>
-            <div class="step-line"></div>
-            <div class="step" data-step="2">
-              <span class="step-num">2</span>
-              <span>البيانات</span>
-            </div>
-            <div class="step-line"></div>
-            <div class="step" data-step="3">
-              <span class="step-num">3</span>
-              <span>الدفع</span>
-            </div>
-          </div>
-
-          <!-- Step 1: Card Selection -->
-          <div class="checkout-step-content" id="step1">
-            <div class="selected-card-info" id="selectedCardInfo">
-              <!-- Filled by JS -->
-            </div>
-
-            <div class="form-section">
-              <h3>
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-                  />
-                </svg>
-                خيار الاستلام
-              </h3>
-              <div class="redeem-options">
-                <div class="redeem-option selected" data-option="immediate">
-                  <h4>📦 استلام فوري</h4>
-                  <p>شحن خلال 7-14 يوم</p>
-                </div>
-                <div class="redeem-option" data-option="vault">
-                  <h4>🔒 حفظ في الخزنة</h4>
-                  <p>استلم لاحقاً أو بِع مباشرة</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Shipping Info -->
-          <div class="checkout-step-content" id="step2" style="display: none">
-            <div class="form-section">
-              <h3>
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                  />
-                </svg>
-                معلومات الشحن
-              </h3>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>الاسم الكامل *</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    placeholder="أدخل اسمك الكامل"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label>رقم الجوال *</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    placeholder="+966 5XX XXX XXXX"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-group full">
-                <label>البريد الإلكتروني *</label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="example@email.com"
-                  required
-                />
-              </div>
-              <div class="form-group full">
-                <label>العنوان *</label>
-                <input
-                  type="text"
-                  id="address"
-                  placeholder="الشارع، رقم المبنى، الشقة"
-                  required
-                />
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>المدينة *</label>
-                  <input type="text" id="city" placeholder="الرياض" required />
-                </div>
-                <div class="form-group">
-                  <label>الدولة *</label>
-                  <select id="country">
-                    <option value="SA">السعودية</option>
-                    <option value="AE">الإمارات</option>
-                    <option value="KW">الكويت</option>
-                    <option value="BH">البحرين</option>
-                    <option value="QA">قطر</option>
-                    <option value="OM">عُمان</option>
-                    <option value="OTHER">أخرى</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group full">
-                <label>الرمز البريدي</label>
-                <input type="text" id="postalCode" placeholder="12345" />
-              </div>
-              <div class="form-group full">
-                <label>ملاحظات إضافية</label>
-                <textarea
-                  id="notes"
-                  rows="3"
-                  placeholder="أي تعليمات خاصة للتوصيل..."
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3: Payment (Crypto Only via NOWPayments) -->
-          <div class="checkout-step-content" id="step3" style="display: none">
-            <div class="payment-section">
-              <h3>₿ الدفع بالبيتكوين</h3>
-              <p
-                style="
-                  font-size: 14px;
-                  color: rgba(255, 255, 255, 0.7);
-                  margin-bottom: 20px;
-                "
-              >
-                ادفع بأمان عبر بوابة NOWPayments المشفّرة — بيتكوين فقط
-              </p>
-
-              <!-- Bitcoin Only -->
-              <div class="form-section">
-                <div
-                  class="crypto-selector"
-                  style="
-                    grid-template-columns: 1fr;
-                    max-width: 320px;
-                    margin: 0 auto 20px;
-                  "
-                >
-                  <div
-                    class="crypto-option selected"
-                    data-currency="btc"
-                    style="padding: 20px; cursor: default"
-                  >
-                    <span class="crypto-icon" style="font-size: 36px">₿</span>
-                    <span class="crypto-name" style="font-size: 16px"
-                      >Bitcoin (BTC)</span
-                    >
-                    <span
-                      class="crypto-estimate"
-                      id="est-btc"
-                      style="font-size: 14px; color: var(--nassr-yellow)"
-                      >...</span
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <!-- Payment Action -->
-              <div class="payment-placeholder" id="paymentPlaceholder">
-                <p style="font-size: 15px; margin-bottom: 5px">
-                  المبلغ المطلوب:
-                  <strong style="color: var(--nassr-yellow)" id="paymentAmount"
-                    >0</strong
-                  >
-                  ر.س
-                </p>
-                <p
-                  style="
-                    font-size: 13px;
-                    color: rgba(255, 255, 255, 0.5);
-                    margin-bottom: 15px;
-                  "
-                  id="cryptoEquiv"
-                >
-                  ≈ جاري حساب المبلغ بالعملة الرقمية...
-                </p>
-
-                <button
-                  class="nowpayments-btn"
-                  id="payNowBtn"
-                  style="width: 100%"
-                >
-                  <span id="payBtnText">🔒 ادفع الآن عبر NOWPayments</span>
-                </button>
-
-                <!-- Payment Details (shown after creation) -->
-                <div
-                  id="paymentDetails"
-                  style="display: none; margin-top: 20px; text-align: right"
-                >
-                  <div
-                    style="
-                      background: rgba(0, 0, 0, 0.3);
-                      border-radius: 12px;
-                      padding: 20px;
-                      border: 1px solid rgba(255, 199, 38, 0.3);
-                    "
-                  >
-                    <p
-                      style="
-                        font-size: 14px;
-                        color: var(--nassr-yellow);
-                        margin-bottom: 12px;
-                        font-weight: 700;
-                        text-align: center;
-                      "
-                    >
-                      أرسل المبلغ التالي إلى العنوان أدناه
-                    </p>
-                    <div
-                      style="
-                        background: rgba(255, 199, 38, 0.1);
-                        padding: 12px;
-                        border-radius: 8px;
-                        margin-bottom: 10px;
-                        text-align: center;
-                      "
-                    >
-                      <span
-                        style="
-                          font-size: 24px;
-                          font-weight: 900;
-                          color: var(--nassr-yellow);
-                        "
-                        id="payAmountDisplay"
-                        >-</span
-                      >
-                      <span
-                        style="font-size: 14px; color: rgba(255, 255, 255, 0.7)"
-                        id="payCurrencyDisplay"
-                      ></span>
-                    </div>
-                    <div style="margin-bottom: 10px">
-                      <label
-                        style="font-size: 12px; color: rgba(255, 255, 255, 0.5)"
-                        >عنوان المحفظة:</label
-                      >
-                      <div
-                        style="
-                          background: rgba(0, 0, 0, 0.4);
-                          padding: 10px;
-                          border-radius: 6px;
-                          font-family: monospace;
-                          font-size: 12px;
-                          word-break: break-all;
-                          color: #fff;
-                          cursor: pointer;
-                        "
-                        id="payAddressDisplay"
-                        onclick="copyAddress()"
-                      >
-                        -
-                      </div>
-                      <p
-                        style="
-                          font-size: 11px;
-                          color: var(--success);
-                          margin-top: 5px;
-                        "
-                        id="copyMsg"
-                        hidden
-                      >
-                        ✓ تم النسخ!
-                      </p>
-                    </div>
-                    <div
-                      id="paymentStatusBox"
-                      style="
-                        text-align: center;
-                        padding: 10px;
-                        background: rgba(255, 199, 38, 0.1);
-                        border-radius: 8px;
-                      "
-                    >
-                      <span style="font-size: 14px">⏳ في انتظار الدفع...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Crypto Guide for New Users -->
-              <div
-                style="
-                  margin-top: 25px;
-                  padding: 22px;
-                  background: linear-gradient(
-                    135deg,
-                    rgba(51, 117, 187, 0.1),
-                    rgba(13, 20, 66, 0.6)
-                  );
-                  border: 1px solid rgba(255, 199, 38, 0.2);
-                  border-radius: 14px;
-                  text-align: center;
-                "
-              >
-                <p
-                  style="
-                    font-size: 16px;
-                    color: var(--nassr-yellow);
-                    font-weight: 800;
-                    margin-bottom: 6px;
-                  "
-                >
-                  🏦 ليس لديك بيتكوين؟ لا تقلق!
-                </p>
-                <p
-                  style="
-                    font-size: 13px;
-                    color: rgba(255, 255, 255, 0.55);
-                    margin-bottom: 0;
-                  "
-                >
-                  اتبع الخطوات البسيطة التالية لشراء BTC ببطاقتك الائتمانية ثم
-                  ادفع:
-                </p>
-
-                <div class="crypto-guide-steps">
-                  <div class="crypto-guide-step">
-                    <div class="step-icon">📱</div>
-                    <div class="step-num">الخطوة ١</div>
-                    <div class="step-text">حمّل تطبيق<br />Trust Wallet</div>
-                  </div>
-                  <div class="crypto-guide-step">
-                    <div class="step-icon">💳</div>
-                    <div class="step-num">الخطوة ٢</div>
-                    <div class="step-text">
-                      اشترِ BTC داخل التطبيق عبر MoonPay ببطاقتك
-                    </div>
-                  </div>
-                  <div class="crypto-guide-step">
-                    <div class="step-icon">📋</div>
-                    <div class="step-num">الخطوة ٣</div>
-                    <div class="step-text">انسخ عنوان<br />الدفع أعلاه</div>
-                  </div>
-                  <div class="crypto-guide-step">
-                    <div class="step-icon">✅</div>
-                    <div class="step-num">الخطوة ٤</div>
-                    <div class="step-text">
-                      أرسل المبلغ من Trust Wallet وتأكّد الطلب
-                    </div>
-                  </div>
-                </div>
-
-                <div class="crypto-guide-links">
-                  <a
-                    href="https://trustwallet.com/download"
-                    target="_blank"
-                    class="trust-wallet-btn"
-                  >
-                    📥 تحميل Trust Wallet
-                  </a>
-                  <a
-                    href="https://www.moonpay.com/buy"
-                    target="_blank"
-                    class="moonpay-link"
-                  >
-                    🌙 شراء BTC عبر MoonPay
-                  </a>
-                </div>
-                <p
-                  style="
-                    font-size: 11px;
-                    color: rgba(255, 255, 255, 0.3);
-                    margin-top: 10px;
-                  "
-                >
-                  يمكنك شراء BTC من MoonPay مباشرة أو من داخل Trust Wallet •
-                  يدعم Visa و Mastercard و Apple Pay
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn-back" id="backBtn" style="display: none">
-            رجوع
-          </button>
-          <button class="btn-continue" id="continueBtn">التالي</button>
-        </div>
-      </div>
-    </div>
 
     <script>
       const players = [
@@ -3316,11 +2919,6 @@
       ];
 
       let selectedPlayer = null;
-      let currentStep = 1;
-      let redeemOption = "immediate";
-      let selectedCrypto = "btc";
-      let currentPaymentId = null;
-      let statusPollInterval = null;
 
       // ============================================
       // Card rendering
@@ -3436,309 +3034,13 @@
       }
 
       // ============================================
-      // Fetch crypto price estimates from server
-      // ============================================
-      async function fetchEstimates(priceAmount) {
-        const el = document.getElementById("est-btc");
-        if (el) el.textContent = "جاري الحساب...";
-        try {
-          const res = await fetch(
-            `/api/estimate?amount=${priceAmount}&currency=btc`,
-          );
-          const data = await res.json();
-          if (el && data.estimated_amount) {
-            const btcAmount = parseFloat(data.estimated_amount).toFixed(8);
-            el.textContent = `≈ ${btcAmount} BTC`;
-            document.getElementById("cryptoEquiv").textContent =
-              `≈ ${btcAmount} BTC`;
-          }
-        } catch (e) {
-          if (el) el.textContent = "--";
-        }
-      }
-
-      // ============================================
-      // Checkout modal flow
+      // Checkout — redirects to multi-page flow
       // ============================================
       function openCheckout(playerId) {
-        selectedPlayer = players.find((p) => p.id === playerId);
-        if (!selectedPlayer || selectedPlayer.sold) return;
-
-        // Reset payment state
-        currentPaymentId = null;
-        if (statusPollInterval) {
-          clearInterval(statusPollInterval);
-          statusPollInterval = null;
-        }
-        document.getElementById("paymentDetails").style.display = "none";
-        document.getElementById("payNowBtn").style.display = "";
-        document.getElementById("payBtnText").textContent =
-          "🔒 ادفع الآن عبر NOWPayments";
-
-        document.getElementById("selectedCardInfo").innerHTML = `
-          <div class="selected-card-img"><img src="${selectedPlayer.img}" alt="${selectedPlayer.name}"></div>
-          <div class="selected-card-details">
-            <h3>${selectedPlayer.name}</h3>
-            <p>PSA ${selectedPlayer.grade} • ${selectedPlayer.edition}</p>
-            <div class="price">${selectedPlayer.price.toLocaleString("ar-SA")} ر.س</div>
-            <div style="margin-top: 8px; font-size: 13px; color: #f7931a; font-weight: 700;">⚡ ${(selectedPlayer.sats || 0).toLocaleString()} Satoshi محمّل على البطاقة</div>
-          </div>`;
-        document.getElementById("paymentAmount").textContent =
-          selectedPlayer.price.toLocaleString("ar-SA");
-
-        currentStep = 1;
-        updateSteps();
-        document.getElementById("checkoutModal").classList.add("active");
+        const player = players.find((p) => p.id === playerId);
+        if (!player || player.sold) return;
+        window.location.href = `/checkout-step1.html?id=${playerId}`;
       }
-
-      function closeModal() {
-        document.getElementById("checkoutModal").classList.remove("active");
-        if (statusPollInterval) {
-          clearInterval(statusPollInterval);
-          statusPollInterval = null;
-        }
-      }
-
-      function updateSteps() {
-        document.querySelectorAll(".step").forEach((s, i) => {
-          s.classList.remove("active", "completed");
-          if (i + 1 < currentStep) s.classList.add("completed");
-          if (i + 1 === currentStep) s.classList.add("active");
-        });
-
-        document.getElementById("step1").style.display =
-          currentStep === 1 ? "block" : "none";
-        document.getElementById("step2").style.display =
-          currentStep === 2 ? "block" : "none";
-        document.getElementById("step3").style.display =
-          currentStep === 3 ? "block" : "none";
-
-        document.getElementById("backBtn").style.display =
-          currentStep > 1 ? "block" : "none";
-        document.getElementById("continueBtn").textContent =
-          currentStep === 3 ? "إتمام الطلب عبر الفاتورة" : "التالي";
-
-        // Fetch crypto estimates when entering step 3
-        if (currentStep === 3 && selectedPlayer) {
-          fetchEstimates(selectedPlayer.price);
-        }
-      }
-
-      // ============================================
-      // Create Payment via NOWPayments API (direct)
-      // ============================================
-      async function createCryptoPayment() {
-        if (!selectedPlayer) return;
-
-        const btn = document.getElementById("payNowBtn");
-        const btnText = document.getElementById("payBtnText");
-        btn.disabled = true;
-        btnText.textContent = "⏳ جاري إنشاء عملية الدفع...";
-
-        const customer = {
-          fullName: document.getElementById("fullName")?.value || "",
-          phone: document.getElementById("phone")?.value || "",
-          email:
-            document.getElementById("email")?.value || "customer@email.com",
-          address: document.getElementById("address")?.value || "",
-          city: document.getElementById("city")?.value || "",
-          country: document.getElementById("country")?.value || "SA",
-        };
-
-        try {
-          const res = await fetch("/api/create-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              playerId: selectedPlayer.id,
-              currency: selectedCrypto,
-              redeemOption,
-              customer,
-            }),
-          });
-
-          const data = await res.json();
-
-          if (!res.ok) throw new Error(data.error || "Payment creation failed");
-
-          // Show payment details
-          currentPaymentId = data.paymentId;
-          document.getElementById("payAmountDisplay").textContent =
-            data.payAmount;
-          document.getElementById("payCurrencyDisplay").textContent =
-            ` ${data.payCurrency.toUpperCase()}`;
-          document.getElementById("payAddressDisplay").textContent =
-            data.payAddress;
-          document.getElementById("paymentDetails").style.display = "block";
-          btn.style.display = "none";
-
-          // Start polling payment status
-          startStatusPolling(data.paymentId);
-        } catch (error) {
-          alert("خطأ في إنشاء الدفعة: " + error.message);
-          btn.disabled = false;
-          btnText.textContent = "🔒 ادفع الآن عبر NOWPayments";
-        }
-      }
-
-      // ============================================
-      // Create Invoice (opens NOWPayments checkout page)
-      // ============================================
-      async function createInvoice() {
-        if (!selectedPlayer) return;
-
-        const customer = {
-          fullName: document.getElementById("fullName")?.value || "",
-          phone: document.getElementById("phone")?.value || "",
-          email:
-            document.getElementById("email")?.value || "customer@email.com",
-          address: document.getElementById("address")?.value || "",
-          city: document.getElementById("city")?.value || "",
-          country: document.getElementById("country")?.value || "SA",
-        };
-
-        try {
-          const res = await fetch("/api/create-invoice", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              playerId: selectedPlayer.id,
-              redeemOption,
-              customer,
-            }),
-          });
-
-          const data = await res.json();
-          if (!res.ok) throw new Error(data.error || "Invoice creation failed");
-
-          // Open NOWPayments checkout page
-          window.open(data.invoiceUrl, "_blank");
-          alert("تم فتح صفحة الدفع في نافذة جديدة. أكمل الدفع هناك.");
-          closeModal();
-        } catch (error) {
-          alert("خطأ: " + error.message);
-        }
-      }
-
-      // ============================================
-      // Poll payment status
-      // ============================================
-      function startStatusPolling(paymentId) {
-        const statusBox = document.getElementById("paymentStatusBox");
-
-        statusPollInterval = setInterval(async () => {
-          try {
-            const res = await fetch(`/api/payment-status/${paymentId}`);
-            const data = await res.json();
-
-            const statusMap = {
-              waiting: "⏳ في انتظار الدفع...",
-              confirming: "🔄 جاري تأكيد المعاملة...",
-              confirmed: "✅ تم التأكيد! شكراً لك.",
-              sending: "📤 جاري المعالجة...",
-              partially_paid: "⚠️ تم دفع جزء فقط من المبلغ",
-              finished: "🎉 تم الدفع بنجاح! ستصلك رسالة تأكيد.",
-              failed: "❌ فشلت العملية. حاول مرة أخرى.",
-              refunded: "↩️ تم استرداد المبلغ.",
-              expired: "⏰ انتهت صلاحية عملية الدفع.",
-            };
-
-            statusBox.innerHTML = `<span style="font-size: 14px;">${statusMap[data.status] || data.status}</span>`;
-
-            if (data.actuallyPaid > 0) {
-              statusBox.innerHTML += `<br><span style="font-size: 12px; color: rgba(255,255,255,0.6);">المدفوع: ${data.actuallyPaid} ${data.payCurrency.toUpperCase()}</span>`;
-            }
-
-            // Stop polling on terminal states
-            if (
-              [
-                "confirmed",
-                "finished",
-                "failed",
-                "refunded",
-                "expired",
-              ].includes(data.status)
-            ) {
-              clearInterval(statusPollInterval);
-              statusPollInterval = null;
-
-              if (data.status === "confirmed" || data.status === "finished") {
-                statusBox.style.background = "rgba(76, 175, 80, 0.2)";
-                statusBox.style.borderColor = "#4CAF50";
-              }
-            }
-          } catch (e) {
-            console.error("Status poll error:", e);
-          }
-        }, 10000); // Poll every 10 seconds
-      }
-
-      // ============================================
-      // Copy wallet address
-      // ============================================
-      function copyAddress() {
-        const addr = document.getElementById("payAddressDisplay").textContent;
-        navigator.clipboard.writeText(addr).then(() => {
-          const msg = document.getElementById("copyMsg");
-          msg.hidden = false;
-          setTimeout(() => {
-            msg.hidden = true;
-          }, 2000);
-        });
-      }
-
-      // ============================================
-      // Event Listeners
-      // ============================================
-
-      // Continue / Back buttons
-      document.getElementById("continueBtn").addEventListener("click", () => {
-        if (currentStep === 2) {
-          // Validate shipping form (for immediate redeem)
-          if (redeemOption === "immediate") {
-            const name = document.getElementById("fullName").value;
-            const email = document.getElementById("email").value;
-            if (!name || !email) {
-              alert("يرجى ملء الحقول المطلوبة (الاسم والبريد الإلكتروني)");
-              return;
-            }
-          }
-          currentStep++;
-          updateSteps();
-        } else if (currentStep === 1) {
-          currentStep++;
-          updateSteps();
-        } else if (currentStep === 3) {
-          // Create invoice (redirects to NOWPayments page)
-          createInvoice();
-        }
-      });
-
-      document.getElementById("backBtn").addEventListener("click", () => {
-        if (currentStep > 1) {
-          currentStep--;
-          updateSteps();
-        }
-      });
-
-      // Pay Now button (direct crypto payment)
-      document.getElementById("payNowBtn").addEventListener("click", () => {
-        createCryptoPayment();
-      });
-
-      // Redeem option selection
-      document.querySelectorAll(".redeem-option").forEach((opt) => {
-        opt.addEventListener("click", () => {
-          document
-            .querySelectorAll(".redeem-option")
-            .forEach((o) => o.classList.remove("selected"));
-          opt.classList.add("selected");
-          redeemOption = opt.dataset.option;
-        });
-      });
-
-      // Bitcoin is the only payment method — no selection needed
-      // selectedCrypto is always "btc"
 
       // ============================================
       // Initialize
@@ -3831,13 +3133,6 @@
           window.history.replaceState({}, "", "/");
         }
       }
-
-      // Close modal on overlay click
-      document
-        .getElementById("checkoutModal")
-        .addEventListener("click", (e) => {
-          if (e.target === e.currentTarget) closeModal();
-        });
 
       window.addEventListener("load", init);
 

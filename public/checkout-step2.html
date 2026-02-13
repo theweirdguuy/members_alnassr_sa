@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إتمام الطلب - معلومات الشحن | نادي النصر VIP</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nassr-yellow: #ffc726;
+        --nassr-yellow-bright: #ffd54f;
+        --nassr-yellow-dark: #e5a800;
+        --nassr-blue: #1a237e;
+        --nassr-blue-dark: #0d1442;
+        --nassr-blue-light: #283593;
+        --white: #ffffff;
+        --gray: #9e9e9e;
+        --success: #4caf50;
+        --danger: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: var(--nassr-blue-dark);
+        min-height: 100vh;
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Top Bar */
+      .checkout-topbar {
+        background: var(--nassr-blue);
+        border-bottom: 3px solid var(--nassr-yellow);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo img {
+        height: 50px;
+      }
+
+      .checkout-topbar .logo-text {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+      }
+
+      .checkout-topbar .logo-text .main {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-topbar .logo-text .sub {
+        font-size: 11px;
+        color: var(--white);
+        letter-spacing: 2px;
+      }
+
+      .checkout-topbar .back-link {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s;
+      }
+
+      .checkout-topbar .back-link:hover {
+        opacity: 0.8;
+      }
+
+      /* Progress Steps */
+      .checkout-progress {
+        background: var(--nassr-blue);
+        padding: 25px 40px;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.15);
+      }
+
+      .progress-step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+      }
+
+      .progress-step.active {
+        color: var(--nassr-yellow);
+      }
+      .progress-step.completed {
+        color: var(--success);
+      }
+
+      .progress-num {
+        width: 36px;
+        height: 36px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 15px;
+      }
+
+      .progress-step.active .progress-num {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        border-color: var(--nassr-yellow);
+      }
+
+      .progress-step.completed .progress-num {
+        background: var(--success);
+        border-color: var(--success);
+        color: var(--white);
+      }
+
+      .progress-line {
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 0 15px;
+      }
+
+      .progress-line.done {
+        background: var(--success);
+      }
+
+      /* Main Content */
+      .checkout-container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+      }
+
+      .checkout-card {
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border: 2px solid var(--nassr-yellow);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .checkout-card-header {
+        padding: 25px 30px;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.2);
+      }
+
+      .checkout-card-header h1 {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-card-header p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 5px;
+      }
+
+      .checkout-card-body {
+        padding: 30px;
+      }
+
+      /* Order Summary Mini */
+      .order-summary-mini {
+        background: rgba(255, 199, 38, 0.08);
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 10px;
+        padding: 15px 18px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .order-summary-mini .player-name {
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .order-summary-mini .player-price {
+        font-weight: 900;
+        font-size: 16px;
+        color: var(--nassr-yellow);
+      }
+
+      /* Form Styles */
+      .form-section {
+        margin-bottom: 25px;
+      }
+
+      .form-section h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group.full {
+        grid-column: span 2;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 15px;
+        transition: all 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--nassr-yellow);
+        background: rgba(255, 199, 38, 0.05);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .form-group select option {
+        background: var(--nassr-blue-dark);
+      }
+
+      .form-group input.error,
+      .form-group select.error {
+        border-color: var(--danger);
+        background: rgba(244, 67, 54, 0.05);
+      }
+
+      .error-msg {
+        font-size: 12px;
+        color: var(--danger);
+        margin-top: 5px;
+        display: none;
+      }
+
+      .error-msg.show {
+        display: block;
+      }
+
+      /* Footer Nav */
+      .checkout-footer {
+        padding: 20px 30px;
+        border-top: 1px solid rgba(255, 199, 38, 0.2);
+        display: flex;
+        gap: 15px;
+      }
+
+      .checkout-footer button,
+      .checkout-footer a {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-back {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .btn-back:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-continue {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+      }
+
+      .btn-continue:hover {
+        background: var(--nassr-yellow-bright);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .checkout-topbar {
+          padding: 12px 15px;
+        }
+        .checkout-topbar .logo img {
+          height: 40px;
+        }
+        .checkout-topbar .logo-text .main {
+          font-size: 16px;
+        }
+        .checkout-progress {
+          padding: 18px 15px;
+        }
+        .progress-step span:not(.progress-num) {
+          display: none;
+        }
+        .progress-line {
+          width: 30px;
+        }
+        .checkout-container {
+          margin: 20px auto;
+        }
+        .checkout-card-header {
+          padding: 20px;
+        }
+        .checkout-card-body {
+          padding: 20px;
+        }
+        .checkout-footer {
+          padding: 15px 20px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="checkout-topbar">
+      <a href="/" class="logo">
+        <img src="assets/main-logo.webp" alt="نادي النصر" />
+        <div class="logo-text">
+          <span class="main">نادي النصر</span>
+          <span class="sub">AL-NASSR FC</span>
+        </div>
+      </a>
+      <a href="/" class="back-link">→ العودة للمتجر</a>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="checkout-progress">
+      <div class="progress-step completed">
+        <span class="progress-num">✓</span>
+        <span>البطاقة</span>
+      </div>
+      <div class="progress-line done"></div>
+      <div class="progress-step active">
+        <span class="progress-num">2</span>
+        <span>البيانات</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <span class="progress-num">3</span>
+        <span>الدفع</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="checkout-container">
+      <div class="checkout-card">
+        <div class="checkout-card-header">
+          <h1>٢. معلومات الشحن</h1>
+          <p>أدخل بيانات التوصيل لتصلك البطاقة</p>
+        </div>
+
+        <div class="checkout-card-body">
+          <!-- Mini Order Summary -->
+          <div class="order-summary-mini">
+            <span class="player-name" id="miniPlayerName">-</span>
+            <span class="player-price" id="miniPlayerPrice">-</span>
+          </div>
+
+          <div class="form-section">
+            <h3>📍 معلومات الشحن</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>الاسم الكامل *</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="أدخل اسمك الكامل"
+                />
+                <div class="error-msg" id="fullNameErr">
+                  يرجى إدخال الاسم الكامل
+                </div>
+              </div>
+              <div class="form-group">
+                <label>رقم الجوال *</label>
+                <input type="tel" id="phone" placeholder="+966 5XX XXX XXXX" />
+                <div class="error-msg" id="phoneErr">يرجى إدخال رقم الجوال</div>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label>البريد الإلكتروني *</label>
+              <input type="email" id="email" placeholder="example@email.com" />
+              <div class="error-msg" id="emailErr">
+                يرجى إدخال بريد إلكتروني صحيح
+              </div>
+            </div>
+            <div class="form-group full">
+              <label>العنوان *</label>
+              <input
+                type="text"
+                id="address"
+                placeholder="الشارع، رقم المبنى، الشقة"
+              />
+              <div class="error-msg" id="addressErr">يرجى إدخال العنوان</div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>المدينة *</label>
+                <input type="text" id="city" placeholder="الرياض" />
+                <div class="error-msg" id="cityErr">يرجى إدخال المدينة</div>
+              </div>
+              <div class="form-group">
+                <label>الدولة *</label>
+                <select id="country">
+                  <option value="SA">السعودية</option>
+                  <option value="AE">الإمارات</option>
+                  <option value="KW">الكويت</option>
+                  <option value="BH">البحرين</option>
+                  <option value="QA">قطر</option>
+                  <option value="OM">عُمان</option>
+                  <option value="OTHER">أخرى</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label>الرمز البريدي</label>
+              <input type="text" id="postalCode" placeholder="12345" />
+            </div>
+            <div class="form-group full">
+              <label>ملاحظات إضافية</label>
+              <textarea
+                id="notes"
+                rows="3"
+                placeholder="أي تعليمات خاصة للتوصيل..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <a class="btn-back" id="backBtn">← رجوع</a>
+          <button class="btn-continue" id="continueBtn">
+            التالي — الدفع →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const players = [
+        { id: 1, name: "كريستيانو رونالدو", price: 189999 },
+        { id: 2, name: "ساديو ماني", price: 129999 },
+        { id: 3, name: "ايمريك لابورت", price: 99999 },
+        { id: 4, name: "مارسيلو بروزوفيتش", price: 74999 },
+        { id: 5, name: "أليكس تيليس", price: 59999 },
+        { id: 6, name: "سيكو فوفانا", price: 39999 },
+      ];
+
+      function init() {
+        const params = new URLSearchParams(window.location.search);
+        const playerId = parseInt(params.get("id"));
+        const player = players.find((p) => p.id === playerId);
+
+        if (!player) {
+          window.location.href = "/";
+          return;
+        }
+
+        document.getElementById("miniPlayerName").textContent = player.name;
+        document.getElementById("miniPlayerPrice").textContent =
+          player.price.toLocaleString("ar-SA") + " ر.س";
+
+        // Back button
+        document.getElementById("backBtn").href =
+          `/checkout-step1.html?id=${playerId}`;
+
+        // Restore saved form data
+        const saved = sessionStorage.getItem("checkout_shipping");
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (data.fullName)
+            document.getElementById("fullName").value = data.fullName;
+          if (data.phone) document.getElementById("phone").value = data.phone;
+          if (data.email) document.getElementById("email").value = data.email;
+          if (data.address)
+            document.getElementById("address").value = data.address;
+          if (data.city) document.getElementById("city").value = data.city;
+          if (data.country)
+            document.getElementById("country").value = data.country;
+          if (data.postalCode)
+            document.getElementById("postalCode").value = data.postalCode;
+          if (data.notes) document.getElementById("notes").value = data.notes;
+        }
+
+        // Continue button
+        document.getElementById("continueBtn").addEventListener("click", () => {
+          // Validate
+          const redeemOption =
+            sessionStorage.getItem("checkout_redeemOption") || "immediate";
+          let valid = true;
+
+          const fields = [
+            { id: "fullName", err: "fullNameErr" },
+            { id: "email", err: "emailErr" },
+          ];
+
+          if (redeemOption === "immediate") {
+            fields.push(
+              { id: "phone", err: "phoneErr" },
+              { id: "address", err: "addressErr" },
+              { id: "city", err: "cityErr" },
+            );
+          }
+
+          // Clear errors
+          document.querySelectorAll(".error-msg").forEach((e) => {
+            e.classList.remove("show");
+          });
+          document.querySelectorAll("input, select").forEach((e) => {
+            e.classList.remove("error");
+          });
+
+          fields.forEach((f) => {
+            const el = document.getElementById(f.id);
+            if (!el.value.trim()) {
+              el.classList.add("error");
+              document.getElementById(f.err).classList.add("show");
+              valid = false;
+            }
+          });
+
+          // Email format
+          const emailEl = document.getElementById("email");
+          if (emailEl.value && !emailEl.value.includes("@")) {
+            emailEl.classList.add("error");
+            document.getElementById("emailErr").classList.add("show");
+            valid = false;
+          }
+
+          if (!valid) return;
+
+          // Save form data
+          sessionStorage.setItem(
+            "checkout_shipping",
+            JSON.stringify({
+              fullName: document.getElementById("fullName").value,
+              phone: document.getElementById("phone").value,
+              email: document.getElementById("email").value,
+              address: document.getElementById("address").value,
+              city: document.getElementById("city").value,
+              country: document.getElementById("country").value,
+              postalCode: document.getElementById("postalCode").value,
+              notes: document.getElementById("notes").value,
+            }),
+          );
+
+          window.location.href = `/checkout-step3.html?id=${playerId}`;
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>

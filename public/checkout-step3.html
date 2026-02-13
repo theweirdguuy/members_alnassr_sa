@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إتمام الطلب - الدفع | نادي النصر VIP</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nassr-yellow: #ffc726;
+        --nassr-yellow-bright: #ffd54f;
+        --nassr-yellow-dark: #e5a800;
+        --nassr-blue: #1a237e;
+        --nassr-blue-dark: #0d1442;
+        --nassr-blue-light: #283593;
+        --white: #ffffff;
+        --gray: #9e9e9e;
+        --success: #4caf50;
+        --danger: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: var(--nassr-blue-dark);
+        min-height: 100vh;
+        color: var(--white);
+        overflow-x: hidden;
+      }
+
+      /* Top Bar */
+      .checkout-topbar {
+        background: var(--nassr-blue);
+        border-bottom: 3px solid var(--nassr-yellow);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        flex-direction: row-reverse;
+      }
+
+      .checkout-topbar .logo img {
+        height: 50px;
+      }
+
+      .checkout-topbar .logo-text {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+      }
+
+      .checkout-topbar .logo-text .main {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-topbar .logo-text .sub {
+        font-size: 11px;
+        color: var(--white);
+        letter-spacing: 2px;
+      }
+
+      .checkout-topbar .back-link {
+        color: var(--nassr-yellow);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s;
+      }
+
+      .checkout-topbar .back-link:hover {
+        opacity: 0.8;
+      }
+
+      /* Progress Steps */
+      .checkout-progress {
+        background: var(--nassr-blue);
+        padding: 25px 40px;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.15);
+      }
+
+      .progress-step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+      }
+
+      .progress-step.active {
+        color: var(--nassr-yellow);
+      }
+      .progress-step.completed {
+        color: var(--success);
+      }
+
+      .progress-num {
+        width: 36px;
+        height: 36px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 15px;
+      }
+
+      .progress-step.active .progress-num {
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        border-color: var(--nassr-yellow);
+      }
+
+      .progress-step.completed .progress-num {
+        background: var(--success);
+        border-color: var(--success);
+        color: var(--white);
+      }
+
+      .progress-line {
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 0 15px;
+      }
+
+      .progress-line.done {
+        background: var(--success);
+      }
+
+      /* Main Content */
+      .checkout-container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+      }
+
+      .checkout-card {
+        background: linear-gradient(
+          180deg,
+          var(--nassr-blue) 0%,
+          var(--nassr-blue-dark) 100%
+        );
+        border: 2px solid var(--nassr-yellow);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .checkout-card-header {
+        padding: 25px 30px;
+        border-bottom: 1px solid rgba(255, 199, 38, 0.2);
+      }
+
+      .checkout-card-header h1 {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .checkout-card-header p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 5px;
+      }
+
+      .checkout-card-body {
+        padding: 30px;
+      }
+
+      /* Order Summary */
+      .order-summary {
+        background: rgba(255, 199, 38, 0.08);
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+
+      .order-summary h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 12px;
+      }
+
+      .order-summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .order-summary-row:last-child {
+        border-bottom: none;
+        padding-top: 12px;
+        margin-top: 5px;
+        border-top: 1px solid rgba(255, 199, 38, 0.2);
+        font-weight: 900;
+        font-size: 16px;
+        color: var(--nassr-yellow);
+      }
+
+      .order-summary-row .label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Payment Section */
+      .payment-section {
+        background: rgba(255, 199, 38, 0.05);
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .payment-section h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--nassr-yellow);
+        margin-bottom: 10px;
+      }
+
+      .payment-section .subtitle {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 20px;
+      }
+
+      .btc-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(247, 147, 26, 0.15);
+        border: 1px solid rgba(247, 147, 26, 0.4);
+        border-radius: 10px;
+        padding: 15px 25px;
+        margin-bottom: 20px;
+      }
+
+      .btc-badge .icon {
+        font-size: 28px;
+      }
+
+      .btc-badge .text {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .btc-estimate {
+        font-size: 14px;
+        color: var(--nassr-yellow);
+        margin-bottom: 20px;
+      }
+
+      /* Payment Placeholder */
+      .payment-placeholder {
+        background: rgba(0, 0, 0, 0.2);
+        border: 2px dashed rgba(255, 199, 38, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 15px;
+      }
+
+      .nowpayments-btn {
+        width: 100%;
+        padding: 16px 30px;
+        background: #05c46b;
+        border: none;
+        border-radius: 8px;
+        color: var(--white);
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .nowpayments-btn:hover {
+        background: #04a85c;
+        transform: translateY(-2px);
+      }
+
+      .nowpayments-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Invoice Button */
+      .invoice-btn {
+        width: 100%;
+        padding: 16px;
+        background: var(--nassr-yellow);
+        color: var(--nassr-blue-dark);
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 12px;
+      }
+
+      .invoice-btn:hover {
+        background: var(--nassr-yellow-bright);
+      }
+
+      .or-divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 15px 0;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 13px;
+      }
+
+      .or-divider::before,
+      .or-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Payment Details */
+      .payment-details {
+        display: none;
+        margin-top: 20px;
+        text-align: right;
+      }
+
+      .payment-details-inner {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        border: 1px solid rgba(255, 199, 38, 0.3);
+      }
+
+      .payment-details-title {
+        font-size: 14px;
+        color: var(--nassr-yellow);
+        margin-bottom: 12px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .pay-amount-box {
+        background: rgba(255, 199, 38, 0.1);
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .pay-amount-value {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--nassr-yellow);
+      }
+
+      .pay-amount-currency {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .wallet-address-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .wallet-address {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 12px;
+        word-break: break-all;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 5px;
+      }
+
+      .copy-msg {
+        font-size: 11px;
+        color: var(--success);
+        margin-top: 5px;
+      }
+
+      .status-box {
+        text-align: center;
+        padding: 10px;
+        background: rgba(255, 199, 38, 0.1);
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      /* Crypto Guide */
+      .crypto-guide {
+        margin-top: 25px;
+        padding: 22px;
+        background: linear-gradient(
+          135deg,
+          rgba(51, 117, 187, 0.1),
+          rgba(13, 20, 66, 0.6)
+        );
+        border: 1px solid rgba(255, 199, 38, 0.2);
+        border-radius: 14px;
+        text-align: center;
+      }
+
+      .crypto-guide-title {
+        font-size: 16px;
+        color: var(--nassr-yellow);
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+
+      .crypto-guide-sub {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 18px;
+      }
+
+      .crypto-guide-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .crypto-guide-step {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 14px 8px;
+        text-align: center;
+      }
+
+      .crypto-guide-step .step-icon {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        background: rgba(255, 199, 38, 0.1);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 199, 38, 0.2);
+      }
+
+      .crypto-guide-step .step-num {
+        font-size: 11px;
+        color: var(--nassr-yellow);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .crypto-guide-step .step-text {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
+      }
+
+      .crypto-guide-links {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .trust-wallet-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        background: #3375bb;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .trust-wallet-btn:hover {
+        background: #2860a0;
+        transform: translateY(-2px);
+      }
+
+      .moonpay-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        background: rgba(123, 97, 255, 0.2);
+        border: 1px solid rgba(123, 97, 255, 0.4);
+        color: #b8a5ff;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .moonpay-link:hover {
+        background: rgba(123, 97, 255, 0.35);
+        transform: translateY(-2px);
+      }
+
+      /* Footer Nav */
+      .checkout-footer {
+        padding: 20px 30px;
+        border-top: 1px solid rgba(255, 199, 38, 0.2);
+        display: flex;
+        gap: 15px;
+      }
+
+      .checkout-footer a {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        font-family: "Tajawal", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-back {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .btn-back:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .checkout-topbar {
+          padding: 12px 15px;
+        }
+        .checkout-topbar .logo img {
+          height: 40px;
+        }
+        .checkout-topbar .logo-text .main {
+          font-size: 16px;
+        }
+        .checkout-progress {
+          padding: 18px 15px;
+        }
+        .progress-step span:not(.progress-num) {
+          display: none;
+        }
+        .progress-line {
+          width: 30px;
+        }
+        .checkout-container {
+          margin: 20px auto;
+        }
+        .checkout-card-header {
+          padding: 20px;
+        }
+        .checkout-card-body {
+          padding: 20px;
+        }
+        .checkout-footer {
+          padding: 15px 20px;
+        }
+        .crypto-guide-steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="checkout-topbar">
+      <a href="/" class="logo">
+        <img src="assets/main-logo.webp" alt="نادي النصر" />
+        <div class="logo-text">
+          <span class="main">نادي النصر</span>
+          <span class="sub">AL-NASSR FC</span>
+        </div>
+      </a>
+      <a href="/" class="back-link">→ العودة للمتجر</a>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="checkout-progress">
+      <div class="progress-step completed">
+        <span class="progress-num">✓</span>
+        <span>البطاقة</span>
+      </div>
+      <div class="progress-line done"></div>
+      <div class="progress-step completed">
+        <span class="progress-num">✓</span>
+        <span>البيانات</span>
+      </div>
+      <div class="progress-line done"></div>
+      <div class="progress-step active">
+        <span class="progress-num">3</span>
+        <span>الدفع</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="checkout-container">
+      <div class="checkout-card">
+        <div class="checkout-card-header">
+          <h1>٣. الدفع بالبيتكوين</h1>
+          <p>أتمم الدفع بأمان عبر بوابة NOWPayments المشفّرة</p>
+        </div>
+
+        <div class="checkout-card-body">
+          <!-- Order Summary -->
+          <div class="order-summary" id="orderSummary">
+            <h4>📋 ملخص الطلب</h4>
+            <div class="order-summary-row">
+              <span class="label">البطاقة:</span>
+              <span id="summaryPlayer">-</span>
+            </div>
+            <div class="order-summary-row">
+              <span class="label">الاستلام:</span>
+              <span id="summaryRedeem">-</span>
+            </div>
+            <div class="order-summary-row">
+              <span class="label">الشحن إلى:</span>
+              <span id="summaryShipping">-</span>
+            </div>
+            <div class="order-summary-row">
+              <span class="label">Satoshi محمّل:</span>
+              <span id="summarySats" style="color: #f7931a">-</span>
+            </div>
+            <div class="order-summary-row">
+              <span>المبلغ الإجمالي:</span>
+              <span id="summaryTotal">-</span>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="payment-section">
+            <h3>₿ الدفع بالبيتكوين</h3>
+            <p class="subtitle">
+              ادفع بأمان عبر بوابة NOWPayments المشفّرة — بيتكوين فقط
+            </p>
+
+            <div class="btc-badge">
+              <span class="icon">₿</span>
+              <span class="text">Bitcoin (BTC)</span>
+            </div>
+
+            <div class="btc-estimate" id="btcEstimate">
+              جاري حساب المبلغ بالبيتكوين...
+            </div>
+
+            <div class="payment-placeholder">
+              <p style="font-size: 15px; margin-bottom: 5px">
+                المبلغ المطلوب:
+                <strong style="color: var(--nassr-yellow)" id="paymentAmount"
+                  >0</strong
+                >
+                ر.س
+              </p>
+              <p
+                style="
+                  font-size: 13px;
+                  color: rgba(255, 255, 255, 0.5);
+                  margin-bottom: 15px;
+                "
+                id="cryptoEquiv"
+              >
+                ≈ جاري حساب المبلغ بالعملة الرقمية...
+              </p>
+
+              <button class="nowpayments-btn" id="payNowBtn">
+                <span id="payBtnText">🔒 ادفع الآن عبر NOWPayments</span>
+              </button>
+
+              <div class="or-divider">أو</div>
+
+              <button class="invoice-btn" id="invoiceBtn">
+                📄 ادفع عبر فاتورة NOWPayments
+              </button>
+
+              <!-- Payment Details (shown after creation) -->
+              <div class="payment-details" id="paymentDetails">
+                <div class="payment-details-inner">
+                  <p class="payment-details-title">
+                    أرسل المبلغ التالي إلى العنوان أدناه
+                  </p>
+                  <div class="pay-amount-box">
+                    <span class="pay-amount-value" id="payAmountDisplay"
+                      >-</span
+                    >
+                    <span
+                      class="pay-amount-currency"
+                      id="payCurrencyDisplay"
+                    ></span>
+                  </div>
+                  <div style="margin-bottom: 10px">
+                    <label class="wallet-address-label">عنوان المحفظة:</label>
+                    <div
+                      class="wallet-address"
+                      id="payAddressDisplay"
+                      onclick="copyAddress()"
+                    >
+                      -
+                    </div>
+                    <p class="copy-msg" id="copyMsg" hidden>✓ تم النسخ!</p>
+                  </div>
+                  <div class="status-box" id="paymentStatusBox">
+                    <span style="font-size: 14px">⏳ في انتظار الدفع...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crypto Guide -->
+          <div class="crypto-guide">
+            <p class="crypto-guide-title">🏦 ليس لديك بيتكوين؟ لا تقلق!</p>
+            <p class="crypto-guide-sub">
+              اتبع الخطوات البسيطة التالية لشراء BTC ببطاقتك الائتمانية ثم ادفع:
+            </p>
+
+            <div class="crypto-guide-steps">
+              <div class="crypto-guide-step">
+                <div class="step-icon">📱</div>
+                <div class="step-num">الخطوة ١</div>
+                <div class="step-text">حمّل تطبيق<br />Trust Wallet</div>
+              </div>
+              <div class="crypto-guide-step">
+                <div class="step-icon">💳</div>
+                <div class="step-num">الخطوة ٢</div>
+                <div class="step-text">
+                  اشترِ BTC داخل التطبيق عبر MoonPay ببطاقتك
+                </div>
+              </div>
+              <div class="crypto-guide-step">
+                <div class="step-icon">📋</div>
+                <div class="step-num">الخطوة ٣</div>
+                <div class="step-text">انسخ عنوان<br />الدفع أعلاه</div>
+              </div>
+              <div class="crypto-guide-step">
+                <div class="step-icon">✅</div>
+                <div class="step-num">الخطوة ٤</div>
+                <div class="step-text">
+                  أرسل المبلغ من Trust Wallet وتأكّد الطلب
+                </div>
+              </div>
+            </div>
+
+            <div class="crypto-guide-links">
+              <a
+                href="https://trustwallet.com/download"
+                target="_blank"
+                class="trust-wallet-btn"
+                >📥 تحميل Trust Wallet</a
+              >
+              <a
+                href="https://www.moonpay.com/buy"
+                target="_blank"
+                class="moonpay-link"
+                >🌙 شراء BTC عبر MoonPay</a
+              >
+            </div>
+            <p
+              style="
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.3);
+                margin-top: 10px;
+              "
+            >
+              يمكنك شراء BTC من MoonPay مباشرة أو من داخل Trust Wallet • يدعم
+              Visa و Mastercard و Apple Pay
+            </p>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <a class="btn-back" id="backBtn">← رجوع للبيانات</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const players = [
+        {
+          id: 1,
+          name: "كريستيانو رونالدو",
+          price: 189999,
+          sats: 5200000,
+          btc: 0.75,
+          img: "images/ronaldo.webp",
+        },
+        {
+          id: 2,
+          name: "ساديو ماني",
+          price: 129999,
+          sats: 3600000,
+          btc: 0.52,
+          img: "images/mane.webp",
+        },
+        {
+          id: 3,
+          name: "ايمريك لابورت",
+          price: 99999,
+          sats: 2700000,
+          btc: 0.27,
+          img: "images/laporte.webp",
+        },
+        {
+          id: 4,
+          name: "مارسيلو بروزوفيتش",
+          price: 74999,
+          sats: 2100000,
+          btc: 0.21,
+          img: "images/brozovic.webp",
+        },
+        {
+          id: 5,
+          name: "أليكس تيليس",
+          price: 59999,
+          sats: 1600000,
+          btc: 0.16,
+          img: "images/telles.webp",
+        },
+        {
+          id: 6,
+          name: "سيكو فوفانا",
+          price: 39999,
+          sats: 1100000,
+          btc: 0.11,
+          img: "images/fofana.webp",
+        },
+      ];
+
+      let currentPaymentId = null;
+      let statusPollInterval = null;
+
+      async function fetchEstimates(priceAmount) {
+        const el = document.getElementById("btcEstimate");
+        el.textContent = "جاري الحساب...";
+        try {
+          const res = await fetch(
+            `/api/estimate?amount=${priceAmount}&currency=btc`,
+          );
+          const data = await res.json();
+          if (data.estimated_amount) {
+            const btcAmount = parseFloat(data.estimated_amount).toFixed(8);
+            el.textContent = `≈ ${btcAmount} BTC`;
+            document.getElementById("cryptoEquiv").textContent =
+              `≈ ${btcAmount} BTC`;
+          }
+        } catch (e) {
+          el.textContent = "--";
+        }
+      }
+
+      async function createCryptoPayment(player) {
+        const btn = document.getElementById("payNowBtn");
+        const btnText = document.getElementById("payBtnText");
+        btn.disabled = true;
+        btnText.textContent = "⏳ جاري إنشاء عملية الدفع...";
+
+        const shipping = JSON.parse(
+          sessionStorage.getItem("checkout_shipping") || "{}",
+        );
+
+        try {
+          const res = await fetch("/api/create-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              playerId: player.id,
+              currency: "btc",
+              redeemOption:
+                sessionStorage.getItem("checkout_redeemOption") || "immediate",
+              customer: {
+                fullName: shipping.fullName || "",
+                phone: shipping.phone || "",
+                email: shipping.email || "customer@email.com",
+                address: shipping.address || "",
+                city: shipping.city || "",
+                country: shipping.country || "SA",
+              },
+            }),
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Payment creation failed");
+
+          currentPaymentId = data.paymentId;
+          document.getElementById("payAmountDisplay").textContent =
+            data.payAmount;
+          document.getElementById("payCurrencyDisplay").textContent =
+            ` ${data.payCurrency.toUpperCase()}`;
+          document.getElementById("payAddressDisplay").textContent =
+            data.payAddress;
+          document.getElementById("paymentDetails").style.display = "block";
+          btn.style.display = "none";
+          document.getElementById("invoiceBtn").style.display = "none";
+          document.querySelector(".or-divider").style.display = "none";
+
+          startStatusPolling(data.paymentId);
+        } catch (error) {
+          alert("خطأ في إنشاء الدفعة: " + error.message);
+          btn.disabled = false;
+          btnText.textContent = "🔒 ادفع الآن عبر NOWPayments";
+        }
+      }
+
+      async function createInvoice(player) {
+        const shipping = JSON.parse(
+          sessionStorage.getItem("checkout_shipping") || "{}",
+        );
+
+        try {
+          const res = await fetch("/api/create-invoice", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              playerId: player.id,
+              redeemOption:
+                sessionStorage.getItem("checkout_redeemOption") || "immediate",
+              customer: {
+                fullName: shipping.fullName || "",
+                phone: shipping.phone || "",
+                email: shipping.email || "customer@email.com",
+                address: shipping.address || "",
+                city: shipping.city || "",
+                country: shipping.country || "SA",
+              },
+            }),
+          });
+
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Invoice creation failed");
+
+          window.open(data.invoiceUrl, "_blank");
+          alert("تم فتح صفحة الدفع في نافذة جديدة. أكمل الدفع هناك.");
+        } catch (error) {
+          alert("خطأ: " + error.message);
+        }
+      }
+
+      function startStatusPolling(paymentId) {
+        const statusBox = document.getElementById("paymentStatusBox");
+
+        statusPollInterval = setInterval(async () => {
+          try {
+            const res = await fetch(`/api/payment-status/${paymentId}`);
+            const data = await res.json();
+
+            const statusMap = {
+              waiting: "⏳ في انتظار الدفع...",
+              confirming: "🔄 جاري تأكيد المعاملة...",
+              confirmed: "✅ تم التأكيد! شكراً لك.",
+              sending: "📤 جاري المعالجة...",
+              partially_paid: "⚠️ تم دفع جزء فقط من المبلغ",
+              finished: "🎉 تم الدفع بنجاح! ستصلك رسالة تأكيد.",
+              failed: "❌ فشلت العملية. حاول مرة أخرى.",
+              refunded: "↩️ تم استرداد المبلغ.",
+              expired: "⏰ انتهت صلاحية عملية الدفع.",
+            };
+
+            statusBox.innerHTML = `<span style="font-size: 14px;">${statusMap[data.status] || data.status}</span>`;
+
+            if (data.actuallyPaid > 0) {
+              statusBox.innerHTML += `<br><span style="font-size: 12px; color: rgba(255,255,255,0.6);">المدفوع: ${data.actuallyPaid} ${data.payCurrency.toUpperCase()}</span>`;
+            }
+
+            if (
+              [
+                "confirmed",
+                "finished",
+                "failed",
+                "refunded",
+                "expired",
+              ].includes(data.status)
+            ) {
+              clearInterval(statusPollInterval);
+              statusPollInterval = null;
+
+              if (data.status === "confirmed" || data.status === "finished") {
+                statusBox.style.background = "rgba(76, 175, 80, 0.2)";
+                statusBox.style.borderColor = "#4CAF50";
+              }
+            }
+          } catch (e) {
+            console.error("Status poll error:", e);
+          }
+        }, 10000);
+      }
+
+      function copyAddress() {
+        const addr = document.getElementById("payAddressDisplay").textContent;
+        navigator.clipboard.writeText(addr).then(() => {
+          const msg = document.getElementById("copyMsg");
+          msg.hidden = false;
+          setTimeout(() => {
+            msg.hidden = true;
+          }, 2000);
+        });
+      }
+
+      function init() {
+        const params = new URLSearchParams(window.location.search);
+        const playerId = parseInt(params.get("id"));
+        const player = players.find((p) => p.id === playerId);
+
+        if (!player) {
+          window.location.href = "/";
+          return;
+        }
+
+        const redeemOption =
+          sessionStorage.getItem("checkout_redeemOption") || "immediate";
+        const shipping = JSON.parse(
+          sessionStorage.getItem("checkout_shipping") || "{}",
+        );
+
+        // Fill order summary
+        document.getElementById("summaryPlayer").textContent =
+          `${player.name} (PSA)`;
+        document.getElementById("summaryRedeem").textContent =
+          redeemOption === "immediate" ? "📦 استلام فوري" : "🔒 حفظ في الخزنة";
+        document.getElementById("summaryShipping").textContent =
+          shipping.fullName
+            ? `${shipping.fullName} — ${shipping.city || ""}`
+            : "-";
+        document.getElementById("summarySats").textContent =
+          `⚡ ${player.sats.toLocaleString()} Satoshi`;
+        document.getElementById("summaryTotal").textContent =
+          `${player.price.toLocaleString("ar-SA")} ر.س`;
+        document.getElementById("paymentAmount").textContent =
+          player.price.toLocaleString("ar-SA");
+
+        // Back button
+        document.getElementById("backBtn").href =
+          `/checkout-step2.html?id=${playerId}`;
+
+        // Fetch BTC estimate
+        fetchEstimates(player.price);
+
+        // Pay Now
+        document.getElementById("payNowBtn").addEventListener("click", () => {
+          createCryptoPayment(player);
+        });
+
+        // Invoice
+        document.getElementById("invoiceBtn").addEventListener("click", () => {
+          createInvoice(player);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
